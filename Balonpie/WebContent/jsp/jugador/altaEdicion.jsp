@@ -14,7 +14,7 @@
 </head>
 <body>
 	<jsp:include page="/jsp/header.jsp" />
-	<form action="/liga/actualizarJugador.pal" method="post">		
+	<form action="/liga/altaJugador.pal?idJugador=1&modo=actualizar" method="post">		
 		<table>
 			<tr>
 				<td>Nombre</td>
