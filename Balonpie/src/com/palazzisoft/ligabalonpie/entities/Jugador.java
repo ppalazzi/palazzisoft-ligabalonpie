@@ -1,14 +1,46 @@
 package com.palazzisoft.ligabalonpie.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table (name="T_JUGADOR")
 public class Jugador implements Serializable {
 
 	private static final long serialVersionUID = 9189577911540530290L;
 	
+	@Id
+	@Column (name="T_ID")
 	private Integer id;
+		
+	@Column (name="A_NOMBRE")
 	private String  nombre;
+	
+	@Column (name="A_APELLIDO")
+	private String apellido;
+	
+	@Column (name="A_FECHANACIMIENTO")	
+	private Date fechaNacimiento;
+	
+	@Column (name="A_VELOCIDAD")	
+	private Integer velocidad;
+	
+	@Column (name="A_REMATE")
+	private Integer remate;
+	
+	@Column (name="A_HABILIDAD")
+	private Integer habilidad;
+	
+	@Column (name="A_FISICO")
+	private Integer fisico;
+	
+	@Column (name="A_ESTADO")
+	private Integer estado;
 	
 	public Jugador() {
 		
@@ -28,6 +60,62 @@ public class Jugador implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+		
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public Integer getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(Integer velocidad) {
+		this.velocidad = velocidad;
+	}
+
+	public Integer getRemate() {
+		return remate;
+	}
+
+	public void setRemate(Integer remate) {
+		this.remate = remate;
+	}
+
+	public Integer getHabilidad() {
+		return habilidad;
+	}
+
+	public void setHabilidad(Integer habilidad) {
+		this.habilidad = habilidad;
+	}
+
+	public Integer getFisico() {
+		return fisico;
+	}
+
+	public void setFisico(Integer fisico) {
+		this.fisico = fisico;
+	}
+
+	public Integer getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Integer estado) {
+		this.estado = estado;
 	}
 
 	@Override
@@ -55,25 +143,4 @@ public class Jugador implements Serializable {
 		return true;
 	}
 	
-	public static void main(String args[]) {
-		Jugador j = new Jugador();
-		j.setId(1);
-		
-		Jugador j2 = new Jugador();
-		j2.setId(2);
-		
-		Participante p = new Participante();
-		p.setId(1);
-		
-		System.out.println(j.hashCode());
-		System.out.println(j2.hashCode());
-		System.out.println(p.hashCode());
-		
-		HashSet<? super Serializable> hash = new HashSet<Serializable>();
-		hash.add(j);
-		hash.add(j2);
-		hash.add(p);
-		
-		System.out.println(hash.toString());
-	}
 }
