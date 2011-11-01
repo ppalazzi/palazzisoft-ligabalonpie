@@ -16,5 +16,9 @@
 	     <bean id="participanteController" class="com.palazzisoft.ligabalonpie.controllers.impl.ParticipanteControllerImpl">	     
 
 	     </bean>
+
+	     <bean id="JugadorController" class="com.palazzisoft.ligabalonpie.controllers.impl.JugadorControllerImpl">	     
+
+	     </bean>
 		
 </beans>

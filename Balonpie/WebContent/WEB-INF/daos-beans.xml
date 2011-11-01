@@ -20,5 +20,9 @@
 	     <bean id="participanteDao" class="com.palazzisoft.ligabalonpie.daos.impl.ParticipanteDaoImpl" parent="genericDao">	     
 			
 	     </bean>
+
+	     <bean id="jugadorDao" class="com.palazzisoft.ligabalonpie.daos.impl.JugadorDaoImpl" parent="genericDao">	     
+			
+	     </bean>
 		
 </beans>

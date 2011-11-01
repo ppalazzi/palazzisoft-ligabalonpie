@@ -19,5 +19,10 @@
 	     <bean id="registroView" class="com.palazzisoft.ligabalonpie.views.RegistroView">	     
 	     </bean>
 
+	     <bean id="jugadoresView" class="com.palazzisoft.ligabalonpie.views.JugadoresView">	     
+	     </bean>
+
+	     <bean id="altaJugadorView" class="com.palazzisoft.ligabalonpie.views.AltaJugadorView">	     
+	     </bean>
 
 </beans>

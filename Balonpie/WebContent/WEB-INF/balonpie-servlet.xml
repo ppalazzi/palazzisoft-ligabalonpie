@@ -30,7 +30,7 @@
          <property name="driverClassName" value="com.mysql.jdbc.Driver" />  
          <property name="url" value="jdbc:mysql://localhost/balonpie" />  
          <property name="username" value="root" />  
-         <property name="password" value="root" />  
+         <property name="password" value="admin" />  
      </bean>        
      
      <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
@@ -38,6 +38,7 @@
         <property name="annotatedClasses"> 
             <list>
                 <value>com.palazzisoft.ligabalonpie.entities.Participante</value>
+                <value>com.palazzisoft.ligabalonpie.entities.Jugador</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -58,13 +59,16 @@
       		<property name="mappings">
       			<props>
       				<prop key="login.pal">loginView</prop>
+					<prop key="listarJugadores.pal">jugadoresView</prop>      				
+					<prop key="altaJugador.pal">altaJugadorView</prop>
       			</props>
       		</property>
       </bean>		
      
+     <!-- 
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>     
-     
+      -->
      
  </beans>
 
