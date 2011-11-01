@@ -11,6 +11,10 @@
            http://www.springframework.org/schema/aop/spring-aop.xsd
            ">
 	    	        	    
+	  <context:annotation-config />     
+	  <import resource="views-beans.xml"/> 
+	  <import resource="daos-beans.xml"/>	
+	  <import resource="controller-beans.xml"/>	    
       
       <!-- Configuración para Base de datos 
 	  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
@@ -24,9 +28,9 @@
       
      <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
          <property name="driverClassName" value="com.mysql.jdbc.Driver" />  
-         <property name="url" value="jdbc:mysql://localhost/Balonpie" />  
+         <property name="url" value="jdbc:mysql://localhost/balonpie" />  
          <property name="username" value="root" />  
-         <property name="password" value="admin" />  
+         <property name="password" value="root" />  
      </bean>        
      
      <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
@@ -40,7 +44,7 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>     
      </bean>
@@ -49,6 +53,17 @@
        <property name="sessionFactory" ref="sessionFactory" />  
      </bean>
      <!-- Fin de Configuracion Base de datos -->
+     
+      <bean id="simpleUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+      		<property name="mappings">
+      			<props>
+      				<prop key="login.pal">loginView</prop>
+      			</props>
+      		</property>
+      </bean>		
+     
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>     
      
      
  </beans>
