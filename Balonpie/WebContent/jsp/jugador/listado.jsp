@@ -11,23 +11,31 @@
 <script type="text/javascript" src="js/cuf_run.js"></script>
 <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="js/radius.js"></script>
+<title>Liga Balonpie - Listado de Jugadores</title>
 </head>
 <body>
 	<jsp:include page="/jsp/header.jsp" />
-	<form action="/liga/login.pal" method="post">
-         <ol>
-           <li>
-             <label for="name">Nombre de Usuario </label>
-             <input id="name" name="user"  />
-           </li>
-           <li>
-             <label for="email">Contraseña </label>
-             <input id="email" name="password" type="password" />
-           </li>
-           <li>
-           	  <input type="image" name="imageField" id="imageField" src="../static/images/submit.gif" class="send" />
-           </li>
-         </ol>			
-	</form>
+
+	<table border="1" width="30%" height="30%">
+		<tr>
+			<td>
+				<label>Id</label>
+			</td>
+			<td>
+				<label>Nombre</label>
+			</td>			
+			<td>
+				<label>Apellido</label>
+			</td>
+		</tr>
+		<c:forEach var="jugador" items="${jugadores}">
+			<tr>
+				<td><a href="/liga/altaJugador.pal?idJugador=1"><c:out value="${jugador.id}" /></a></td>
+				<td><c:out value="${jugador.nombre}" /></td>
+				<td><c:out value="${jugador.apellido}" /></td>
+			</tr>			
+		</c:forEach>
+	
+	</table>
 </body>
 </html>

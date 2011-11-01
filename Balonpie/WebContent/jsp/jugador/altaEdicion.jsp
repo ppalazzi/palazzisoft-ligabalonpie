@@ -14,20 +14,21 @@
 </head>
 <body>
 	<jsp:include page="/jsp/header.jsp" />
-	<form action="/liga/login.pal" method="post">
-         <ol>
-           <li>
-             <label for="name">Nombre de Usuario </label>
-             <input id="name" name="user"  />
-           </li>
-           <li>
-             <label for="email">Contraseña </label>
-             <input id="email" name="password" type="password" />
-           </li>
-           <li>
-           	  <input type="image" name="imageField" id="imageField" src="../static/images/submit.gif" class="send" />
-           </li>
-         </ol>			
+	<form action="/liga/actualizarJugador.pal" method="post">		
+		<table>
+			<tr>
+				<td>Nombre</td>
+				<td><input type="text" name="" value='<c:out value="${jugador.nombre}" />'>
+			</tr>
+			<tr>
+				<td>Apellido</td>
+				<td><input type="text" name="" value='<c:out value="${jugador.apellido}" />'>
+			</tr>			
+			<tr>
+				<td><input type="submit" value="Modificar" /></td>				
+			</tr>
+		</table>
+		<input type="hidden" value='<c:out value="${jugador.id}" />' >
 	</form>
 </body>
 </html>
