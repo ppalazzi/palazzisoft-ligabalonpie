@@ -27,12 +27,11 @@ public class LoginView {
 			Participante participante = participanteController.login(user, password);
 				
 			if (participante != null) {
-				ret = PageViews.PARTICIPANTE_VALIDO;
+				ret = PageViews.LISTADO_JUGADOR;
 			}			
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
+			log.error(e);
 		}
 		
 		return new ModelAndView(ret);		

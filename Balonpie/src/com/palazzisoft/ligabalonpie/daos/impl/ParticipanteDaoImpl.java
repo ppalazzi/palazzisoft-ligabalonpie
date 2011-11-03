@@ -15,7 +15,6 @@ public class ParticipanteDaoImpl extends GenericDaoImpl<Participante, Integer> i
 		return Participante.class;
 	}
 
-	@Override	
 	@SuppressWarnings("unchecked")
 	public Participante login(String usuario, String password) {
 		Participante participante = null;		

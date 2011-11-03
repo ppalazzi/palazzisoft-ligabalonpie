@@ -11,7 +11,6 @@ public class ParticipanteControllerImpl implements ParticipanteController {
 	@Autowired
 	private ParticipanteDao participanteDao;
 	
-	@Override
 	public Participante login(String user, String password) {
 		return participanteDao.login(user, password);
 	}
