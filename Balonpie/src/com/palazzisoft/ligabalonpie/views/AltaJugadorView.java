@@ -4,34 +4,54 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.web.servlet.mvc.SimpleFormController;
 
+import com.palazzisoft.ligabalonpie.command.JugadorCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.JugadorController;
+import com.palazzisoft.ligabalonpie.converters.JugadorConverter;
 import com.palazzisoft.ligabalonpie.entities.Jugador;
 import com.palazzisoft.ligabalonpie.util.PageViews;
 
-public class AltaJugadorView implements Controller {
+public class AltaJugadorView extends SimpleFormController {
 
 	@Autowired
 	private JugadorController jugadorController;
 	
-	public ModelAndView handleRequest(HttpServletRequest req,
-			HttpServletResponse res) throws Exception {
+	
+	
+	@Override
+	protected ModelAndView onSubmit(HttpServletRequest req,
+			HttpServletResponse response, Object command, BindException errors)
+			throws Exception {
+		
+		ModelAndView mv = new ModelAndView(PageViews.ERROR_PAGINA);
+		try {			
+			JugadorCommand datos = (JugadorCommand)command;
+			
+			if (datos.getId() != null) {
+				Jugador jugador = jugadorController.getJugadorById(datos.getId());
+				JugadorConverter.copyFromCommandToJugador(jugador, datos);
+				jugadorController.updateJugador(jugador);
+				
+				mv.addObject("jugadores", jugadorController.obtenerJugadoresDisponibles());
+			}
+			else {
+				Jugador jugador = new Jugador();
+				jugador = JugadorConverter.convertToJugador(datos);
+				jugadorController.saveJugador(jugador);
+			}
 
-		String salida = PageViews.ERROR_PAGINA;
-		ModelAndView mv = new ModelAndView(salida);
-		
-		Integer idJugador = Integer.parseInt(req.getParameter("idJugador"));
-		
-		if (idJugador != null) {
-			Jugador jugador = jugadorController.getJugadorById(idJugador);
-			mv.addObject("jugador", jugador);
-			mv.setViewName(PageViews.EDICION_ALTA_JUGADOR);
-		}
+			mv.setViewName(PageViews.LISTADO_JUGADORES);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 		
 		return mv;
 	}
+
+
 
 	
 }

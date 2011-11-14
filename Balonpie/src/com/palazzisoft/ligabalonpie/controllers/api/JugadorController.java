@@ -13,4 +13,6 @@ public interface JugadorController {
 	public void eliminarJugadorById(Integer id);
 	
 	public void updateJugador(Jugador jugador);
+	
+	public void saveJugador(Jugador jugador);
 }

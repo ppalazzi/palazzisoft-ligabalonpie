@@ -29,5 +29,10 @@ public class JugadorControllerImpl implements JugadorController {
 	public List<Jugador> obtenerJugadoresDisponibles() {
 		return jugadorDao.obtenerJugadoresDisponibles();
 	}
+
+	@Override
+	public void saveJugador(Jugador jugador) {
+		this.jugadorDao.save(jugador);
+	}
 	
 }
