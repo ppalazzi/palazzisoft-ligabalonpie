@@ -14,20 +14,14 @@
 </head>
 <body>
 	<jsp:include page="/jsp/header.jsp" />
-	<form action="/balonpie/login.htm" method="post">
-         <ol>
-           <li>
-             <label for="name">Nombre de Usuario </label>
-             <input id="name" name="user"  />
-           </li>
-           <li>
-             <label for="email">Contraseña </label>
-             <input id="email" name="password" type="password" />
-           </li>
-           <li>
-           	  <input type="image" name="imageField" id="imageField" src="../static/images/submit.gif" class="send" />
-           </li>
-         </ol>			
-	</form>
+	
+      <div class="menu_nav">
+        <ul>
+          <li class="active"><a href="/balonpie/">Crear Torneo</a></li>
+          <li><a href="jugadorListado.htm">Jugadores</a></li>
+          <li><a href="#">Contactenos</a></li>
+        </ul>
+      </div>
+	
 </body>
 </html>

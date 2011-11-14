@@ -2,33 +2,41 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="../static/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/cufon-yui.js"></script>
-<script type="text/javascript" src="js/arial.js"></script>
-<script type="text/javascript" src="js/cuf_run.js"></script>
-<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-<script type="text/javascript" src="js/radius.js"></script>
 </head>
 <body>
 	<jsp:include page="/jsp/header.jsp" />
-	<form action="/liga/altaJugador.pal?idJugador=1&modo=actualizar" method="post">		
+	<form:form action="altaEdicion.htm" method="post" commandName="jugadorCommand">					
 		<table>
 			<tr>
-				<td>Nombre</td>
-				<td><input type="text" name="" value='<c:out value="${jugador.nombre}" />'>
+				<td>Nombre</td>					
+				<td>
+					<spring:bind path="nombre">
+						<input type="text" name="nombre" value='<c:out value="${jugadorCommand.nombre}" />'>					
+					</spring:bind>	
+				</td>			
 			</tr>
 			<tr>
 				<td>Apellido</td>
-				<td><input type="text" name="" value='<c:out value="${jugador.apellido}" />'>
+				<td>
+					<spring:bind path="apellido">
+						<input type="text" name="apellido" value='<c:out value="${jugadorCommand.apellido}" />'>					
+					</spring:bind>		
+				</td>		
 			</tr>			
 			<tr>
-				<td><input type="submit" value="Modificar" /></td>				
+				<td>
+					<spring:bind path="id">
+						<input type="hidden" name="id" value='<c:out value="${jugadorCommand.id}" />' />
+					</spring:bind>
+					<input type="submit" value="Modificar" />
+				</td>				
 			</tr>
 		</table>
-		<input type="hidden" value='<c:out value="${jugador.id}" />' >
-	</form>
+	</form:form>
 </body>
 </html>

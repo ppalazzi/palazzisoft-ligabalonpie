@@ -13,16 +13,19 @@
 
 	     <context:annotation-config />
 
-	     <bean id="loginView" class="com.palazzisoft.ligabalonpie.views.LoginView">	     
+	     <bean name="/login.htm" class="com.palazzisoft.ligabalonpie.views.LoginView">	     
 	     </bean>
 	          
 	     <bean id="registroView" class="com.palazzisoft.ligabalonpie.views.RegistroView">	     
 	     </bean>
 
-	     <bean id="jugadoresView" class="com.palazzisoft.ligabalonpie.views.JugadoresView">	     
+	     <bean name="/jugadorListado.htm" class="com.palazzisoft.ligabalonpie.views.JugadorView">
 	     </bean>
 
-	     <bean id="altaJugadorView" class="com.palazzisoft.ligabalonpie.views.AltaJugadorView">	     
-	     </bean>
-
+		<bean name="/altaEdicion.htm" class="com.palazzisoft.ligabalonpie.views.AltaJugadorView">
+			<property name="commandName" value="jugadorCommand" />
+			<property name="commandClass" value="com.palazzisoft.ligabalonpie.command.JugadorCommand" />
+    		<property name="sessionForm"><value>true</value></property>		
+			<property name="bindOnNewForm" value="true" />
+ 		</bean>
 </beans>

@@ -21,7 +21,7 @@ http://www.dreamtemplate.com
 
 Installation Instructions:
 
-1. Simple edit index.html and add your own content
+1. Simple edit index.pall and add your own content
 2. Upload these pages to your web host
 
 ##########################################
