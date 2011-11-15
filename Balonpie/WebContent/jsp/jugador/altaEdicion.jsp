@@ -26,7 +26,8 @@
 				<td>
 					<spring:bind path="apellido">
 						<input type="text" name="apellido" value='<c:out value="${jugadorCommand.apellido}" />'>					
-					</spring:bind>		
+					</spring:bind>	
+					<form:errors path="apellido"></form:errors>	
 				</td>		
 			</tr>
 			<tr>
@@ -35,6 +36,7 @@
 					<spring:bind path="velocidad">
 						<input type="text" name="velocidad" value='<c:out value="${jugadorCommand.velocidad}" />'>					
 					</spring:bind>		
+					<form:errors path="velocidad"></form:errors>
 				</td>		
 			</tr>					
 			<tr>
@@ -43,6 +45,7 @@
 					<spring:bind path="remate">
 						<input type="text" name="remate" value='<c:out value="${jugadorCommand.remate}" />'>					
 					</spring:bind>		
+					<form:errors path="remate"></form:errors>
 				</td>		
 			</tr>
 																<tr>
@@ -51,6 +54,7 @@
 					<spring:bind path="habilidad">
 						<input type="text" name="habilidad" value='<c:out value="${jugadorCommand.habilidad}" />'>					
 					</spring:bind>		
+					<form:errors path="habilidad"></form:errors>
 				</td>		
 			</tr>			
 															<tr>
@@ -59,6 +63,7 @@
 					<spring:bind path="fisico">
 						<input type="text" name="fisico" value='<c:out value="${jugadorCommand.fisico}" />'>					
 					</spring:bind>		
+					<form:errors path="fisico"></form:errors>
 				</td>		
 			</tr>			
 											
