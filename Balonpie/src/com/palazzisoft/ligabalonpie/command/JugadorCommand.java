@@ -5,6 +5,11 @@ public class JugadorCommand {
 	private Integer id;
 	private String  nombre;
 	private String  apellido;
+	private Integer velocidad;
+	private Integer remate;
+	private Integer habilidad;
+	private Integer fisico;
+	private Integer estado;
 	
 	public JugadorCommand() {
 		
@@ -33,6 +38,45 @@ public class JugadorCommand {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	
+
+	public Integer getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(Integer velocidad) {
+		this.velocidad = velocidad;
+	}
+
+	public Integer getRemate() {
+		return remate;
+	}
+
+	public void setRemate(Integer remate) {
+		this.remate = remate;
+	}
+
+	public Integer getHabilidad() {
+		return habilidad;
+	}
+
+	public void setHabilidad(Integer habilidad) {
+		this.habilidad = habilidad;
+	}
+
+	public Integer getFisico() {
+		return fisico;
+	}
+
+	public void setFisico(Integer fisico) {
+		this.fisico = fisico;
+	}
+
+	public Integer getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Integer estado) {
+		this.estado = estado;
+	}
 	
 }
