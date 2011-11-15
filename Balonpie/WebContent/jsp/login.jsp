@@ -11,17 +11,18 @@
 <script type="text/javascript" src="js/cuf_run.js"></script>
 <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="js/radius.js"></script>
+<script type="text/javascript" src="../static/js/validaciones.js"></script>
 </head>
 <body>
 	<jsp:include page="/jsp/header.jsp" />
-	<form action="/balonpie/login.htm" method="post">
+	<form action="/balonpie/login.htm" method="post" onsubmit="return validarDatos(this);">
          <ol>
            <li>
-             <label for="name">Nombre de Usuario </label>
+             <label for="name">Nombre de Usuario</label>
              <input id="name" name="user"  />
            </li>
            <li>
-             <label for="email">Contraseña </label>
+             <label for="email">Contraseña</label>
              <input id="email" name="password" type="password" />
            </li>
            <li>
