@@ -25,7 +25,13 @@
 		<bean name="/altaEdicion.htm" class="com.palazzisoft.ligabalonpie.views.AltaJugadorView">
 			<property name="commandName" value="jugadorCommand" />
 			<property name="commandClass" value="com.palazzisoft.ligabalonpie.command.JugadorCommand" />
+<!-- 
     		<property name="sessionForm"><value>true</value></property>		
 			<property name="bindOnNewForm" value="true" />
+ -->			
+			<property name="formView" value="jugador/altaEdicion"/>
+			<property name="validator">
+				<bean class="com.palazzisoft.ligabalonpie.validators.ParticipanteValidator" />
+			</property>	
  		</bean>
 </beans>
