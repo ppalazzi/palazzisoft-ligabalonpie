@@ -5,9 +5,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -44,6 +46,9 @@ public class Jugador implements Serializable {
 	
 	@Column (name="A_ESTADO")
 	private Integer estado;
+	
+	@ManyToOne (fetch=FetchType.EAGER)
+	private TipoJugador tipoJugador;
 	
 	public Jugador() {
 		
@@ -121,6 +126,14 @@ public class Jugador implements Serializable {
 		this.estado = estado;
 	}
 
+	public TipoJugador getTipoJugador() {
+		return tipoJugador;
+	}
+
+	public void setTipoJugador(TipoJugador tipoJugador) {
+		this.tipoJugador = tipoJugador;
+	}	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
