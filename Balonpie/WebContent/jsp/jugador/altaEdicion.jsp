@@ -17,7 +17,8 @@
 				<td>
 					<spring:bind path="nombre">
 						<input type="text" name="nombre" value='<c:out value="${jugadorCommand.nombre}" />'>					
-					</spring:bind>	
+					</spring:bind>
+					<form:errors path="nombre"></form:errors>	
 				</td>			
 			</tr>
 			<tr>
@@ -27,12 +28,48 @@
 						<input type="text" name="apellido" value='<c:out value="${jugadorCommand.apellido}" />'>					
 					</spring:bind>		
 				</td>		
+			</tr>
+			<tr>
+				<td>Velocidad</td>
+				<td>
+					<spring:bind path="velocidad">
+						<input type="text" name="velocidad" value='<c:out value="${jugadorCommand.velocidad}" />'>					
+					</spring:bind>		
+				</td>		
+			</tr>					
+			<tr>
+				<td>Remate</td>
+				<td>
+					<spring:bind path="remate">
+						<input type="text" name="remate" value='<c:out value="${jugadorCommand.remate}" />'>					
+					</spring:bind>		
+				</td>		
+			</tr>
+																<tr>
+				<td>Habilidad</td>
+				<td>
+					<spring:bind path="habilidad">
+						<input type="text" name="habilidad" value='<c:out value="${jugadorCommand.habilidad}" />'>					
+					</spring:bind>		
+				</td>		
 			</tr>			
+															<tr>
+				<td>Físico</td>
+				<td>
+					<spring:bind path="fisico">
+						<input type="text" name="fisico" value='<c:out value="${jugadorCommand.fisico}" />'>					
+					</spring:bind>		
+				</td>		
+			</tr>			
+											
 			<tr>
 				<td>
 					<spring:bind path="id">
 						<input type="hidden" name="id" value='<c:out value="${jugadorCommand.id}" />' />
 					</spring:bind>
+					<spring:bind path="estado">
+						<input type="hidden" name="estado" value="1" />
+					</spring:bind>					
 					<input type="submit" value="Modificar" />
 				</td>				
 			</tr>

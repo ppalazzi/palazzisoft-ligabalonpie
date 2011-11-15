@@ -5,7 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
-<head>
+<head></head>
 <body>
 	<jsp:include page="/jsp/header.jsp" />
 		
@@ -20,13 +20,29 @@
 			<td>
 				<label>Apellido</label>
 			</td>
+			<td>
+				<label>Velocidad</label>
+			</td>			
+			<td>
+				<label>Remate</label>
+			</td>
+			<td>
+				<label>Habilidad</label>
+			</td>			
+			<td>
+				<label>Físico</label>
+			</td>									
 		</tr>
 					
 		<c:forEach var="jugador" items="${jugadores}">
 			<tr>
-				<td><a href="jugadorListado.htm?jugadorId=1"><c:out value="${jugador.id}" /></a></td>
+				<td><a href="jugadorListado.htm?jugadorId=<c:out value='${jugador.id}' />"><c:out value="${jugador.id}" /></a></td>
 				<td><c:out value="${jugador.nombre}" /></td>
 				<td><c:out value="${jugador.apellido}" /></td>
+				<td><c:out value="${jugador.velocidad}" /></td>
+				<td><c:out value="${jugador.remate}" /></td>
+				<td><c:out value="${jugador.habilidad}" /></td>
+				<td><c:out value="${jugador.fisico}" /></td>
 			</tr>			
 		</c:forEach>
 		
