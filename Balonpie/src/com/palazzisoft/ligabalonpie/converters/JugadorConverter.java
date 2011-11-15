@@ -10,6 +10,11 @@ public class JugadorConverter {
 		command.setApellido(jugador.getApellido());
 		command.setId(jugador.getId());
 		command.setNombre(jugador.getNombre());
+		command.setEstado(jugador.getEstado());
+		command.setFisico(jugador.getFisico());
+		command.setHabilidad(jugador.getHabilidad());
+		command.setRemate(jugador.getRemate());
+		command.setVelocidad(jugador.getVelocidad());
 		
 		return command;
 	}
@@ -27,5 +32,10 @@ public class JugadorConverter {
 		jugador.setApellido(command.getApellido());
 		jugador.setNombre(command.getNombre());
 		jugador.setId(command.getId());
+		jugador.setEstado(command.getEstado());
+		jugador.setFisico(jugador.getFisico());
+		jugador.setHabilidad(jugador.getHabilidad());
+		jugador.setRemate(command.getRemate());
+		jugador.setVelocidad(command.getVelocidad());
 	}
 }
