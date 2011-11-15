@@ -20,9 +20,6 @@ public class LoginView implements Controller {
 	@Autowired
 	private ParticipanteController participanteController;
 	
-	
-	
-	@Override
 	public ModelAndView handleRequest(HttpServletRequest req,
 			HttpServletResponse res) throws Exception {
 		

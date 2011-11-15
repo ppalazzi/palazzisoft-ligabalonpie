@@ -41,6 +41,8 @@ public class AltaJugadorView extends SimpleFormController {
 				Jugador jugador = new Jugador();
 				jugador = JugadorConverter.convertToJugador(datos);
 				jugadorController.saveJugador(jugador);
+				
+				mv.addObject("jugadores", jugadorController.obtenerJugadoresDisponibles());
 			}
 
 			mv.setViewName(PageViews.LISTADO_JUGADORES);

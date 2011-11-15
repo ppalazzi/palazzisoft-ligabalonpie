@@ -23,7 +23,6 @@ public class JugadorView implements Controller {
 	private JugadorController jugadorController;
 	
 	@SuppressWarnings("unchecked")
-	@Override
 	public ModelAndView handleRequest(HttpServletRequest req,
 			HttpServletResponse res) throws Exception {
 
