@@ -24,7 +24,6 @@ public class LoginView implements Controller {
 	@Autowired
 	private AdministradorController administradorController;
 			
-	@Override
 	public ModelAndView handleRequest(HttpServletRequest req,
 			HttpServletResponse res) throws Exception {
 		
@@ -33,19 +32,30 @@ public class LoginView implements Controller {
 		try {
 			String user     = req.getParameter("user");
 			String password = req.getParameter("password");		
-			String esAdmin  = req.getParameter("esAdministrador");
+			String esAdmin  = req.getParameter("esAdmin");
 			
 			if (esAdmin == null) {
 				Participante participante = participanteController.login(user, password);				
-				req.getSession().setAttribute("participanteSession", participante);
-				req.getSession().setAttribute("tipoLogueo", "participante");	
-				mv.setViewName(PageViews.DASHBOARD);
+				
+				if (participante != null) {
+					req.getSession().setAttribute("participanteSession", participante);
+					req.setAttribute("tipoLogueo", "participante");
+					mv.setViewName(PageViews.DASHBOARD);
+				}else {
+					mv.setViewName(PageViews.LOGIN_INVALIDO);
+				}								
 			}
 			else {
 				Administrador administrador = administradorController.login(user, password);
-				req.getSession().setAttribute("participanteSession", administrador);				
-				req.getSession().setAttribute("tipoLogueo", "administrador");								
-				mv.setViewName(PageViews.DASHBOARD);
+				
+				if (administrador != null) {
+					req.getSession().setAttribute("participanteSession", administrador);				
+					req.setAttribute("tipoLogueo", "administrador");								
+					mv.setViewName(PageViews.DASHBOARD);
+				}				
+				else {
+					mv.setViewName(PageViews.LOGIN_INVALIDO);					
+				}
 			}					
 		}
 		catch (Exception e) {

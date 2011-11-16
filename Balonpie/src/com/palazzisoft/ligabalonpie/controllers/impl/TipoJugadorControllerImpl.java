@@ -17,7 +17,6 @@ public class TipoJugadorControllerImpl implements TipoJugadorController {
 		
 	}
 
-	@Override
 	public List<TipoJugador> obtenerTodosTipoJugador() {
 		return tipoJugadorDao.obtenerTiposJugadores();
 	}

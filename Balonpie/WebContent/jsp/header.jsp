@@ -17,7 +17,7 @@
   <div class="header">
     <div class="header_resize">
       <div class="logo">
-        <h1><a href="#">Palazzisoft Games Division<small></small></a></h1>
+        <h1><a href="/balonpie/index.html">Palazzisoft Games Division<small></small></a></h1>
       </div>
       <div class="clr"></div>
     </div>

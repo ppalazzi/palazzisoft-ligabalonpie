@@ -8,8 +8,8 @@
 </head>
 <body>
 	<div>
-		<form action="/balonpie/login.pal" method="post">
-			<label><h3>Usuario Invalido, intentelo nuevamente</h3></label><br>
+		<form action="/balonpie/index.html" method="post">
+			<h3>Usuario Inválido, intentelo nuevamente</h3><br>
 			<input type="submit" value="Volver" />			
 		</form>
 	</div>	

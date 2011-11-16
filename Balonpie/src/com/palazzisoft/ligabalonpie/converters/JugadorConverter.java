@@ -14,6 +14,7 @@ public class JugadorConverter {
 		command.setFisico(jugador.getFisico());
 		command.setHabilidad(jugador.getHabilidad());
 		command.setRemate(jugador.getRemate());
+		command.setValor(jugador.getValor());
 		command.setVelocidad(jugador.getVelocidad());
 		
 		return command;
@@ -28,6 +29,7 @@ public class JugadorConverter {
 		jugador.setFisico(command.getFisico());
 		jugador.setHabilidad(command.getHabilidad());
 		jugador.setRemate(command.getRemate());
+		jugador.setValor(command.getValor());
 		jugador.setVelocidad(command.getVelocidad());
 		
 		return jugador;
@@ -43,5 +45,6 @@ public class JugadorConverter {
 		jugador.setRemate(command.getRemate());
 		jugador.setVelocidad(command.getVelocidad());
 		jugador.setHabilidad(command.getHabilidad());
+		jugador.setValor(command.getValor());
 	}
 }

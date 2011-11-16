@@ -11,7 +11,6 @@ public class AdministradorControllerImpl implements AdministradorController {
 	@Autowired
 	private AdministradorDao administradorDao;
 	
-	@Override
 	public Administrador login(String user, String password) {
 		return administradorDao.login(user, password);
 	}

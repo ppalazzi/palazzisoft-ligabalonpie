@@ -18,7 +18,7 @@ public class JugadorDaoImpl extends GenericDaoImpl<Jugador,Integer> implements J
 
 	@SuppressWarnings("unchecked")
 	public List<Jugador> obtenerJugadoresDisponibles() {		
-		String sql = "FROM Jugador j WHERE j.estado = 1";		
+		String sql = "FROM Jugador j";		
 		return  this.getHibernateTemplate().find(sql);
 	}
 	

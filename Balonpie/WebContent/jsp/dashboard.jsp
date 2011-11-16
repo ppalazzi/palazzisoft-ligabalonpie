@@ -17,13 +17,15 @@
 	
       <div class="menu_nav">
         <ul>
-          <li class="active"><a href="/balonpie/">Crear Torneo</a></li>
-          
-          <c:if test="${session.tipoLogueo == 'administrador'}">
-          		ES LOGUEO
+          <li class="active"><a href="/balonpie/">Crear Torneo</a></li>                    
+                    
+          <c:if test="${tipoLogueo == 'administrador' }">
+				<li><a href="jugadorListado.htm">Jugadores</a></li>          
           </c:if>
-          
-          <li><a href="jugadorListado.htm">Jugadores</a></li>
+          <c:if test="${tipoLogueo == 'participante' }">
+				<li><a href="equipoListado.htm">Mis Equipos</a></li>          
+          </c:if>
+                    
           <li><a href="#">Contactenos</a></li>
         </ul>
       </div>

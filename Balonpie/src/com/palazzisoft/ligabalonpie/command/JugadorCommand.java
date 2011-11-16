@@ -10,6 +10,7 @@ public class JugadorCommand {
 	private Integer habilidad;
 	private Integer fisico;
 	private Integer estado;
+	private Integer valor;
 	private Integer tipoJugadorId;
 	private String  tipoJugadorDescripcion;
 	
@@ -81,6 +82,14 @@ public class JugadorCommand {
 		this.estado = estado;
 	}
 
+	public Integer getValor() {
+		return valor;
+	}
+
+	public void setValor(Integer valor) {
+		this.valor = valor;
+	}
+		
 	public Integer getTipoJugadorId() {
 		return tipoJugadorId;
 	}

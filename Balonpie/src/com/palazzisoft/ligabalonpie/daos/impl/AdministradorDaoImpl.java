@@ -10,7 +10,6 @@ public class AdministradorDaoImpl extends GenericDaoImpl<Administrador,Integer> 
 
 	private static final Integer PRIMER_ELEMENTO = 0;
 
-	@Override
 	public Administrador login(String user, String password) {
 		Administrador administrador = null;		
 		String query = "FROM Administrador p WHERE p.nombre = ? AND p.password = ?";

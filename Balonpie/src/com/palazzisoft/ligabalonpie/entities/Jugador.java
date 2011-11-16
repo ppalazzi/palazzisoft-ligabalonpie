@@ -47,6 +47,9 @@ public class Jugador implements Serializable {
 	@Column (name="A_ESTADO")
 	private Integer estado;
 	
+	@Column (name="A_VALOR")
+	private Integer valor;
+	
 	@ManyToOne (fetch=FetchType.EAGER)
 	private TipoJugador tipoJugador;
 	
@@ -134,6 +137,14 @@ public class Jugador implements Serializable {
 		this.tipoJugador = tipoJugador;
 	}	
 	
+	public Integer getValor() {
+		return valor;
+	}
+
+	public void setValor(Integer valor) {
+		this.valor = valor;
+	}	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -157,6 +168,5 @@ public class Jugador implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-	
+	}	
 }
