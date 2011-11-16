@@ -31,7 +31,10 @@
 			</td>			
 			<td>
 				<label>Físico</label>
-			</td>									
+			</td>
+			<td>
+				<label>Tipo de Jugador</label>
+			</td>																					
 		</tr>
 					
 		<c:forEach var="jugador" items="${jugadores}">
@@ -43,6 +46,7 @@
 				<td><c:out value="${jugador.remate}" /></td>
 				<td><c:out value="${jugador.habilidad}" /></td>
 				<td><c:out value="${jugador.fisico}" /></td>
+				<td><input type="text" value="<c:out value='${jugador.tipoJugador.descripcion}' />" /></td>
 			</tr>			
 		</c:forEach>
 		

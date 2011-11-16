@@ -18,6 +18,11 @@
       <div class="menu_nav">
         <ul>
           <li class="active"><a href="/balonpie/">Crear Torneo</a></li>
+          
+          <c:if test="${session.tipoLogueo == 'administrador'}">
+          		ES LOGUEO
+          </c:if>
+          
           <li><a href="jugadorListado.htm">Jugadores</a></li>
           <li><a href="#">Contactenos</a></li>
         </ul>

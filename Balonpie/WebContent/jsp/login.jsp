@@ -26,6 +26,10 @@
              <input id="email" name="password" type="password" />
            </li>
            <li>
+           	  <label>Administrador</label>
+           	  <input type="checkbox" name="esAdmin" value="true" />
+           </li>
+           <li>
            	  <input type="image" name="imageField" id="imageField" src="../static/images/submit.gif" class="send" />
            </li>
          </ol>			

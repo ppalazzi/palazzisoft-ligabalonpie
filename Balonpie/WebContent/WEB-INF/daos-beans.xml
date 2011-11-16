@@ -24,5 +24,13 @@
 	     <bean id="jugadorDao" class="com.palazzisoft.ligabalonpie.daos.impl.JugadorDaoImpl" parent="genericDao">	     
 			
 	     </bean>
+
+	     <bean id="tipoJugadorDao" class="com.palazzisoft.ligabalonpie.daos.impl.TipoJugadorDaoImpl" parent="genericDao">	     
+			
+	     </bean>
+
+	     <bean id="administradorDao" class="com.palazzisoft.ligabalonpie.daos.impl.AdministradorDaoImpl" parent="genericDao">	     
+			
+	     </bean>
 		
 </beans>

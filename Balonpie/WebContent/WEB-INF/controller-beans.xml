@@ -20,5 +20,13 @@
 	     <bean id="JugadorController" class="com.palazzisoft.ligabalonpie.controllers.impl.JugadorControllerImpl">	     
 
 	     </bean>
+
+	     <bean id="tipoJugadorController" class="com.palazzisoft.ligabalonpie.controllers.impl.TipoJugadorControllerImpl">	     
+
+	     </bean>
+
+	     <bean id="administradorController" class="com.palazzisoft.ligabalonpie.controllers.impl.AdministradorControllerImpl">	     
+
+	     </bean>
 		
 </beans>

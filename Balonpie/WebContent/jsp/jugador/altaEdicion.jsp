@@ -57,7 +57,7 @@
 					<form:errors path="habilidad"></form:errors>
 				</td>		
 			</tr>			
-															<tr>
+			<tr>
 				<td>Físico</td>
 				<td>
 					<spring:bind path="fisico">
@@ -66,7 +66,31 @@
 					<form:errors path="fisico"></form:errors>
 				</td>		
 			</tr>			
-											
+			<tr>
+				<td>Tipo De Jugador</td>
+				<td>
+					<spring:bind path="tipoJugadorId">
+						<select name="tipoJugadorSeleccionado">
+							<c:forEach var="tipoJugador" items="${tipoJugadores}">
+								<option <c:if test="${tipoJugador.id == jugadorCommand.id}">selected</c:if> value="<c:out value="${tipoJugador.id}" />"><c:out value="${tipoJugador.descripcion}" /></option>
+							</c:forEach>						
+						</select>					
+					</spring:bind>		
+					<form:errors path="tipoJugadorId"></form:errors>
+				</td>		
+			</tr>			
+			<tr>
+				<td>Estado</td>	
+				<td>
+					<spring:bind path="estado">
+						<select name="estadoSeleccionado">
+							<option <c:if test='${jugadorCommand.id == 1}'>selected</c:if> value="1">Activo</option>
+							<option <c:if test='${jugadorCommand.id == 0}'>selected</c:if> value="0">Inactivo</option>
+						</select>					
+					</spring:bind>		
+					<form:errors path="estado"></form:errors>
+				</td>																			
+			</tr>
 			<tr>
 				<td>
 					<spring:bind path="id">
