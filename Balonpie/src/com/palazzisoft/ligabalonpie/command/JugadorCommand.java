@@ -10,6 +10,8 @@ public class JugadorCommand {
 	private Integer habilidad;
 	private Integer fisico;
 	private Integer estado;
+	private Integer tipoJugadorId;
+	private String  tipoJugadorDescripcion;
 	
 	public JugadorCommand() {
 		
@@ -78,5 +80,22 @@ public class JugadorCommand {
 	public void setEstado(Integer estado) {
 		this.estado = estado;
 	}
+
+	public Integer getTipoJugadorId() {
+		return tipoJugadorId;
+	}
+
+	public void setTipoJugadorId(Integer tipoJugadorId) {
+		this.tipoJugadorId = tipoJugadorId;
+	}
+
+	public String getTipoJugadorDescripcion() {
+		return tipoJugadorDescripcion;
+	}
+
+	public void setTipoJugadorDescripcion(String tipoJugadorDescripcion) {
+		this.tipoJugadorDescripcion = tipoJugadorDescripcion;
+	}
+	
 	
 }
