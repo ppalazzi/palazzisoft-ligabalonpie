@@ -28,10 +28,13 @@
 			</td>
 			<td>
 				<label>Habilidad</label>
-			</td>			
+			</td>
 			<td>
 				<label>Físico</label>
 			</td>
+			<td>
+				<label>Costo del Jugador</label>
+			</td>												
 			<td>
 				<label>Tipo de Jugador</label>
 			</td>																					
@@ -46,6 +49,7 @@
 				<td><c:out value="${jugador.remate}" /></td>
 				<td><c:out value="${jugador.habilidad}" /></td>
 				<td><c:out value="${jugador.fisico}" /></td>
+				<td><c:out value="${jugador.valor}" /></td>
 				<td><input type="text" value="<c:out value='${jugador.tipoJugador.descripcion}' />" /></td>
 			</tr>			
 		</c:forEach>

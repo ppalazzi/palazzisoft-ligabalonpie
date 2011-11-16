@@ -67,13 +67,26 @@
 				</td>		
 			</tr>			
 			<tr>
+				<td>Valor</td>
+				<td>
+					<spring:bind path="valor">
+						<input type="text" name="valor" value='<c:out value="${jugadorCommand.valor}" />'>					
+					</spring:bind>		
+					<form:errors path="valor"></form:errors>
+				</td>		
+			</tr>						
+			<tr>
 				<td>Tipo De Jugador</td>
 				<td>
 					<spring:bind path="tipoJugadorId">
 						<select name="tipoJugadorSeleccionado">
-							<c:forEach var="tipoJugador" items="${tipoJugadores}">
-								<option <c:if test="${tipoJugador.id == jugadorCommand.id}">selected</c:if> value="<c:out value="${tipoJugador.id}" />"><c:out value="${tipoJugador.descripcion}" /></option>
-							</c:forEach>						
+<!--							<c:forEach var="tipoJugador" items="${tipoJugadores}">-->
+<!--								<option <c:if test="${tipoJugador.id == jugadorCommand.id}">selected</c:if> value="<c:out value="${tipoJugador.id}" />"><c:out value="${tipoJugador.descripcion}" /></option>-->
+<!--							</c:forEach>						-->
+							<option <c:if test="${1 == jugadorCommand.id}">selected</c:if> value="1" >Arquero</option>
+							<option <c:if test="${2 == jugadorCommand.id}">selected</c:if> value="2" >Defensor</option>
+							<option <c:if test="${3 == jugadorCommand.id}">selected</c:if> value="3" >Mediocampista</option>							
+							<option <c:if test="${4 == jugadorCommand.id}">selected</c:if> value="4" >Atacante</option>
 						</select>					
 					</spring:bind>		
 					<form:errors path="tipoJugadorId"></form:errors>

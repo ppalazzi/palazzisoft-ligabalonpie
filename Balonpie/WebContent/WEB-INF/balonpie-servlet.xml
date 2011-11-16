@@ -30,7 +30,7 @@
          <property name="driverClassName" value="com.mysql.jdbc.Driver" />  
          <property name="url" value="jdbc:mysql://localhost/balonpie" />  
          <property name="username" value="root" />  
-         <property name="password" value="root" />  
+         <property name="password" value="admin" />  
      </bean>        
      
      <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
@@ -41,6 +41,8 @@
                 <value>com.palazzisoft.ligabalonpie.entities.Jugador</value>
                 <value>com.palazzisoft.ligabalonpie.entities.Administrador</value>
                 <value>com.palazzisoft.ligabalonpie.entities.TipoJugador</value>
+                <value>com.palazzisoft.ligabalonpie.entities.Equipo</value>
+                <value>com.palazzisoft.ligabalonpie.entities.EquipoJugador</value>
             </list>
         </property>
         <property name="hibernateProperties">

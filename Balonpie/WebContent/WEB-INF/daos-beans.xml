@@ -32,5 +32,9 @@
 	     <bean id="administradorDao" class="com.palazzisoft.ligabalonpie.daos.impl.AdministradorDaoImpl" parent="genericDao">	     
 			
 	     </bean>
+
+	     <bean id="equipoDao" class="com.palazzisoft.ligabalonpie.daos.impl.EquipoDaoImpl" parent="genericDao">	     
+			
+	     </bean>
 		
 </beans>

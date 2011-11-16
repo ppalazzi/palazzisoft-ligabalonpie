@@ -30,4 +30,11 @@
 				<bean class="com.palazzisoft.ligabalonpie.validators.ParticipanteValidator" />
 			</property>	
  		</bean>
+ 		
+		<bean name="/equipoListado.htm" class="com.palazzisoft.ligabalonpie.views.EquipoView">
+ 		</bean>
+
+<!--		<bean name="/compraJugador.htm" class="com.palazzisoft.ligabalonpie.views.CompraJugadorView">-->
+<!-- 		</bean>-->
+ 		 	
 </beans>

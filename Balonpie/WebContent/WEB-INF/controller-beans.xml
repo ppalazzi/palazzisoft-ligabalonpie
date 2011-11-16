@@ -28,5 +28,9 @@
 	     <bean id="administradorController" class="com.palazzisoft.ligabalonpie.controllers.impl.AdministradorControllerImpl">	     
 
 	     </bean>
+
+	     <bean id="equipoController" class="com.palazzisoft.ligabalonpie.controllers.impl.EquipoControllerImpl">	     
+
+	     </bean>
 		
 </beans>
