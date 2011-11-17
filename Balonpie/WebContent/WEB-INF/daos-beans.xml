@@ -36,5 +36,9 @@
 	     <bean id="equipoDao" class="com.palazzisoft.ligabalonpie.daos.impl.EquipoDaoImpl" parent="genericDao">	     
 			
 	     </bean>
+
+	     <bean id="equipoJugadorDao" class="com.palazzisoft.ligabalonpie.daos.impl.EquipoJugadorDaoImpl" parent="genericDao">	     
+			
+	     </bean>
 		
 </beans>

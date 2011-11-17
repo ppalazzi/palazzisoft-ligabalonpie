@@ -34,7 +34,7 @@
 		<bean name="/equipoListado.htm" class="com.palazzisoft.ligabalonpie.views.EquipoView">
  		</bean>
 
-<!--		<bean name="/compraJugador.htm" class="com.palazzisoft.ligabalonpie.views.CompraJugadorView">-->
-<!-- 		</bean>-->
+		<bean name="/comprarJugador.htm" class="com.palazzisoft.ligabalonpie.views.CompraJugadorView">
+		</bean>
  		 	
 </beans>

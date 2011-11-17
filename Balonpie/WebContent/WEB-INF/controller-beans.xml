@@ -32,5 +32,9 @@
 	     <bean id="equipoController" class="com.palazzisoft.ligabalonpie.controllers.impl.EquipoControllerImpl">	     
 
 	     </bean>
+
+	     <bean id="equipoJugadorController" class="com.palazzisoft.ligabalonpie.controllers.impl.EquipoJugadorControllerImpl">	     
+
+	     </bean>
 		
 </beans>
