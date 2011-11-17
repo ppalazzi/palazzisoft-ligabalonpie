@@ -1,7 +1,5 @@
 package com.palazzisoft.ligabalonpie.views;
 
-import java.util.Enumeration;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +13,7 @@ import com.palazzisoft.ligabalonpie.command.JugadorCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.JugadorController;
 import com.palazzisoft.ligabalonpie.converters.JugadorConverter;
 import com.palazzisoft.ligabalonpie.entities.Jugador;
+import com.palazzisoft.ligabalonpie.entities.TipoJugador;
 import com.palazzisoft.ligabalonpie.util.PageViews;
 
 public class AltaJugadorView extends SimpleFormController {
@@ -42,7 +41,11 @@ public class AltaJugadorView extends SimpleFormController {
 			
 			if (datos.getId() != null) {
 				Jugador jugador = jugadorController.getJugadorById(datos.getId());
-				jugador.getTipoJugador().setId(tipoJugadorId);
+				
+				TipoJugador tipoJugador = new TipoJugador();
+				tipoJugador.setId(tipoJugadorId);
+				
+				jugador.setTipoJugador(tipoJugador);
 				datos.setEstado(estado);
 				JugadorConverter.copyFromCommandToJugador(jugador, datos);
 				jugadorController.updateJugador(jugador);

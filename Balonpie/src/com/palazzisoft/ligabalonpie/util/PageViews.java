@@ -14,4 +14,5 @@ public final class PageViews {
 	
 		// Equipos
 	public static final String LISTADO_EQUIPOS_POR_PARTICIPANTE = "equipo/listado";
+	public static final String COMPRAR_EQUIPOS                  = "equipo/dashboardEquipo";
 }
