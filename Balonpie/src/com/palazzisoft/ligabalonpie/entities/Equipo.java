@@ -1,9 +1,9 @@
 package com.palazzisoft.ligabalonpie.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,36 +15,42 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="T_EQUIPO")
+@Table(name = "T_EQUIPO")
 public class Equipo implements Serializable {
 
 	private static final long serialVersionUID = 6358813478617236529L;
-	
+
 	@Id
-	@Column (name="F_ID")
-	@GeneratedValue (strategy= GenerationType.IDENTITY)
+	@Column(name = "F_ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column (name="A_NOMBRE")
-	private String  nombre;
-	
-	@Column (name="A_DESCRIPCION")
-	private String  descripcion;
-	
-	@Column (name="A_ESTADO")
+
+	@Column(name = "A_NOMBRE")
+	private String nombre;
+
+	@Column(name = "A_DESCRIPCION")
+	private String descripcion;
+
+	@Column(name = "A_FECHA_CREACION")
+	private Date fechaCreacion;
+
+	@Column(name = "A_ESTADO")
 	private Integer estado;
-	
-	@ManyToOne (fetch=FetchType.EAGER)
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Participante participante;
-	
-	@Column (name="A_PRESUPUESTO")
-	private Integer presupuesto;
-	
-	@OneToMany(mappedBy = "equipo", fetch=FetchType.EAGER)
+
+	@Column(name = "A_PRESUPUESTO")
+	private Long presupuesto;
+
+	@OneToMany(mappedBy = "equipo", fetch = FetchType.EAGER)
 	private Set<EquipoJugador> equipoJugadores;
-            
+
+	@Column(name = "A_PUNTOS")
+	private Long puntos;
+
 	public Equipo() {
-		
+
 	}
 
 	public Integer getId() {
@@ -54,7 +60,7 @@ public class Equipo implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -87,11 +93,11 @@ public class Equipo implements Serializable {
 		this.participante = participante;
 	}
 
-	public Integer getPresupuesto() {
+	public Long getPresupuesto() {
 		return presupuesto;
 	}
 
-	public void setPresupuesto(Integer presupuesto) {
+	public void setPresupuesto(Long presupuesto) {
 		this.presupuesto = presupuesto;
 	}
 
@@ -102,5 +108,21 @@ public class Equipo implements Serializable {
 	public void setEquipoJugadores(Set<EquipoJugador> equipoJugadores) {
 		this.equipoJugadores = equipoJugadores;
 	}
-	
+
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public Long getPuntos() {
+		return puntos;
+	}
+
+	public void setPuntos(Long puntos) {
+		this.puntos = puntos;
+	}
+
 }

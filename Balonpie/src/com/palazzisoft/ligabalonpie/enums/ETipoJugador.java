@@ -1,4 +1,4 @@
-package com.palazzisoft.ligabalonpie;
+package com.palazzisoft.ligabalonpie.enums;
 
 public enum ETipoJugador {
 

@@ -8,12 +8,12 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
-import com.palazzisoft.ligabalonpie.ETipoJugador;
 import com.palazzisoft.ligabalonpie.command.JugadorCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.JugadorController;
 import com.palazzisoft.ligabalonpie.converters.JugadorConverter;
 import com.palazzisoft.ligabalonpie.entities.Jugador;
 import com.palazzisoft.ligabalonpie.entities.TipoJugador;
+import com.palazzisoft.ligabalonpie.enums.ETipoJugador;
 import com.palazzisoft.ligabalonpie.util.PageViews;
 
 public class AltaJugadorView extends SimpleFormController {
@@ -54,7 +54,7 @@ public class AltaJugadorView extends SimpleFormController {
 			}
 			else {
 				Jugador jugador = new Jugador();
-				jugador = JugadorConverter.convertToJugador(datos);
+				jugador = JugadorConverter.convertirAJugador(datos);
 				jugadorController.saveJugador(jugador);
 				
 				mv.addObject("jugadores", jugadorController.obtenerJugadoresDisponibles());

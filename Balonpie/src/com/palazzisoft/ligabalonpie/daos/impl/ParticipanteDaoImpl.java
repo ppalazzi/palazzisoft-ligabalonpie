@@ -29,5 +29,20 @@ public class ParticipanteDaoImpl extends GenericDaoImpl<Participante, Integer> i
 		return participante;
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")	
+	public Participante obtenerParticipantePorEmail(String email) {
+		Participante participante = null;		
+		String query = "FROM Participante p WHERE p.email = ?";
+		
+		List<Participante> resultado = this.getHibernateTemplate().find(query,email);
+		
+		if (!resultado.isEmpty()) {
+			participante = resultado.get(PRIMER_ELEMENTO);
+		}
+		
+		return participante;
+	}
+
 
 }

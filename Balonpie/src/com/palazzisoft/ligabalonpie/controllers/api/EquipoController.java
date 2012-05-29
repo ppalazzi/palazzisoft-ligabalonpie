@@ -11,6 +11,7 @@ public interface EquipoController {
 	
 	public List<Jugador> obtenerJugadoresDeEquipo(Integer id);
 	
-	public void comprarJugador(Jugador jugador, Equipo equipo);	
-	
+	public void comprarJugador(Jugador jugador, Equipo equipo);
+
+	public Equipo getById(Integer id);	
 }

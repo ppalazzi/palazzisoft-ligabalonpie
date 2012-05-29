@@ -36,7 +36,7 @@ public class EquipoView implements Controller {
 			List<Equipo> equipos = equipoController.obtenerEquiposPorParticipante(participante.getId());
 			mv.addObject("equipos", equipos);
 			
-				// Seleccionó el Id de un equipo, por lo tanto cargamos los jugadores de ese equipo
+				// SelecciÃ³n el Id de un equipo, por lo tanto cargamos los jugadores de ese equipo
 			if (equipoId != null) {
 				List<Jugador> jugadores   = jugadorController.obtenerJugadoresDisponibles();
 				List<Jugador> disponibles = equipoController.obtenerJugadoresDeEquipo(Integer.parseInt(equipoId));
@@ -56,7 +56,7 @@ public class EquipoView implements Controller {
 	}
 
 
-	private Integer obtenerPresupuesto(List<Equipo> equipos, Integer equipoId) {
+	private Long obtenerPresupuesto(List<Equipo> equipos, Integer equipoId) {
 		Equipo equipo = this.equipoSeleccionado(equipos, equipoId);
 		
 		return equipo.getPresupuesto();

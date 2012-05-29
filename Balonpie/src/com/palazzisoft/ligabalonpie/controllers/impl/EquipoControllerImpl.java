@@ -21,6 +21,11 @@ public class EquipoControllerImpl implements EquipoController {
 	private JugadorController jugadorController;
 	
 	@Override
+	public Equipo getById(Integer id) {
+		return equipoDao.getById(id);
+	}
+	
+	@Override
 	public List<Equipo> obtenerEquiposPorParticipante(Integer id) {
 		List<Equipo> equipos = equipoDao.obtenerEquipoPorParticipante(id); 
 		

@@ -5,7 +5,7 @@ import com.palazzisoft.ligabalonpie.entities.Jugador;
 
 public class JugadorConverter {
 
-	public static JugadorCommand convertToCommand(Jugador jugador) {
+	public static JugadorCommand convertirACommand(Jugador jugador) {
 		JugadorCommand command = new JugadorCommand();
 		command.setApellido(jugador.getApellido());
 		command.setId(jugador.getId());
@@ -20,7 +20,7 @@ public class JugadorConverter {
 		return command;
 	}
 	
-	public static Jugador convertToJugador(JugadorCommand command) {
+	public static Jugador convertirAJugador(JugadorCommand command) {
 		Jugador jugador = new Jugador();
 		jugador.setApellido(command.getApellido());
 		jugador.setNombre(command.getNombre());

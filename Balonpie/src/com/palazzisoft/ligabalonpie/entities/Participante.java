@@ -2,10 +2,16 @@ package com.palazzisoft.ligabalonpie.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +26,7 @@ public class Participante implements Serializable {
 	
 	@Id
 	@Column (name="F_ID")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)		
 	private Integer id;
 	
 	@Column (name="A_NOMBRE")
@@ -45,6 +52,12 @@ public class Participante implements Serializable {
 	
 	@Column (name="A_PASSWORD")
 	private String password;
+	
+	@OneToMany(mappedBy="participante", fetch=FetchType.EAGER)
+	private Set<ParticipanteTorneo> participanteEquipo;
+	
+	@ManyToOne (fetch = FetchType.EAGER)
+	private Pais pais;
 	
 	public Integer getId() {
 		return id;
@@ -116,6 +129,22 @@ public class Participante implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+		
+	public Set<ParticipanteTorneo> getParticipanteEquipo() {
+		return participanteEquipo;
+	}
+
+	public void setParticipanteEquipo(Set<ParticipanteTorneo> participanteEquipo) {
+		this.participanteEquipo = participanteEquipo;
+	}
+
+	public Pais getPais() {
+		return pais;
+	}
+
+	public void setPais(Pais pais) {
+		this.pais = pais;
 	}
 
 	@Override
