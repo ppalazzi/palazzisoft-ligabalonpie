@@ -1,91 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-2.5.xsd
            http://www.springframework.org/schema/aop
            http://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
            ">
-	    	        	    
-	  <context:annotation-config />     
-	  <import resource="views-beans.xml"/> 
-	  <import resource="daos-beans.xml"/>	
-	  <import resource="controller-beans.xml"/>	    
-      
-      <!-- Configuración para Base de datos 
-	  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
-         <property name="locations">  
-             <list>  
-                 <value>classpath:jdbc.properties</value>  
-             </list>  
-         </property>  
-      </bean>       
-      -->
-      
-     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
-         <property name="driverClassName" value="com.mysql.jdbc.Driver" />  
-         <property name="url" value="jdbc:mysql://localhost/balonpie" />  
-         <property name="username" value="root" />  
-         <property name="password" value="root" />  
-     </bean>        
-     
-     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-      <property name="dataSource" ref="dataSource" />
-        <property name="annotatedClasses"> 
-            <list>
-                <value>com.palazzisoft.ligabalonpie.entities.Participante</value>
-                <value>com.palazzisoft.ligabalonpie.entities.Jugador</value>
-                <value>com.palazzisoft.ligabalonpie.entities.Administrador</value>
-                <value>com.palazzisoft.ligabalonpie.entities.TipoJugador</value>
-                <value>com.palazzisoft.ligabalonpie.entities.Equipo</value>
-                <value>com.palazzisoft.ligabalonpie.entities.EquipoJugador</value>
-            </list>
-        </property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
-            </props>
-        </property>     
-     </bean>
-     
-     <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">  
-       <property name="sessionFactory" ref="sessionFactory" />  
-     </bean>
-     <!-- Fin de Configuracion Base de datos -->
-     
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/jsp/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>     
- 
-	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-	    <property name="basename">
-	       <value>messages</value>
-	    </property>
-    </bean> 
- 
-          <!--
-      <bean id="simpleUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-      		<property name="mappings">
-      			<props>
-      				<prop key="login.htm">loginView</prop>
-					<prop key="listadoJugadores.htm">jugadorView</prop>      				
-				     
-      			</props>
-      		</property>
-      </bean>		
-     
-  
-    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>     
-      -->
-     
- </beans>
+
+	<context:component-scan base-package="com.palazzisoft.ligabalonpie.views"></context:component-scan>
+
+	<context:annotation-config />
+	<import resource="views-beans.xml" />
+	<import resource="daos-beans.xml" />
+	<import resource="controller-beans.xml" />
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost/balonpie" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.palazzisoft.ligabalonpie.entities.Participante</value>
+				<value>com.palazzisoft.ligabalonpie.entities.Jugador</value>
+				<value>com.palazzisoft.ligabalonpie.entities.Administrador</value>
+				<value>com.palazzisoft.ligabalonpie.entities.TipoJugador</value>
+				<value>com.palazzisoft.ligabalonpie.entities.Equipo</value>
+				<value>com.palazzisoft.ligabalonpie.entities.EquipoJugador</value>
+				<value>com.palazzisoft.ligabalonpie.entities.Torneo</value>
+				<value>com.palazzisoft.ligabalonpie.entities.ParticipanteEquipo
+				</value>
+				<value>com.palazzisoft.ligabalonpie.entities.Pais</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- Fin de Configuracion Base de datos -->
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+			<value>messages</value>
+		</property>
+	</bean>
+
+	     <!--  Utilidades -->
+		<util:map id="mapaPaises" map-class="java.util.TreeMap">
+			<entry key="1" value="Argentina" />
+			<entry key="2" value="Uruguay" />
+		</util:map>
+
+</beans>
 
