@@ -12,7 +12,7 @@
 
 	<context:annotation-config />
 
-	<bean name="/login.htm" class="com.palazzisoft.ligabalonpie.views.LoginView">
+	<bean id="loginView" class="com.palazzisoft.ligabalonpie.views.LoginView">
 	</bean>
 
 	<bean id="registroView" class="com.palazzisoft.ligabalonpie.views.RegistroView">
@@ -27,9 +27,6 @@
 		<property name="commandClass"
 			value="com.palazzisoft.ligabalonpie.command.JugadorCommand" />
 		<property name="formView" value="jugador/altaEdicion" />
-		<property name="validator">
-			<bean class="com.palazzisoft.ligabalonpie.validators.ParticipanteValidator" />
-		</property>
 	</bean>
 
 	<bean name="/equipoListado.htm" class="com.palazzisoft.ligabalonpie.views.EquipoView">

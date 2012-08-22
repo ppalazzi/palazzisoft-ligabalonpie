@@ -12,6 +12,7 @@
            ">
 
 	<context:component-scan base-package="com.palazzisoft.ligabalonpie.views"></context:component-scan>
+	<context:component-scan base-package="com.palazzisoft.ligabalonpie.validators"></context:component-scan>
 
 	<context:annotation-config />
 	<import resource="views-beans.xml" />
@@ -38,8 +39,7 @@
 				<value>com.palazzisoft.ligabalonpie.entities.Equipo</value>
 				<value>com.palazzisoft.ligabalonpie.entities.EquipoJugador</value>
 				<value>com.palazzisoft.ligabalonpie.entities.Torneo</value>
-				<value>com.palazzisoft.ligabalonpie.entities.ParticipanteEquipo
-				</value>
+				<value>com.palazzisoft.ligabalonpie.entities.ParticipanteTorneo</value>
 				<value>com.palazzisoft.ligabalonpie.entities.Pais</value>
 			</list>
 		</property>
@@ -68,8 +68,11 @@
 
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basename">
-			<value>messages</value>
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+				<value>errorMessages</value>
+			</list>
 		</property>
 	</bean>
 
