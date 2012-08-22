@@ -1,6 +1,5 @@
 package com.palazzisoft.ligabalonpie.controllers.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,16 @@ public class TorneoControllerImpl implements TorneoController {
 		List<ParticipanteTorneo> participantesEquipos = 
 				torneoDao.obtenerParticipantesEquiposPorParticipanteId(participanteId);
 		
+		// TODO terminar esto de una vez
+		
 		return null;
+	}
+	
+	@Override
+	public boolean verificarExistenciaDeTorneo(String descripcion) {
+		Torneo torneo = torneoDao.obtenerTorneoPorDescripcion(descripcion);
+		
+		return (torneo != null);
 	}
 
 }

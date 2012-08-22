@@ -23,6 +23,10 @@ public class Pais implements Serializable {
 	@Column (name = "A_DESCRIPCION")
 	private String descripcion;
 
+	public Pais() {
+		
+	}
+	
 	public Pais(Integer id) {
 		this.id = id;
 	}

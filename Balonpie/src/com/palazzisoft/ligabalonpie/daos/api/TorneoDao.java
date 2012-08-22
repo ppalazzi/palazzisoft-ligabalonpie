@@ -7,5 +7,7 @@ import com.palazzisoft.ligabalonpie.entities.Torneo;
 
 public interface TorneoDao extends GenericDao<Torneo,Integer> {
 
-	public List<ParticipanteTorneo> obtenerParticipantesEquiposPorParticipanteId(Integer participanteId);
+	List<ParticipanteTorneo> obtenerParticipantesEquiposPorParticipanteId(Integer participanteId);
+
+	Torneo obtenerTorneoPorDescripcion(String descripcion);
 }

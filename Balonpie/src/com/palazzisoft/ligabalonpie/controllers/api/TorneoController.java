@@ -7,4 +7,6 @@ import com.palazzisoft.ligabalonpie.entities.Torneo;
 public interface TorneoController {
 
 	public List<Torneo> obtenerTorneosPorParticipanteId(Integer participanteId);
+
+	boolean verificarExistenciaDeTorneo(String descripcion);
 }

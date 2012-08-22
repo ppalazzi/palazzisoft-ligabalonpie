@@ -53,6 +53,9 @@ public class Participante implements Serializable {
 	@Column (name="A_PASSWORD")
 	private String password;
 	
+	@Column (name = "A_CIUDAD")
+	private String ciudad;
+	
 	@OneToMany(mappedBy="participante", fetch=FetchType.EAGER)
 	private Set<ParticipanteTorneo> participanteEquipo;
 	
@@ -145,6 +148,14 @@ public class Participante implements Serializable {
 
 	public void setPais(Pais pais) {
 		this.pais = pais;
+	}
+		
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
 	}
 
 	@Override

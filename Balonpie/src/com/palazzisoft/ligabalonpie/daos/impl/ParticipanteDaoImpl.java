@@ -8,7 +8,6 @@ import com.palazzisoft.ligabalonpie.entities.Participante;
 public class ParticipanteDaoImpl extends GenericDaoImpl<Participante, Integer> implements
 		ParticipanteDao {
 
-	private static final Integer PRIMER_ELEMENTO = 0;
 	
 	@Override
 	public Class<Participante> getPersistenceClass() {

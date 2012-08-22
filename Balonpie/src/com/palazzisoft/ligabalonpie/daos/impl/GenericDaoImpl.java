@@ -9,6 +9,8 @@ import com.palazzisoft.ligabalonpie.daos.api.GenericDao;
 @SuppressWarnings("unchecked")
 public abstract class GenericDaoImpl<T,S extends Serializable> extends HibernateDaoSupport implements GenericDao<T, S> {
 
+	protected static final Integer PRIMER_ELEMENTO = 0;
+	
 	protected Class<T> persitenceClass =  getPersistenceClass();	
 	
 

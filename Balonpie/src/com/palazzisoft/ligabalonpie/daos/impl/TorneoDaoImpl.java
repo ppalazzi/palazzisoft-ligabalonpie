@@ -20,5 +20,20 @@ public class TorneoDaoImpl extends GenericDaoImpl<Torneo, Integer> implements To
 		
 		return this.getHibernateTemplate().find(sql, participanteId);	
 	}
+	
+	@Override
+	public Torneo obtenerTorneoPorDescripcion(String descripcion) {
+		Torneo torneo = null;
+		String sql = "FROM Torneo t where t.descripcion = ?";
+		
+		@SuppressWarnings("unchecked")
+		List<Torneo> resultado = this.getHibernateTemplate().find(sql, descripcion);
+		
+		if (!resultado.isEmpty()) {
+			torneo = resultado.get(PRIMER_ELEMENTO);
+		}
+		
+		return torneo;
+	}
 
 }

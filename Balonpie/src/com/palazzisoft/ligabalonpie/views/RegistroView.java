@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +16,7 @@ import com.palazzisoft.ligabalonpie.command.ParticipanteCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.ParticipanteController;
 import com.palazzisoft.ligabalonpie.entities.Participante;
 import com.palazzisoft.ligabalonpie.util.PageViews;
+import com.palazzisoft.ligabalonpie.validators.ParticipanteValidator;
 
 @Controller
 @RequestMapping("/registro.htm")
@@ -24,6 +26,9 @@ public class RegistroView {
 
 	@Autowired
 	private ParticipanteController participanteController;
+	
+	@Autowired
+	private ParticipanteValidator participanteValidator;
 
 	private Map<Integer, String> mapaPaises;
 
@@ -43,23 +48,37 @@ public class RegistroView {
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(
 			@ModelAttribute("participanteCommand") ParticipanteCommand participanteCommand,
-			ModelMap model) {
+			BindingResult errors, ModelMap model) {
+
+		participanteValidator.validate(participanteCommand, errors);
 
 		String viewExit = PageViews.DASHBOARD;
-		
-		try {
-			Participante participante = participanteController
-					.guardarParticipante(participanteCommand);
 
-			if (participante == null) {
-				model.put("mensajeError", "El Email ya se encuentra registrado");
+		try {
+			if (!errors.hasErrors()) {
+				this.guardarParticipante(model, participanteCommand, viewExit);				
+			} 	
+			else {
+				model.put("paises", mapaPaises);
 				viewExit = PageViews.REGISTRO;
 			}
+			
 		} catch (ParseException e) {
 			log.debug(e.getMessage());
 			viewExit = PageViews.ERROR_PAGINA;
 		}
 
 		return viewExit;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void guardarParticipante(ModelMap model, ParticipanteCommand participanteCommand, String viewExit) throws ParseException {
+		Participante participante = participanteController
+				.guardarParticipante(participanteCommand);
+
+		if (participante == null) {
+			model.put("mensajeError", "El Email ya se encuentra registrado");
+			viewExit = PageViews.REGISTRO;
+		}		
 	}
 }

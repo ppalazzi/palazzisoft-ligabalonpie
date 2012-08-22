@@ -10,4 +10,6 @@ public interface ParticipanteController {
 	Participante login(String user, String password);
 	
 	Participante guardarParticipante(ParticipanteCommand participanteCommand) throws ParseException;
+
+	Participante obtenerParticipantePorId(Integer id);
 }
