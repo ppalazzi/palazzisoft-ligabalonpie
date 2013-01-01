@@ -25,15 +25,23 @@
 <script>
 
 	$(function() {
-		$( "#datepicker" ).datepicker($.datepicker.regional["es"]);
+		$( "#datepicker" ).datepicker({
+			showWeek: true,
+			firstDay: 1
+		});
 	});
 
 	function getCurrentCalendarText() {
-		return $("#datepicker").datepicker("option", "currentText");
+		return $("#datepicker").val();
 	};
 	
 	function toggleFade() {
-		$('#tableId').fadeOut();;
+		$('#tableId').fadeOut();
+	}
+	
+	function setFechaDeNacimiento() {
+		var fechaNacimiento = getCurrentCalendarText();
+		$('#fechaNacimientoId').val(fechaNacimiento);
 	}
 			
 </script>
@@ -43,38 +51,45 @@
 <body>
 	<jsp:include page="/jsp/header.jsp" />
 
-	<form:form method="post" action="/balonpie/registro.htm" id="tableId" commandName="participanteCommand" >
+	<form:form method="post" onsubmit="setFechaDeNacimiento();" action="/balonpie/registro.htm" id="tableId" commandName="participanteCommand" >
+		<input id="fechaNacimientoId" type="hidden" name="fechaNacimiento" value="getCurrentCalendarText();" >
+		<input id="id" name="id" type="hidden" value="<c:out value='${participanteCommand.id}' />" > 
 		<table border="1">
 			<tr>
 				<td><label>* Nombre : </label></td>
-				<td><input type="text" name="nombre" value="nombre"></td>				
+				<td><input type="text" name="nombre" value="<c:out value='${participanteCommand.nombre}' />" ></td>				
 				<td><form:errors path="nombre"></form:errors></td>
 			</tr>
 			<tr>
 				<td><label>* Apellido : </label></td>
-				<td><input type="text" name="apellido" value="apellido"></td>
+				<td><input type="text" name="apellido" value="<c:out value='${participanteCommand.apellido}' />"></td>
 				<td><form:errors path="apellido"></form:errors></td>				
 			</tr>
 			<tr>
 				<td><label>* Email : </label></td>
-				<td><input type="text" name="email" value="email"></td>
+				<td><input type="text" name="email" value="<c:out value='${participanteCommand.email}' />"></td>
 				<td><form:errors path="email"></form:errors></td>				
 			</tr>
 			<tr>
 				<td><label>* fechaNacimiento : </label></td>
 				<td>
-						<div id="datepicker"></div>	
+						<input type="text" name="datepicker" id="datepicker" value="<c:out value='${participanteCommand.fechaNacimiento}' />">	
 				</td>
 				<td><form:errors path="fechaNacimiento"></form:errors></td>								
 			</tr>
 			<tr>
 				<td><label>calle : </label></td>
-				<td><input type="text" name="calle" value="calle"></td>
+				<td><input type="text" name="calle" value="<c:out value='${participanteCommand.calle}' />"></td>
 				<td><form:errors path="calle"></form:errors></td>				
 			</tr>
 			<tr>
+				<td><label>número : </label></td>
+				<td><input type="text" name="numero" value="<c:out value='${participanteCommand.numero}' />"></td>
+				<td><form:errors path="numero"></form:errors></td>				
+			</tr>
+			<tr>
 				<td><label>ciudad : </label></td>
-				<td><input type="text" name="ciudad" value="ciudad"></td>
+				<td><input type="text" name="ciudad" value="<c:out value='${participanteCommand.ciudad}' />"></td>
 				<td><form:errors path="ciudad"></form:errors></td>				
 			</tr>
 			<tr>
@@ -89,12 +104,12 @@
 			</tr>
 			<tr>
 				<td><label>password : </label></td>
-				<td><input type="password" name="password" value="password"></td>
+				<td><input type="password" name="password"></td>
 				<td><form:errors path="password"></form:errors></td>
 			</tr>
 
 		</table>
-		</br><label style="color ; ##FF0000;"><c:out value="${mensajeError }" /></label>
+		</br><label style="color ; ##FF0000;"><c:out value="${mensajeError}" /></label>
 		<input type="submit" src="Guardar">
 	</form:form>
 

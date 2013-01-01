@@ -9,11 +9,9 @@
 <body>
 	<jsp:include page="/jsp/header.jsp" />
 
-	<c:out value="${participanteId}" />
-
 	<div class="menu_nav">
 		<ul>
-			<li class="active"><a href="/balonpie/">Crear Torneo</a></li>
+			<li class="active"><a href="nuevoTorneo.htm?participanteId=<c:out value="${participanteId}" />">Nuevo Torneo</a></li>
 
 			<li class="active"><a href="listadoTorneoView.htm">Listado
 					de Torneos</a></li>
@@ -28,8 +26,7 @@
 			<li><a href="#">Contactenos</a></li>
 
 			<li><a
-				href="modificarParticipante.htm?participanteId=<c:out value="${participanteId }" />">Ver
-					Perfil</a></li>
+				href="registro.htm?participanteId=<c:out value="${participanteId}" />">Ver Perfil</a></li>
 		</ul>
 	</div>
 

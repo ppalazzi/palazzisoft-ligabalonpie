@@ -45,7 +45,10 @@
 
 	<bean id="torneoController"
 		class="com.palazzisoft.ligabalonpie.controllers.impl.TorneoControllerImpl">
-
+			
+			<constructor-arg ref="torneoDao" />
+			<constructor-arg ref="participanteTorneoDao" />
+			<constructor-arg ref="participanteDao" />
 	</bean>
 
 </beans>
