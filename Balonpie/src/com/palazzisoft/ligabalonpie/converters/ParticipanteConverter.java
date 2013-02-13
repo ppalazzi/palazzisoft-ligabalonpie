@@ -1,10 +1,11 @@
 package com.palazzisoft.ligabalonpie.converters;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import com.palazzisoft.ligabalonpie.command.ParticipanteCommand;
+import com.palazzisoft.ligabalonpie.entities.Pais;
 import com.palazzisoft.ligabalonpie.entities.Participante;
+import com.palazzisoft.ligabalonpie.entities.ParticipanteTorneo;
 import com.palazzisoft.ligabalonpie.util.FechaMascara;
 
 public class ParticipanteConverter {
@@ -13,6 +14,7 @@ public class ParticipanteConverter {
 			ParticipanteCommand command) throws ParseException {
 
 		Participante participante = new Participante();
+		participante.setId(command.getId());
 		participante.setApellido(command.getApellido());
 		participante.setCalle(command.getCalle());
 		participante.setEmail(command.getEmail());
@@ -21,17 +23,19 @@ public class ParticipanteConverter {
 		participante.setPassword(command.getPassword());	
 		participante.setCiudad(command.getCiudad());
 		
-		// TODO usar el FechaMascara
+		Pais pais = new Pais(command.getPais());
+		participante.setPais(pais);
+				
 		if (command.getFechaNacimiento() != null) {
-			SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-			format.parse(command.getFechaNacimiento());			
+			participante.setFechaNacimiento(FechaMascara.stringToDateFormat(command.getFechaNacimiento()));			
 		}
 				
-		return participante;
+		return participante;			
 	}
 	
-	public static ParticipanteCommand convertirParticipanteACommand(Participante participante) {
+	public static ParticipanteCommand convertirParticipanteACommand(Participante participante) throws ParseException {
 		ParticipanteCommand command = new ParticipanteCommand();
+		command.setId(participante.getId());
 		command.setApellido(participante.getApellido());
 		command.setCalle(participante.getCalle());
 		command.setEmail(participante.getEmail());		
@@ -40,11 +44,17 @@ public class ParticipanteConverter {
 		command.setPais(participante.getPais().getId());
 		command.setPassword(participante.getPassword());
 		command.setCiudad(participante.getCiudad());
+		command.setPais(participante.getPais().getId());
 		
 		if (participante.getFechaNacimiento() != null) {
 			command.setFechaNacimiento(FechaMascara.dateAFechaMesAno(participante.getFechaNacimiento()));
 		}
-				
+	
+		for (ParticipanteTorneo participanteTorneo : participante.getParticipanteTorneos()) {
+			command.agregarTorneo(TorneoConverter.convertirTorneoACommand(participanteTorneo.getTorneo()));
+		}
+		
 		return command;
 	}
+	
 }

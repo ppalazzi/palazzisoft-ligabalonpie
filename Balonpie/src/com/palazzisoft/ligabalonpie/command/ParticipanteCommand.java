@@ -1,7 +1,11 @@
 package com.palazzisoft.ligabalonpie.command;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ParticipanteCommand {
 
+	private Integer id;
 	private String nombre;
 	private String apellido;
 	private String email;
@@ -11,9 +15,18 @@ public class ParticipanteCommand {
 	private String ciudad;
 	private Integer pais;
 	private String password;
+	private List<TorneoCommand> torneos;
 
 	public ParticipanteCommand() {
-
+		this.torneos = new ArrayList<TorneoCommand>();
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getFechaNacimiento() {
@@ -88,4 +101,11 @@ public class ParticipanteCommand {
 		this.pais = pais;
 	}
 
+	public void agregarTorneo(TorneoCommand torneoCommand) {
+		this.torneos.add(torneoCommand);
+	}
+	
+	public List<TorneoCommand> getTorneos() {
+		return this.torneos;
+	}
 }

@@ -17,10 +17,11 @@
 					de Torneos</a></li>
 
 			<c:if test="${tipoLogueo == 'administrador' }">
-				<li><a href="jugadorListado.htm">Jugadores</a></li>
+				<li><a class="active" href="jugadorListado.htm">Jugadores</a></li>
 			</c:if>
 			<c:if test="${tipoLogueo == 'participante' }">
-				<li><a href="equipoListado.htm">Mis Equipos</a></li>
+				<li><a class="active" href="listadoEquipo.htm?participanteId=<c:out value="${participanteId}" />">Listado de Equipos</a></li>
+				<li><a class="active" href="nuevoEquipo.htm?participanteId=<c:out value="${participanteId}" />">Nuevo Equipo</a></li>
 			</c:if>
 
 			<li><a href="#">Contactenos</a></li>

@@ -25,5 +25,19 @@ public class EquipoDaoImpl extends GenericDaoImpl<Equipo,Integer> implements Equ
 		String sql = "FROM EquipoJugador e where e.equipo.id = " + id;		
 		return  this.getHibernateTemplate().find(sql);
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Equipo obtenerEquipoPorNombre(String nombre) {
+		Equipo equipo = null;
+		String sql = "FROM Equipo e where e.nombre = ? ";
+		
+		List<Equipo> equipos = this.getHibernateTemplate().find(sql,nombre);
+		
+		if (!equipos.isEmpty()) {
+			equipo = equipos.get(PRIMER_ELEMENTO);
+		}
+		
+		return equipo;
+	}
 }

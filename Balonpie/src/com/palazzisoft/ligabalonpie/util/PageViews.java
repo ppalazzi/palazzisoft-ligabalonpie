@@ -9,7 +9,10 @@ public final class PageViews {
 	public static final String ERROR_PAGINA         = "error";
 	public static final String EDICION_ALTA_JUGADOR = "jugador/altaEdicion";
 	public static final String REGISTRO             = "registro/principal";
+
+		// Torneos
 	public static final String NUEVO_TORNEO         = "torneo/nuevoTorneo";
+	public static final String LISTADO_TORNEO       = "torneo/listado";
 	
 		// Jugadores Manager
 	public static final String LISTADO_JUGADORES = "jugador/listado";
@@ -17,4 +20,5 @@ public final class PageViews {
 		// Equipos
 	public static final String LISTADO_EQUIPOS_POR_PARTICIPANTE = "equipo/listado";
 	public static final String COMPRAR_EQUIPOS                  = "equipo/dashboardEquipo";
+	public static final String NUEVO_EQUIPO = "equipo/nuevoEquipo";
 }

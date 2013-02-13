@@ -5,25 +5,30 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "T_PARTICIPANTE_EQUIPO")
-@IdClass(ParticipanteTorneoPK.class)
+@Table(name = "T_PARTICIPANTE_TORNEO")
 public class ParticipanteTorneo implements Serializable {
 
 	private static final long serialVersionUID = -6092390815160233352L;
-
+	
+	public ParticipanteTorneo() {
+		this.participanteTorneoPk = new ParticipanteTorneoPK();
+	}
+	
 	@Id
-	private Torneo torneo;
-
-	@Id
-	private Participante participante;
-
+	private ParticipanteTorneoPK participanteTorneoPk;
+	
 	@Column(name = "A_ESCREADOR")
 	private Boolean esCreador;
-
+			
+	@Column(name="torneo_F_ID",insertable = false, updatable = false )
+	private Integer torneo;
+	
+	@Column(name="participante_F_ID", insertable = false, updatable = false )	
+	private Integer participante;
+	
 	public Boolean getEsCreador() {
 		return esCreador;
 	}
@@ -32,20 +37,19 @@ public class ParticipanteTorneo implements Serializable {
 		this.esCreador = esCreador;
 	}
 
-	public Participante getParticipante() {
-		return participante;
-	}
-
-	public void setParticipante(Participante participante) {
-		this.participante = participante;
-	}
-
 	public Torneo getTorneo() {
-		return torneo;
+		return participanteTorneoPk.getTorneo();
 	}
 
 	public void setTorneo(Torneo torneo) {
-		this.torneo = torneo;
+		this.participanteTorneoPk.setTorneo(torneo);
 	}
 
+	public Participante getParticipante() {
+		return participanteTorneoPk.getParticipante();
+	}
+
+	public void setParticipante(Participante participante) {
+		this.participanteTorneoPk.setParticipante(participante);
+	}		
 }

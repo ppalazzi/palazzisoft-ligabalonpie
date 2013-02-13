@@ -3,6 +3,8 @@ package com.palazzisoft.ligabalonpie.views;
 import java.text.ParseException;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.palazzisoft.ligabalonpie.command.ParticipanteCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.ParticipanteController;
@@ -23,7 +26,7 @@ import com.palazzisoft.ligabalonpie.validators.ParticipanteValidator;
 public class RegistroView {
 
 	Logger log = Logger.getLogger(RegistroView.class);
-
+	
 	@Autowired
 	private ParticipanteController participanteController;
 	
@@ -38,9 +41,19 @@ public class RegistroView {
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
-	public String showForm(ModelMap model) {
+	public String showForm(@RequestParam(value = "participanteId", required = false)Integer participanteId, HttpServletRequest request, ModelMap model) {
 		model.put("paises", mapaPaises);
 
+		try {
+			if (participanteId != null) {
+				ParticipanteCommand participanteCommand = participanteController.obtenerParticipantePorId(participanteId);
+				model.addAttribute("participanteCommand", participanteCommand);
+			}			
+		}
+		catch (ParseException e) {
+			System.out.println(e);
+		}
+				
 		return PageViews.REGISTRO;
 	}
 
@@ -48,18 +61,20 @@ public class RegistroView {
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(
 			@ModelAttribute("participanteCommand") ParticipanteCommand participanteCommand,
-			BindingResult errors, ModelMap model) {
+			BindingResult errors, ModelMap model, HttpServletRequest request) {
 
-		participanteValidator.validate(participanteCommand, errors);
+		Participante participante = null;
+		this.participanteValidator.validate(participanteCommand, errors);
 
 		String viewExit = PageViews.DASHBOARD;
 
 		try {
 			if (!errors.hasErrors()) {
-				this.guardarParticipante(model, participanteCommand, viewExit);				
+				participante = this.guardarParticipante(model, participanteCommand, viewExit, request);
+				this.setParticipanteEnSession(participante, request);
 			} 	
 			else {
-				model.put("paises", mapaPaises);
+				model.put("paises", mapaPaises);				
 				viewExit = PageViews.REGISTRO;
 			}
 			
@@ -72,13 +87,18 @@ public class RegistroView {
 	}
 	
 	@SuppressWarnings("unchecked")
-	private void guardarParticipante(ModelMap model, ParticipanteCommand participanteCommand, String viewExit) throws ParseException {
+	private Participante guardarParticipante(ModelMap model, ParticipanteCommand participanteCommand, String viewExit, HttpServletRequest request) throws ParseException {
 		Participante participante = participanteController
 				.guardarParticipante(participanteCommand);
 
 		if (participante == null) {
 			model.put("mensajeError", "El Email ya se encuentra registrado");
 			viewExit = PageViews.REGISTRO;
-		}		
+		}
+		return participante;
+	}
+	
+	private void setParticipanteEnSession(Participante participante, HttpServletRequest request) {
+		request.getSession().setAttribute("participanteId", participante.getId());
 	}
 }

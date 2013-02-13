@@ -16,7 +16,7 @@ public class TorneoDaoImpl extends GenericDaoImpl<Torneo, Integer> implements To
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<ParticipanteTorneo> obtenerParticipantesEquiposPorParticipanteId(Integer participanteId) {
-		String sql = "FROM ParticipanteEquipo pe where  pe.participante.id = :participanteId";		
+		String sql = "FROM ParticipanteTorneo pe where  pe.participante.id = ?";		
 		
 		return this.getHibernateTemplate().find(sql, participanteId);	
 	}

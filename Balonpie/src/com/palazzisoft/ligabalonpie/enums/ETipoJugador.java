@@ -2,7 +2,7 @@ package com.palazzisoft.ligabalonpie.enums;
 
 public enum ETipoJugador {
 
-	ARQUERO(1),DEFENSOR(2),MEDIOCAMPISTA(3),ATACANTE(4);	
+	ARQUERO(0),DEFENSOR(1),MEDIOCAMPISTA(2),ATACANTE(3);	
 	
 	private Integer id;
 		

@@ -26,7 +26,7 @@
 		
 		<c:forEach var="equipo" items="${equipos}">
 			<tr>
-				<td><a href="equipoListado.htm?equipoId=<c:out value='${equipo.id}' />"><c:out value="${equipo.id}" /></a></td>
+				<td><a href="listadoEquipo.htm?equipoId=<c:out value='${equipo.id}' />"><c:out value="${equipo.id}" /></a></td>
 				<td><c:out value="${equipo.nombre}" /></td>
 				<td><c:out value="${equipo.descripcion}" /></td>
 			</tr>			

@@ -33,11 +33,6 @@
 
 	</bean>
 
-	<bean id="equipoController"
-		class="com.palazzisoft.ligabalonpie.controllers.impl.EquipoControllerImpl">
-
-	</bean>
-
 	<bean id="equipoJugadorController"
 		class="com.palazzisoft.ligabalonpie.controllers.impl.EquipoJugadorControllerImpl">
 
@@ -51,4 +46,7 @@
 			<constructor-arg ref="participanteDao" />
 	</bean>
 
+	<bean id="equipoController" class="com.palazzisoft.ligabalonpie.controllers.impl.EquipoControllerImpl">
+	
+	</bean>
 </beans>

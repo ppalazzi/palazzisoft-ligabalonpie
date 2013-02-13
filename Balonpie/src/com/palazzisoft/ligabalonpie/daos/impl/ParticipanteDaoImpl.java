@@ -2,9 +2,12 @@ package com.palazzisoft.ligabalonpie.daos.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.palazzisoft.ligabalonpie.daos.api.ParticipanteDao;
 import com.palazzisoft.ligabalonpie.entities.Participante;
 
+@Component
 public class ParticipanteDaoImpl extends GenericDaoImpl<Participante, Integer> implements
 		ParticipanteDao {
 
@@ -42,6 +45,5 @@ public class ParticipanteDaoImpl extends GenericDaoImpl<Participante, Integer> i
 		
 		return participante;
 	}
-
 
 }
