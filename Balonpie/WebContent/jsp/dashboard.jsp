@@ -1,35 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-	<jsp:include page="/jsp/header.jsp" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-	<div class="menu_nav">
+<jsp:include page="/jsp/header.jsp" />
+<script type="text/javascript" src="static/js/dashboard.js"></script>
+	<div>
 		<ul>
-			<li class="active"><a href="nuevoTorneo.htm?participanteId=<c:out value="${participanteId}" />">Nuevo Torneo</a></li>
+			<li><a href="nuevoTorneo.htm?participanteId=<c:out value="${participanteId}" />">Nuevo Torneo</a></li>
 
-			<li class="active"><a href="listadoTorneoView.htm">Listado
-					de Torneos</a></li>
-
-			<c:if test="${tipoLogueo == 'administrador' }">
-				<li><a class="active" href="jugadorListado.htm">Jugadores</a></li>
-			</c:if>
-			<c:if test="${tipoLogueo == 'participante' }">
-				<li><a class="active" href="listadoEquipo.htm?participanteId=<c:out value="${participanteId}" />">Listado de Equipos</a></li>
-				<li><a class="active" href="nuevoEquipo.htm?participanteId=<c:out value="${participanteId}" />">Nuevo Equipo</a></li>
-			</c:if>
-
-			<li><a href="#">Contactenos</a></li>
-
+			<li id="misTorneos">Mis Torneos</a>
+				<div id="listadoTorneoDiv">
+					<jsp:include page="/jsp/frontend/torneo/listado.jsp" />				
+				</div>
+			</li>			
 			<li><a
 				href="registro.htm?participanteId=<c:out value="${participanteId}" />">Ver Perfil</a></li>
 		</ul>
 	</div>
-
-</body>
-</html>
+	
+	<div id="equipoResumenDiv" style="display:none">
+		<jsp:include page="/jsp/frontend/equipo/equipoResumen.jsp" />	
+	</div>
+<jsp:include page="/jsp/footer.jsp" />	

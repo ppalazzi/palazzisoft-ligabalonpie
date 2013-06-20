@@ -1,14 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="../static/style.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-	<jsp:include page="/jsp/header.jsp" />
+<jsp:include page="/jsp/header.jsp" />
 	<form action="/balonpie/login.htm" method="post"
 		onsubmit="return validarDatos(this);">
 		<ol>
@@ -20,8 +10,7 @@
 				name="esAdmin" value="true" /></li>
 			<li><input type="image" name="imageField" id="imageField"
 				src="../static/images/submit.gif" class="send" /></li>
-			<li><a href="/balonpie/registro.htm">Registrate</a></li>
+			<li><a href="/balonpie/registro.htm">Registrate</a></li>			
 		</ol>
 	</form>
-</body>
-</html>
+<jsp:include page="/jsp/footer.jsp" />
