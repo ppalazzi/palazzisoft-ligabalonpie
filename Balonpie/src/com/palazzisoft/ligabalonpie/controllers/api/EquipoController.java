@@ -19,4 +19,6 @@ public interface EquipoController {
 	void nuevoEquipo(EquipoCommand equipoCommand, Integer participanteId);
 
 	boolean verificarExistenciaDeEquipo(String nombreEquipo);	
+
+	EquipoCommand obtenerEquipoPorTorneoYParticipante(Integer torneoId, Integer participanteId);
 }

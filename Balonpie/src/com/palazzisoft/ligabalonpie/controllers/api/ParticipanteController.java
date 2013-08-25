@@ -7,7 +7,7 @@ import com.palazzisoft.ligabalonpie.entities.Participante;
 
 public interface ParticipanteController {
 
-	Participante login(String user, String password);
+	ParticipanteCommand login(String user, String password) throws ParseException;
 	
 	Participante guardarParticipante(ParticipanteCommand participanteCommand) throws ParseException;
 

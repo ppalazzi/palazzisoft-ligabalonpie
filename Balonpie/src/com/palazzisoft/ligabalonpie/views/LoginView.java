@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.palazzisoft.ligabalonpie.command.ParticipanteCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.AdministradorController;
 import com.palazzisoft.ligabalonpie.controllers.api.ParticipanteController;
 import com.palazzisoft.ligabalonpie.entities.Administrador;
-import com.palazzisoft.ligabalonpie.entities.Participante;
 import com.palazzisoft.ligabalonpie.util.PageViews;
 
 @Controller
@@ -36,7 +36,8 @@ public class LoginView {
 	private static final String TIPO_LOGUEO = "tipoLogueo";
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String showForm(HttpServletRequest req, HttpServletResponse response, ModelAndView model) {
+	public ModelAndView showForm(HttpServletRequest req, HttpServletResponse response) {
+		ModelAndView model = new ModelAndView();
 		String viewPage = PageViews.ERROR_PAGINA;
 
 		try {
@@ -45,13 +46,15 @@ public class LoginView {
 			String esAdmin = req.getParameter("esAdmin");
 
 			if (esAdmin == null) {
-				Participante participante = participanteController.login(user, password);
+				ParticipanteCommand participanteCommand = participanteController.login(user, password);
 
-				if (participante != null) {
-					req.getSession().setAttribute(PARTICIPANTE_SESSION, participante);
+				if (participanteCommand != null) {
+					req.getSession().setAttribute(PARTICIPANTE_SESSION, participanteCommand);
 					req.setAttribute(TIPO_LOGUEO, "participante");
-					req.setAttribute("participanteId", participante.getId());
+					req.setAttribute("participanteId", participanteCommand.getId());
 					viewPage = PageViews.DASHBOARD;
+					
+					model.addObject("participante", participanteCommand);
 				} else {
 					viewPage = PageViews.LOGIN_INVALIDO;
 				}
@@ -70,6 +73,8 @@ public class LoginView {
 			viewPage = PageViews.ERROR_PAGINA;
 		}
 
-		return viewPage;
+		model.setViewName(viewPage);
+		
+		return model;
 	}
 }

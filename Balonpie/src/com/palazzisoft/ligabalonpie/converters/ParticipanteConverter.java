@@ -49,11 +49,7 @@ public class ParticipanteConverter {
 		if (participante.getFechaNacimiento() != null) {
 			command.setFechaNacimiento(FechaMascara.dateAFechaMesAno(participante.getFechaNacimiento()));
 		}
-	
-		for (ParticipanteTorneo participanteTorneo : participante.getParticipanteTorneos()) {
-			command.agregarTorneo(TorneoConverter.convertirTorneoACommand(participanteTorneo.getTorneo()));
-		}
-		
+			
 		return command;
 	}
 	

@@ -1,5 +1,7 @@
 package com.palazzisoft.ligabalonpie.daos.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.palazzisoft.ligabalonpie.daos.api.ParticipanteTorneoDao;
@@ -14,4 +16,10 @@ public class ParticipanteTorneoDaoImpl extends GenericDaoImpl<ParticipanteTorneo
 		return ParticipanteTorneo.class;
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<ParticipanteTorneo> obtenerTorneosDisponiblesPorParticitante(Integer participanteId) {
+		String sql = "FROM ParticipanteTorneo pt where pt.participante.id = ?";
+		return this.getHibernateTemplate().find(sql, participanteId);
+	}
 }

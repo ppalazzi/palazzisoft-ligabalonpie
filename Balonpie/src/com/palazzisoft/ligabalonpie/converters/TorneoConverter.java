@@ -33,6 +33,7 @@ public class TorneoConverter {
 	
 	public static TorneoCommand convertirTorneoACommand(Torneo torneo) throws ParseException {
 		TorneoCommand command = new TorneoCommand();
+		command.setId(torneo.getId());
 		command.setDescripcion(torneo.getDescripcion());
 		command.setEstado(torneo.getEstado());
 		
