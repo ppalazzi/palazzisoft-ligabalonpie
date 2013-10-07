@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import com.palazzisoft.ligabalonpie.command.JugadorCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoController;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoJugadorController;
 import com.palazzisoft.ligabalonpie.controllers.api.JugadorController;
@@ -40,13 +41,13 @@ public class CompraJugadorView implements Controller {
 				mv.setViewName(PageViews.ERROR_PAGINA);
 			}
 			else {				
-				String mensaje = "Jugador Agregado con éxito";
+				String mensaje = "Jugador Agregado con ï¿½xito";
 				
 				if (this.perteneceJugadorAlEquipo(Integer.parseInt(jugadorId), Integer.parseInt(equipoId))) {					
 					mensaje = "EL Jugador ya participa del Equipo";
 				} 
 				else if (!this.permitePresupuesto(presupuesto,Integer.parseInt(equipoId),Integer.parseInt((jugadorId)))) {				
-					mensaje = "Presupuesto inválido";					
+					mensaje = "Presupuesto invï¿½lido";					
 				}	
 				else {
 					equipoJugadorController.agregarJugadorAlEquipo(Integer.parseInt(jugadorId), Integer.parseInt(equipoId));					
@@ -79,7 +80,7 @@ public class CompraJugadorView implements Controller {
 		
 	private void cargarMenues(Integer equipoId, Integer jugadorId, ModelAndView mv) {
 		List<Jugador> disponibles = equipoController.obtenerJugadoresDeEquipo(equipoId);
-		List<Jugador> jugadores   = jugadorController.obtenerJugadoresDisponibles();
+		List<JugadorCommand> jugadores   = jugadorController.obtenerJugadoresDisponibles();
 		
 		mv.addObject("jugadores", jugadores);
 		mv.addObject("disponibles", disponibles);

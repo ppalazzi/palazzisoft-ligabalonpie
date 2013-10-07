@@ -2,11 +2,12 @@ package com.palazzisoft.ligabalonpie.controllers.api;
 
 import java.util.List;
 
+import com.palazzisoft.ligabalonpie.command.JugadorCommand;
 import com.palazzisoft.ligabalonpie.entities.Jugador;
 
 public interface JugadorController {
 
-	public List<Jugador> obtenerJugadoresDisponibles();
+	public List<JugadorCommand> obtenerJugadoresDisponibles();
 	
 	public Jugador getJugadorById(Integer id);
 	

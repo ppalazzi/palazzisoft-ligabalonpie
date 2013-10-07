@@ -2,48 +2,85 @@
 
 <jsp:include page="/jsp/backend/header.jsp" />
 
-<script type="text/javascript" src="static/js/jquery.dataTables.js"></script>
+<div width="60%" align="center">
 
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#example').dataTable( {
-        "aaSorting": [[ 4, "desc" ]]
-    } );
-} );
-</script>
-
-<style type="text/css" title="currentStyle">
-	@import "static/css/demo_page.css";
-	@import "static/css/demo_table.css";
-</style>
-
-<div width="60%">
-
-<table cellpadding="0" cellspacing="0" border="1" class="display" id="example">
+<table cellpadding="0" cellspacing="0" border="1" id="example">
 	<thead>
 		<tr>
 			<th>Nombre</th>
 			<th>Apellido</th>
+			<th>Fecha de Nacimiento</th>
+			<th>Velocidad</th>
+			<th>Remate</th>
+			<th>Habilidad</th>
+			<th>Físico</th>
+			<th>Estado</th>
+			<th>Valor</th>
+			<th>Posición</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr class="gradeX">
-			<td>Trident</td>
-			<td>Internet
-				 Explorer 4.0</td>
+		<c:forEach var="jugador" items="${jugadores}">
+			<tr>
+				<td>${jugador.nombre}</td>
+				<td>${jugador.apellido}</td>
+				<td>${jugador.fechaNacimiento}</td>
+				<td>
+					<select id="jugadores_velocidad">
+						<c:set var="i" value="1"/>
+						<c:forEach begin="${i}" end="10">
+							<option <c:if test="${jugador.velocidad == i}">selected</c:if>><c:out value="${i}"/></option>
+							<c:set var="i" value="${i + 1}"/>
+						</c:forEach>
+					</select>
+				</td>
+				<td>
+					<select id="jugadores_remate">
+						<c:set var="i" value="1"/>
+						<c:forEach begin="${i}" end="10">
+							<option <c:if test="${jugador.remate == i}">selected</c:if>><c:out value="${i}"/></option>
+							<c:set var="i" value="${i + 1}"/>
+						</c:forEach>
+					</select>
+				</td>		
+				<td>
+					<select id="jugadores_habilidad">
+						<c:set var="i" value="1"/>
+						<c:forEach begin="${i}" end="10">
+							<option <c:if test="${jugador.habilidad == i}">selected</c:if>><c:out value="${i}"/></option>
+							<c:set var="i" value="${i + 1}"/>
+						</c:forEach>
+					</select>
+				</td>						
+				<td>
+					<select id="jugadores_fisico">
+						<c:set var="i" value="1"/>
+						<c:forEach begin="${i}" end="10">
+							<option <c:if test="${jugador.fisico == i}">selected</c:if>><c:out value="${i}"/></option>
+							<c:set var="i" value="${i + 1}"/>
+						</c:forEach>
+					</select>
+				</td>	
+				<td>
+					<c:choose>
+						<c:when test="${jugador.estado == 1}">
+							<c:out value="Activo" />
+						</c:when>
+						<c:otherwise>
+							<c:out value="Inactivo" />					
+						</c:otherwise>
+					</c:choose>
+				</td>		
+				<td><c:out value="${jugador.valor}" /></td>
+				<td><c:out value="${jugador.tipoJugadorDescripcion}" /></td>			
+			</tr>		
+		</c:forEach>
+		<tr>
+			<td></td>
 		</tr>
 	</tbody>
 </table>
 
 </div>
-
-
-
-<div>
-	<c:forEach var="jugador" items="${jugadores}">
-		<c:out value="${jugador.apellido}" />
-	</c:forEach>
-</div>
-
 
 <jsp:include page="/jsp/backend/footer.jsp" />

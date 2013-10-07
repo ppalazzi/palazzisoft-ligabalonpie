@@ -1,10 +1,13 @@
 package com.palazzisoft.ligabalonpie.command;
 
+import java.util.Date;
+
 public class JugadorCommand {
 
 	private Integer id;
 	private String  nombre;
 	private String  apellido;
+	private Date    fechaNacimiento;
 	private Integer velocidad;
 	private Integer remate;
 	private Integer habilidad;
@@ -105,6 +108,13 @@ public class JugadorCommand {
 	public void setTipoJugadorDescripcion(String tipoJugadorDescripcion) {
 		this.tipoJugadorDescripcion = tipoJugadorDescripcion;
 	}
-	
+
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
 	
 }

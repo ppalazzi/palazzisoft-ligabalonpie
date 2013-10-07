@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.palazzisoft.ligabalonpie.command.JugadorCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoController;
 import com.palazzisoft.ligabalonpie.controllers.api.JugadorController;
 import com.palazzisoft.ligabalonpie.controllers.api.TipoJugadorController;
@@ -32,8 +33,8 @@ public class JugadorView {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/listadoJugador.adm" , method = RequestMethod.GET)
 	public String showBack(ModelMap model) {
-		List<Jugador> jugadores = this.jugadorController.obtenerJugadoresDisponibles();
-
+		List<JugadorCommand> jugadores = this.jugadorController.obtenerJugadoresDisponibles();
+		
 		model.put("jugadores", jugadores);
 		
 		return PageViews.LISTADO_JUGADORES_BACK;
