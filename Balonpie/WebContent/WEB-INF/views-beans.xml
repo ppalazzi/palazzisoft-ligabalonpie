@@ -19,12 +19,12 @@
 		<constructor-arg ref="mapaPaises" />
 	</bean>
 
-	<bean name="/altaEdicion.htm" class="com.palazzisoft.ligabalonpie.views.AltaJugadorView">
-		<property name="commandName" value="jugadorCommand" />
-		<property name="commandClass"
-			value="com.palazzisoft.ligabalonpie.command.JugadorCommand" />
-		<property name="formView" value="jugador/altaEdicion" />
-	</bean>
+<!-- 	<bean name="/altaEdicion.htm" class="com.palazzisoft.ligabalonpie.views.AltaJugadorView"> -->
+<!-- 		<property name="commandName" value="jugadorCommand" /> -->
+<!-- 		<property name="commandClass" -->
+<!-- 			value="com.palazzisoft.ligabalonpie.command.JugadorCommand" /> -->
+<!-- 		<property name="formView" value="jugador/altaEdicion" /> -->
+<!-- 	</bean> -->
 
 	<bean name="/comprarJugador.htm" class="com.palazzisoft.ligabalonpie.views.CompraJugadorView">
 	</bean>

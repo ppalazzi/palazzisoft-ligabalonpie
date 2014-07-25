@@ -23,6 +23,10 @@ public class TipoJugador implements Serializable {
 	public TipoJugador() {
 		
 	}
+	
+	public TipoJugador(Integer id) {
+		this.id = id;
+	}
 
 	public Integer getId() {
 		return id;

@@ -2,6 +2,7 @@ package com.palazzisoft.ligabalonpie.converters;
 
 import com.palazzisoft.ligabalonpie.command.JugadorCommand;
 import com.palazzisoft.ligabalonpie.entities.Jugador;
+import com.palazzisoft.ligabalonpie.entities.TipoJugador;
 
 public class JugadorConverter {
 
@@ -33,6 +34,9 @@ public class JugadorConverter {
 		jugador.setRemate(command.getRemate());
 		jugador.setValor(command.getValor());
 		jugador.setVelocidad(command.getVelocidad());
+		
+		TipoJugador tipoJugador = new TipoJugador(command.getTipoJugadorId());
+		jugador.setTipoJugador(tipoJugador);			
 		
 		return jugador;
 	}

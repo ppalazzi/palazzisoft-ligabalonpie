@@ -1,18 +1,18 @@
 package com.palazzisoft.ligabalonpie.views;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.palazzisoft.ligabalonpie.command.JugadorCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoController;
 import com.palazzisoft.ligabalonpie.controllers.api.JugadorController;
 import com.palazzisoft.ligabalonpie.controllers.api.TipoJugadorController;
-import com.palazzisoft.ligabalonpie.entities.Jugador;
 import com.palazzisoft.ligabalonpie.util.PageViews;
 
 @Controller
@@ -30,12 +30,11 @@ public class JugadorView {
 		this.equipoController = equipoController;
 	}
 
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/listadoJugador.adm" , method = RequestMethod.GET)
-	public String showBack(ModelMap model) {
+	@RequestMapping(value = "/listadoJugador.adm" , method = GET)
+	public String showBack(Model model) {
 		List<JugadorCommand> jugadores = this.jugadorController.obtenerJugadoresDisponibles();
-		
-		model.put("jugadores", jugadores);
+	
+		model.addAttribute("jugadores", jugadores);
 		
 		return PageViews.LISTADO_JUGADORES_BACK;
 	}

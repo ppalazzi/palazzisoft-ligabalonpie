@@ -1,74 +1,64 @@
 package com.palazzisoft.ligabalonpie.views;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import static com.palazzisoft.ligabalonpie.converters.JugadorConverter.convertirAJugador;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindException;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.SimpleFormController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.palazzisoft.ligabalonpie.command.JugadorCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.JugadorController;
-import com.palazzisoft.ligabalonpie.converters.JugadorConverter;
+import com.palazzisoft.ligabalonpie.controllers.api.TipoJugadorController;
 import com.palazzisoft.ligabalonpie.entities.Jugador;
-import com.palazzisoft.ligabalonpie.entities.TipoJugador;
-import com.palazzisoft.ligabalonpie.enums.ETipoJugador;
-import com.palazzisoft.ligabalonpie.util.PageViews;
+import com.palazzisoft.ligabalonpie.validators.JugadorValidator;
+/**
+ * 
+ * @author pablo
+ *
+ */
+@Controller
+public class AltaJugadorView  {
 
-public class AltaJugadorView extends SimpleFormController {
-
-	@Autowired
+	private static final String VIEW = "/backend/jugador/nuevo";
+	
 	private JugadorController jugadorController;
-	
-	
-	
-	@Override
-	protected ModelAndView onSubmit(HttpServletRequest req,
-			HttpServletResponse response, Object command, BindException errors)
-			throws Exception {
-								
-		ModelAndView mv = new ModelAndView(PageViews.ERROR_PAGINA);
-		try {			
-			String tipoJugadorSeleccionado = req.getParameter("tipoJugadorSeleccionado");
-			String estadoSeleccionado = req.getParameter("estadoSeleccionado");
-			
-			Integer tipoJugadorId = tipoJugadorSeleccionado != null ? Integer.parseInt(tipoJugadorSeleccionado)	: ETipoJugador.ATACANTE.tipoJugador();		
-			Integer estado = estadoSeleccionado != null ? Integer.parseInt(estadoSeleccionado)	: 0;		
+	private TipoJugadorController tipoJugadorController;
+	private JugadorValidator jugadorValidator;
 
-			
-			JugadorCommand datos = (JugadorCommand)command;
-			
-			if (datos.getId() != null) {
-				Jugador jugador = jugadorController.getJugadorById(datos.getId());
-				
-				TipoJugador tipoJugador = new TipoJugador();
-				tipoJugador.setId(tipoJugadorId);
-				
-				jugador.setTipoJugador(tipoJugador);
-				datos.setEstado(estado);
-				JugadorConverter.copyFromCommandToJugador(jugador, datos);
-				jugadorController.updateJugador(jugador);
-				
-				mv.addObject("jugadores", jugadorController.obtenerJugadoresDisponibles());
-			}
-			else {
-				Jugador jugador = new Jugador();
-				jugador = JugadorConverter.convertirAJugador(datos);
-				jugadorController.saveJugador(jugador);
-				
-				mv.addObject("jugadores", jugadorController.obtenerJugadoresDisponibles());
-			}
-
-			mv.setViewName(PageViews.LISTADO_JUGADORES);
-		} catch (Exception e) {
-			mv.setViewName(PageViews.ERROR_PAGINA);
-		}		
-		
-		return mv;
+	@Autowired	
+	public AltaJugadorView(JugadorController jugadorController, TipoJugadorController tipoJugadorController, JugadorValidator jugadorValidator) {
+		this.jugadorController = jugadorController;
+		this.tipoJugadorController = tipoJugadorController;
+		this.jugadorValidator = jugadorValidator;
 	}
+	
+	@RequestMapping(value = "/nuevoJugador.adm", method = GET)
+	public String showForm(@ModelAttribute JugadorCommand jugadorCommand, Model model) {
+		model.addAttribute("jugador", jugadorCommand);
+		model.addAttribute("tipoJugador", this.tipoJugadorController.obtenerTodosTipoJugador());			
+		
+		return VIEW;
+	}
+	
+	@RequestMapping(value = "/nuevoJugador.adm", method = POST)
+	public String onSubmit(@ModelAttribute JugadorCommand jugadorCommand, Errors errors, Model model) {
+		this.jugadorValidator.validate(jugadorCommand, errors);
 
-
+		if (errors.hasErrors()) {
+			return this.showForm(jugadorCommand, model);
+		}
+		
+		Jugador jugador = convertirAJugador(jugadorCommand);
+		
+		this.jugadorController.saveJugador(jugador);
+		
+		return this.showForm(jugadorCommand, model);
+	}
 
 	
 }

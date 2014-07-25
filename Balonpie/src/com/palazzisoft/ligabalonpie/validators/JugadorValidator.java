@@ -1,15 +1,17 @@
 package com.palazzisoft.ligabalonpie.validators;
 
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.palazzisoft.ligabalonpie.command.JugadorCommand;
 
+@Component
 public class JugadorValidator implements Validator {
 
 	public boolean supports(Class type) {
-		return JugadorCommand.class.equals(type);
+		return JugadorCommand.class.isAssignableFrom(type);
 	}
 
 	public void validate(Object obj, Errors errors) {
@@ -44,7 +46,7 @@ public class JugadorValidator implements Validator {
 		if (velocidad < 0 || velocidad > 100)
 			errors.rejectValue("velocidad", "error.jugador.velocidad.valores");
 		
-		if (valor < 1500 || velocidad > 999999999)
+		if (valor < 1500 || valor > 999999999)
 			errors.rejectValue("valor", "error.jugador.valor.valores");		
 
 	}

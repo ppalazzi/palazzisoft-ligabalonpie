@@ -1,10 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="/jsp/backend/header.jsp" />
 
-<div width="60%" align="center">
+</br>
+<div width="80%" align="center">
 
-<table cellpadding="0" cellspacing="0" border="1" id="example">
+<table cellpadding="0" cellspacing="0" border="1" id="example" align="center" width="80%" >
 	<thead>
 		<tr>
 			<th>Nombre</th>
@@ -17,6 +19,7 @@
 			<th>Estado</th>
 			<th>Valor</th>
 			<th>Posición</th>
+			<th>Acción</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -24,42 +27,18 @@
 			<tr>
 				<td>${jugador.nombre}</td>
 				<td>${jugador.apellido}</td>
-				<td>${jugador.fechaNacimiento}</td>
+				<td><fmt:formatDate value="${jugador.fechaNacimiento}"/></td>
 				<td>
-					<select id="jugadores_velocidad">
-						<c:set var="i" value="1"/>
-						<c:forEach begin="${i}" end="10">
-							<option <c:if test="${jugador.velocidad == i}">selected</c:if>><c:out value="${i}"/></option>
-							<c:set var="i" value="${i + 1}"/>
-						</c:forEach>
-					</select>
+					<c:out value="${jugador.velocidad}"/>
 				</td>
 				<td>
-					<select id="jugadores_remate">
-						<c:set var="i" value="1"/>
-						<c:forEach begin="${i}" end="10">
-							<option <c:if test="${jugador.remate == i}">selected</c:if>><c:out value="${i}"/></option>
-							<c:set var="i" value="${i + 1}"/>
-						</c:forEach>
-					</select>
+					<c:out value="${jugador.remate}"/>
 				</td>		
 				<td>
-					<select id="jugadores_habilidad">
-						<c:set var="i" value="1"/>
-						<c:forEach begin="${i}" end="10">
-							<option <c:if test="${jugador.habilidad == i}">selected</c:if>><c:out value="${i}"/></option>
-							<c:set var="i" value="${i + 1}"/>
-						</c:forEach>
-					</select>
+					<c:out value="${jugador.habilidad}"/>		
 				</td>						
 				<td>
-					<select id="jugadores_fisico">
-						<c:set var="i" value="1"/>
-						<c:forEach begin="${i}" end="10">
-							<option <c:if test="${jugador.fisico == i}">selected</c:if>><c:out value="${i}"/></option>
-							<c:set var="i" value="${i + 1}"/>
-						</c:forEach>
-					</select>
+					<c:out value="${jugador.fisico}"/>				
 				</td>	
 				<td>
 					<c:choose>
@@ -72,12 +51,13 @@
 					</c:choose>
 				</td>		
 				<td><c:out value="${jugador.valor}" /></td>
-				<td><c:out value="${jugador.tipoJugadorDescripcion}" /></td>			
+				<td><c:out value="${jugador.tipoJugadorDescripcion}" /></td>	
+				<td>
+					<a href="#">Modificar</a>
+					<a href="#">Eliminar</a>
+				</td>	
 			</tr>		
 		</c:forEach>
-		<tr>
-			<td></td>
-		</tr>
 	</tbody>
 </table>
 
