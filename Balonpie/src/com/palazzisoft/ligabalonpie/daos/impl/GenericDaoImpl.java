@@ -19,7 +19,7 @@ public abstract class GenericDaoImpl<T,S extends Serializable> extends Hibernate
 	}
 
 	public void save(T object) {
-		this.getHibernateTemplate().save(object);
+		this.getHibernateTemplate().saveOrUpdate(object);
 	}
 
 	public void update(T object) {

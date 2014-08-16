@@ -7,7 +7,7 @@ public class JugadorCommand {
 	private Integer id;
 	private String  nombre;
 	private String  apellido;
-	private Date    fechaNacimiento;
+	private String  fechaNacimiento;
 	private Integer velocidad;
 	private Integer remate;
 	private Integer habilidad;
@@ -109,11 +109,11 @@ public class JugadorCommand {
 		this.tipoJugadorDescripcion = tipoJugadorDescripcion;
 	}
 
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	

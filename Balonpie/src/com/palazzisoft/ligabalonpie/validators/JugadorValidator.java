@@ -1,5 +1,7 @@
 package com.palazzisoft.ligabalonpie.validators;
 
+import static org.springframework.validation.ValidationUtils.rejectIfEmptyOrWhitespace;
+
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -17,13 +19,13 @@ public class JugadorValidator implements Validator {
 	public void validate(Object obj, Errors errors) {
 		JugadorCommand command = (JugadorCommand)obj;
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "error.jugador.nombre", "Error en nombre");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "apellido", "error.jugador.apellido", "Error en Apellido");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "fisico", "error.jugador.fisico", "Error en Fisico");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "habilidad", "error.jugador.habilidad", "Error en Habilidad");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "remate", "error.jugador.remate", "Error en Remate");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "velocidad", "error.jugador.velocidad", "Error en Velocidad");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "valor", "error.jugador.valor", "Error en Valor");	
+		rejectIfEmptyOrWhitespace(errors, "nombre", "error.jugador.nombre", "Debe completar el campo Nombre");
+		rejectIfEmptyOrWhitespace(errors, "apellido", "error.jugador.apellido", "Debe completar el campo Apellido");
+		rejectIfEmptyOrWhitespace(errors, "fisico", "error.jugador.fisico", "Debe completar el campo Físico");
+		rejectIfEmptyOrWhitespace(errors, "habilidad", "error.jugador.habilidad", "Debe completar el campo Habilidad");
+		rejectIfEmptyOrWhitespace(errors, "remate", "error.jugador.remate", "Debe completar el campo Remate");
+		rejectIfEmptyOrWhitespace(errors, "velocidad", "error.jugador.velocidad", "Debe completar el campo Velocidad");
+		rejectIfEmptyOrWhitespace(errors, "valor", "error.jugador.valor", "Debe completar el campo Valor");	
 		validarCaracteristicas(command, errors);
 	}
 

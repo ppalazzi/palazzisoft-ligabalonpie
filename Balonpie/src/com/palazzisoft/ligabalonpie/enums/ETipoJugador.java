@@ -14,4 +14,17 @@ public enum ETipoJugador {
 		return id;
 	}
 	
+	public Integer getByDescription(String description) {
+		if (ARQUERO.name().equals(description)) {
+			return ARQUERO.id;
+		}		
+		if (DEFENSOR.name().equals(description)) {
+			return DEFENSOR.id;
+		}
+		if (ATACANTE.name().equals(description)) {
+			return ATACANTE.id;
+		}
+				
+		return ATACANTE.id;
+	}
 }

@@ -11,10 +11,16 @@
 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
-<!-- borrar esto solo es valido cuando no hay internet -->
+<script>
+$(function() {
+$( "#datepicker" ).datepicker();
+});
+</script>
+
+<!-- borrar esto solo es valido cuando no hay internet 
 <script type="text/javascript"
 	src="/balonpie/static/js/jquery-1.8.3.js"></script>
-
+-->
 
 </head>
 <body>

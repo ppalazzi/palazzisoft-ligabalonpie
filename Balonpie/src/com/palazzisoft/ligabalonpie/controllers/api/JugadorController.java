@@ -11,7 +11,7 @@ public interface JugadorController {
 	
 	public Jugador getJugadorById(Integer id);
 	
-	public void eliminarJugadorById(Integer id);
+	boolean eliminarJugadorById(Integer id);
 	
 	public void updateJugador(Jugador jugador);
 	

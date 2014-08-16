@@ -50,7 +50,7 @@ public class Jugador implements Serializable {
 	@Column (name="A_VALOR")
 	private Integer valor;
 	
-	@ManyToOne (fetch=FetchType.LAZY)
+	@ManyToOne (fetch=FetchType.EAGER)
 	private TipoJugador tipoJugador;
 	
 	public Jugador() {

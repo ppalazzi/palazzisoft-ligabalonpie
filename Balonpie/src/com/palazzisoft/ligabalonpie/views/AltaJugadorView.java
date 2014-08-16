@@ -1,13 +1,16 @@
 package com.palazzisoft.ligabalonpie.views;
 
+import static com.palazzisoft.ligabalonpie.converters.JugadorConverter.convertirACommand;
 import static com.palazzisoft.ligabalonpie.converters.JugadorConverter.convertirAJugador;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+import java.text.ParseException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,19 +29,24 @@ public class AltaJugadorView  {
 
 	private static final String VIEW = "/backend/jugador/nuevo";
 	
-	private JugadorController jugadorController;
-	private TipoJugadorController tipoJugadorController;
-	private JugadorValidator jugadorValidator;
+	private final JugadorController jugadorController;
+	private final TipoJugadorController tipoJugadorController;
+	private final JugadorValidator jugadorValidator;
 
 	@Autowired	
-	public AltaJugadorView(JugadorController jugadorController, TipoJugadorController tipoJugadorController, JugadorValidator jugadorValidator) {
+	public AltaJugadorView(final JugadorController jugadorController,final TipoJugadorController tipoJugadorController,final JugadorValidator jugadorValidator) {
 		this.jugadorController = jugadorController;
 		this.tipoJugadorController = tipoJugadorController;
 		this.jugadorValidator = jugadorValidator;
 	}
 	
 	@RequestMapping(value = "/nuevoJugador.adm", method = GET)
-	public String showForm(@ModelAttribute JugadorCommand jugadorCommand, Model model) {
+	public String showForm(@ModelAttribute("jugadorCommand") JugadorCommand jugadorCommand, Model model) {		
+		if (jugadorCommand.getId() != null) {
+			Jugador jugador = this.jugadorController.getJugadorById(jugadorCommand.getId());
+			jugadorCommand = convertirACommand(jugador);
+		}
+
 		model.addAttribute("jugador", jugadorCommand);
 		model.addAttribute("tipoJugador", this.tipoJugadorController.obtenerTodosTipoJugador());			
 		
@@ -46,19 +54,16 @@ public class AltaJugadorView  {
 	}
 	
 	@RequestMapping(value = "/nuevoJugador.adm", method = POST)
-	public String onSubmit(@ModelAttribute JugadorCommand jugadorCommand, Errors errors, Model model) {
-		this.jugadorValidator.validate(jugadorCommand, errors);
-
-		if (errors.hasErrors()) {
+	public String onSubmit(@ModelAttribute("jugadorCommand") JugadorCommand jugadorCommand, BindingResult bindingResult,  Model model) throws ParseException {
+				this.jugadorValidator.validate(jugadorCommand, bindingResult);
+				
+		if (bindingResult.hasErrors()) {
 			return this.showForm(jugadorCommand, model);
 		}
-		
 		Jugador jugador = convertirAJugador(jugadorCommand);
 		
 		this.jugadorController.saveJugador(jugador);
 		
-		return this.showForm(jugadorCommand, model);
+		return this.showForm(jugadorCommand,model);
 	}
-
-	
 }

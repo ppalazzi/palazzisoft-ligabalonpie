@@ -27,7 +27,7 @@
 			<tr>
 				<td>${jugador.nombre}</td>
 				<td>${jugador.apellido}</td>
-				<td><fmt:formatDate value="${jugador.fechaNacimiento}"/></td>
+				<td>${jugador.fechaNacimiento}</td>
 				<td>
 					<c:out value="${jugador.velocidad}"/>
 				</td>
@@ -53,8 +53,7 @@
 				<td><c:out value="${jugador.valor}" /></td>
 				<td><c:out value="${jugador.tipoJugadorDescripcion}" /></td>	
 				<td>
-					<a href="#">Modificar</a>
-					<a href="#">Eliminar</a>
+					<a href="/balonpie/nuevoJugador.adm?id=${jugador.id}">Modificar</a>
 				</td>	
 			</tr>		
 		</c:forEach>
