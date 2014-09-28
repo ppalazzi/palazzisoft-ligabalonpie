@@ -17,8 +17,17 @@ public class JugadorDaoImpl extends GenericDaoImpl<Jugador,Integer> implements J
 	}
 
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<Jugador> obtenerJugadoresDisponibles() {		
 		String sql = "FROM Jugador j";		
 		return  this.getHibernateTemplate().find(sql);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Jugador> obtenerJugadoresDisponiblesPorEquipo(Integer equipoId) {		
+		String sql = "FROM Jugador j INNER JOIN EquipoJugador e ON j.id = e.jugador.id AND e.equipo.id = " + equipoId;		
+		return  this.getHibernateTemplate().find(sql);
 	}	
+	
 }

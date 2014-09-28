@@ -11,5 +11,5 @@ public interface ParticipanteController {
 	
 	Participante guardarParticipante(ParticipanteCommand participanteCommand) throws ParseException;
 
-	ParticipanteCommand obtenerParticipantePorId(Integer id) throws ParseException;
+	Participante obtenerParticipantePorId(Integer id);
 }

@@ -60,6 +60,11 @@ public class JugadorControllerImpl implements JugadorController {
 		return jugadoresCommand;
 	}
 
+	@Override
+	public List<Jugador> obtenerJugadoresDisponiblesPorEquipo(Integer equipoId) {
+		return this.jugadorDao.obtenerJugadoresDisponiblesPorEquipo(equipoId);
+	}
+	
 	public void saveJugador(Jugador jugador) {
 		this.jugadorDao.save(jugador);	
 	}

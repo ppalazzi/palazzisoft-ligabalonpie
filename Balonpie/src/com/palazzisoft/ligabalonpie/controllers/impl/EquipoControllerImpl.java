@@ -1,6 +1,12 @@
 package com.palazzisoft.ligabalonpie.controllers.impl;
 
+import static com.palazzisoft.ligabalonpie.converters.EquipoConverter.convertirAEquipoCommand;
+import static com.palazzisoft.ligabalonpie.converters.EquipoConverter.convertirEquipoACommand;
+import static com.palazzisoft.ligabalonpie.enums.EEstado.ACTIVO;
+import static java.util.Calendar.getInstance;
+
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -42,7 +48,7 @@ public class EquipoControllerImpl implements EquipoController {
 		List<EquipoCommand> equiposCommand = new ArrayList<EquipoCommand>();
 
 		if (equipos != null) {
-			equiposCommand = EquipoConverter.convertirEquipoACommand(equipos);
+			equiposCommand = convertirEquipoACommand(equipos);
 		}
 
 		return equiposCommand;
@@ -72,7 +78,7 @@ public class EquipoControllerImpl implements EquipoController {
 		Equipo equipo = EquipoConverter.convertirAEquipo(equipoCommand);
 		equipo.setFechaCreacion(new Date());
 		equipo.setParticipante(participante);
-		equipo.setEstado(EEstado.ACTIVO.getEstado());
+		equipo.setEstado(ACTIVO.getEstado());
 		equipo.setPresupuesto(Long.valueOf(PropertiesValues.PRESUPUESTO_INICIAL));
 		equipo.setPuntos(Long.valueOf(PropertiesValues.PUNTOS_INICIAL));
 
@@ -91,6 +97,21 @@ public class EquipoControllerImpl implements EquipoController {
 			Integer participanteId) {
 		Equipo equipo = this.equipoDao.obtenerEquipoPorTorneoYParticipante(torneoId, participanteId);
 
-		return EquipoConverter.convertirAEquipoCommand(equipo);
+		return convertirAEquipoCommand(equipo);
+	}
+	
+	@Override
+	public List<Equipo> obtenerTodosLosEquipos() {
+		return this.equipoDao.obtenerTodosLosEquipos();
+	}
+	
+	@Override
+	public void guardarEquipo(Equipo equipo) {
+		if (equipo.getId() == null) {
+			equipo.setFechaCreacion(getInstance().getTime());
+			equipo.setEstado(ACTIVO.getEstado());
+		}
+		
+		this.equipoDao.save(equipo);
 	}
 }

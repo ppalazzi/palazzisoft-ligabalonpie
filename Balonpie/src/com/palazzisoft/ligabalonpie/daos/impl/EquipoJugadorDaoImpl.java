@@ -1,6 +1,5 @@
 package com.palazzisoft.ligabalonpie.daos.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.palazzisoft.ligabalonpie.daos.api.EquipoJugadorDao;

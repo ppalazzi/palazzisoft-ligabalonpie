@@ -14,4 +14,6 @@ public interface EquipoDao extends GenericDao<Equipo,Integer> {
 	Equipo obtenerEquipoPorNombre(String nombre);
 
 	Equipo obtenerEquipoPorTorneoYParticipante(Integer torneoId, Integer participanteId);
+
+	List<Equipo> obtenerTodosLosEquipos();
 }

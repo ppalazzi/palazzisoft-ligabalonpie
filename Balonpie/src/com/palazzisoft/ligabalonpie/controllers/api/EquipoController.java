@@ -21,4 +21,8 @@ public interface EquipoController {
 	boolean verificarExistenciaDeEquipo(String nombreEquipo);	
 
 	EquipoCommand obtenerEquipoPorTorneoYParticipante(Integer torneoId, Integer participanteId);
+
+	List<Equipo> obtenerTodosLosEquipos();
+
+	void guardarEquipo(Equipo equipo);
 }

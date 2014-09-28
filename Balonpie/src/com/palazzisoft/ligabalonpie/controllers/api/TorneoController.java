@@ -13,4 +13,6 @@ public interface TorneoController {
 	boolean verificarExistenciaDeTorneo(String descripcion);
 
 	Torneo nuevoTorneo(TorneoCommand torneoCommand, String participanteId) throws ParseException;
+
+	Torneo obtenerTorneoPorId(Integer id);
 }

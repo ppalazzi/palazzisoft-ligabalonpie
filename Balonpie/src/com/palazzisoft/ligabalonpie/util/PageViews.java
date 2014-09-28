@@ -23,7 +23,10 @@ public final class PageViews {
 	public static final String NUEVO_EQUIPO = "frontend/equipo/nuevoEquipo";
 	public static final String EQUIPO_RESUMEN = "frontend/equipo/equipoResumen";
 	
-	
 		// Backend
 	public static final String LISTADO_JUGADORES_BACK = "backend/jugador/listado";
+	public static final String LISTADO_EQUIPO_BACK = "backend/equipo/listado";
+	
+	public static final String ALTA_EDICION_JUGADOR = "/backend/jugador/nuevo";
+	public static final String ALTA_EDICION_EQUIPO = "/backend/equipo/nuevo";
 }

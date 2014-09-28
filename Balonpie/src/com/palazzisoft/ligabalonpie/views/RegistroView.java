@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.palazzisoft.ligabalonpie.command.ParticipanteCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.ParticipanteController;
+import com.palazzisoft.ligabalonpie.converters.ParticipanteConverter;
 import com.palazzisoft.ligabalonpie.entities.Participante;
 import com.palazzisoft.ligabalonpie.util.PageViews;
 import com.palazzisoft.ligabalonpie.validators.ParticipanteValidator;
@@ -46,8 +47,8 @@ public class RegistroView {
 
 		try {
 			if (participanteId != null) {
-				ParticipanteCommand participanteCommand = participanteController.obtenerParticipantePorId(participanteId);
-				model.addAttribute("participanteCommand", participanteCommand);
+				Participante participante = participanteController.obtenerParticipantePorId(participanteId);
+				model.addAttribute("participanteCommand", ParticipanteConverter.convertirParticipanteACommand(participante));
 			}			
 		}
 		catch (ParseException e) {

@@ -69,9 +69,8 @@ public class ParticipanteControllerImpl implements ParticipanteController {
 
 	@Override
 	@Transactional
-	public ParticipanteCommand obtenerParticipantePorId(Integer id) throws ParseException {
-		Participante participante = participanteDao.getById(id);
-		return ParticipanteConverter.convertirParticipanteACommand(participante);
+	public Participante obtenerParticipantePorId(Integer id) {
+		return this.participanteDao.getById(id);
 	}
 
 	private Participante modificarParticipante(ParticipanteCommand participanteCommand)

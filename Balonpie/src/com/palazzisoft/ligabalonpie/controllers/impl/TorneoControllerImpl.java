@@ -72,6 +72,11 @@ public class TorneoControllerImpl implements TorneoController {
 		return torneo;
 	}
 	
+	@Override
+	public Torneo obtenerTorneoPorId(Integer id) {
+		return this.torneoDao.getById(id);
+	}
+	
 	private Date obtenerFechaDentroDeUnMes() {
 		Calendar c = Calendar.getInstance();
 		c.add(Calendar.MONTH, 30);

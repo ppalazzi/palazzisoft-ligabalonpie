@@ -155,5 +155,13 @@ public class Equipo implements Serializable {
 		return true;
 	}
 
+	public Torneo getTorneo() {
+		return torneo;
+	}
+
+	public void setTorneo(Torneo torneo) {
+		this.torneo = torneo;
+	}
+
 	
 }

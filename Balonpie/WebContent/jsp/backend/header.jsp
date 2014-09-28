@@ -8,19 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="http://localhost:8080/balonpie/static/css/backend.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <link href="static/css/demo_page.css" rel="stylesheet" type="text/css" />
+        <link href="static/css/demo_table.css" rel="stylesheet" type="text/css" />
+        <link href="static/css/demo_table_jui.css" rel="stylesheet" type="text/css" />
 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-<script>
-$(function() {
-$( "#datepicker" ).datepicker();
-});
-</script>
-
-<!-- borrar esto solo es valido cuando no hay internet 
-<script type="text/javascript"
-	src="/balonpie/static/js/jquery-1.8.3.js"></script>
--->
 
 </head>
 <body>

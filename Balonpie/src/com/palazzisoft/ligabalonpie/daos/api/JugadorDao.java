@@ -7,4 +7,6 @@ import com.palazzisoft.ligabalonpie.entities.Jugador;
 public interface JugadorDao extends GenericDao<Jugador,Integer> {
 
 	List<Jugador> obtenerJugadoresDisponibles();
+
+	List<Jugador> obtenerJugadoresDisponiblesPorEquipo(Integer equipoId);
 }

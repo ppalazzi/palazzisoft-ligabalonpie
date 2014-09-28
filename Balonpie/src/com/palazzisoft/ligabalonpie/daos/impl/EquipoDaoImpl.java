@@ -1,5 +1,6 @@
 package com.palazzisoft.ligabalonpie.daos.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.palazzisoft.ligabalonpie.daos.api.EquipoDao;
@@ -55,5 +56,14 @@ public class EquipoDaoImpl extends GenericDaoImpl<Equipo, Integer> implements Eq
 		}
 
 		return equipo;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Equipo> obtenerTodosLosEquipos() {
+		List<Equipo> equipos = new ArrayList<Equipo>();
+		equipos = this.getHibernateTemplate().find("FROM Equipo e");
+		
+		return equipos;
 	}
 }

@@ -1,21 +1,20 @@
 package com.palazzisoft.ligabalonpie.converters;
 
+import static com.palazzisoft.ligabalonpie.converters.ConverterUtil.getFormat;
+
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import com.palazzisoft.ligabalonpie.command.JugadorCommand;
 import com.palazzisoft.ligabalonpie.entities.Jugador;
 import com.palazzisoft.ligabalonpie.entities.TipoJugador;
 
-public class JugadorConverter {
+public class JugadorConverter  {
 
-	public static JugadorCommand convertirACommand(Jugador jugador) {
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");		
-		
+	public static JugadorCommand convertirACommand(Jugador jugador) {				
 		JugadorCommand command = new JugadorCommand();
 		command.setApellido(jugador.getApellido());
 		command.setId(jugador.getId());		
-		command.setFechaNacimiento(format.format(jugador.getFechaNacimiento()));
+		command.setFechaNacimiento(getFormat().format(jugador.getFechaNacimiento()));
 		command.setNombre(jugador.getNombre());
 		command.setEstado(jugador.getEstado());
 		command.setFisico(jugador.getFisico());
@@ -28,12 +27,10 @@ public class JugadorConverter {
 		return command;
 	}
 	
-	public static Jugador convertirAJugador(JugadorCommand command) throws ParseException {
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");		
-		
+	public static Jugador convertirAJugador(JugadorCommand command) throws ParseException {		
 		Jugador jugador = new Jugador();
 		jugador.setApellido(command.getApellido());
-		jugador.setFechaNacimiento(format.parse(command.getFechaNacimiento()));
+		jugador.setFechaNacimiento(getFormat().parse(command.getFechaNacimiento()));
 		jugador.setNombre(command.getNombre());
 		jugador.setId(command.getId());
 		jugador.setEstado(command.getEstado());
