@@ -4,7 +4,7 @@
 	<div id="menuWrapper">
 		<div class="menu">
 			<ul>
-				<li><a href="#">Usuarios</a></li>				
+				<li><a href="#">Participantes</a></li>				
 				<li><a href="/balonpie/listadoJugador.adm">Jugadores</a>				
 					<ul>
 						<li><a href="/balonpie/nuevoJugador.adm">Alta de Jugador</a></li>
