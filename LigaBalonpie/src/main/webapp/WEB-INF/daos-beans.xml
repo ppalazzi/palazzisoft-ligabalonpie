@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd
+           ">
+
+		 <context:annotation-config />
+
+	     <bean id="genericDao" class="com.palazzisoft.ligabalonpie.daos.impl.GenericDaoImpl" abstract="true">
+	     	  <property name="sessionFactory" ref="sessionFactory"></property>
+	     </bean>
+	          
+	     <bean id="participanteDao" class="com.palazzisoft.ligabalonpie.daos.impl.ParticipanteDaoImpl" parent="genericDao">	     
+			
+	     </bean>
+
+	     <bean id="jugadorDao" class="com.palazzisoft.ligabalonpie.daos.impl.JugadorDaoImpl" parent="genericDao">	     
+			
+	     </bean>
+
+	     <bean id="tipoJugadorDao" class="com.palazzisoft.ligabalonpie.daos.impl.TipoJugadorDaoImpl" parent="genericDao">	     
+			
+	     </bean>
+
+	     <bean id="administradorDao" class="com.palazzisoft.ligabalonpie.daos.impl.AdministradorDaoImpl" parent="genericDao">	     
+			
+	     </bean>
+
+	     <bean id="equipoDao" class="com.palazzisoft.ligabalonpie.daos.impl.EquipoDaoImpl" parent="genericDao">	     
+			
+	     </bean>
+
+	     <bean id="equipoJugadorDao" class="com.palazzisoft.ligabalonpie.daos.impl.EquipoJugadorDaoImpl" parent="genericDao">	     
+			
+	     </bean>
+		
+		<bean id="torneoDao" class="com.palazzisoft.ligabalonpie.daos.impl.TorneoDaoImpl" parent="genericDao">
+		
+		</bean>
+		
+		<bean id="participanteTorneoDao" class="com.palazzisoft.ligabalonpie.daos.impl.ParticipanteTorneoDaoImpl" parent="genericDao">
+		
+		</bean>
+		
+</beans>
