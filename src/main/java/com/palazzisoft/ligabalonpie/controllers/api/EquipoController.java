@@ -25,4 +25,6 @@ public interface EquipoController {
 	List<Equipo> obtenerTodosLosEquipos();
 
 	void guardarEquipo(Equipo equipo);
+
+	void obtenerJugadoresDisponiblesParaEquipo(Long equipoId);
 }

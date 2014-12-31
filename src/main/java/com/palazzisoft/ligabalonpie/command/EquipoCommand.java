@@ -1,5 +1,8 @@
 package com.palazzisoft.ligabalonpie.command;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class EquipoCommand {
 
@@ -12,9 +15,10 @@ public class EquipoCommand {
 	private Long presupuesto;
 	private Integer torneoId;
 	private Long puntos;
+	private List<JugadorCommand> jugadores;
 
 	public EquipoCommand() {
-
+		this.jugadores = new ArrayList<JugadorCommand>();
 	}
 
 	public Integer getId() {
@@ -87,6 +91,14 @@ public class EquipoCommand {
 
 	public void setPuntos(Long puntos) {
 		this.puntos = puntos;
+	}
+
+	public List<JugadorCommand> getJugadores() {
+		return jugadores;
+	}
+
+	public void setJugadore(List<JugadorCommand> jugadores) {
+		this.jugadores = jugadores;
 	}
 
 }

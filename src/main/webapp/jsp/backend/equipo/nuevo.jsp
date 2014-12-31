@@ -6,6 +6,10 @@
 </br>
 <form:form id="nuevoEquipoForm" action="nuevoEquipo.adm" method="POST"
 	commandName="equipoCommand">
+	
+	<div id="equipoDivId" class="hide">
+		<c:out  value="${equipo.id}"/> 		
+	</div>
 		
 	<c:if test="${equipo.id != null}">
 		<spring:bind path="id">
@@ -16,7 +20,7 @@
 		<li><label>Nombre</label> <spring:bind path="nombre">
 				<input type="text" name="nombre"
 					value='<c:out value="${equipo.nombre}" />' maxlength="254">
-			</spring:bind> <label>Descripción</label> <spring:bind path="equipo.descripcion">
+			</spring:bind> <label>Descripción</label> <spring:bind paval()th="equipo.descripcion">
 				<input type="text" name="descripcion"
 					value='<c:out value="${equipo.descripcion}" />' maxlength="254">
 			</spring:bind></li>
@@ -47,14 +51,45 @@
 				<input type="text" name="torneoId"
 					value='<c:out value="${equipo.torneoId}" />' maxlength="25">			
 			</spring:bind>		
-		</li>		<li><u> <input type="submit" value="Guardar"> <input
-				type="button" value="Volver">
-		</u></li>
-		<li>
-			<div id="error">
-				<font color="red"> <form:errors path="*" />
-				</font>
-			</div>
-		</li>			
+		</li>
+		<input type="submit" value="Guardar"> 
+		<a href="#"id="jugadoresDialog">Administrar Jugadores</a>
+		
+		<div id="error">
+			<font color="red"> <form:errors path="*" />
+			</font>
+		</div>		
 	</ul>
+
+	<div id="jugadoresComprablesListDiv" class="hide">
+	
+	</div>
+
+	<div id="jugadoresWindow" class="hide" title="Jugadores de Equipo">
+		<c:forEach items="${equipo.jugadores}" var="jugador">
+			
+		<div id="jugadoresLista">
+			<ul>
+				<li>
+					<c:out value="${jugador.nombre}"></c:out> 
+					<c:out value="${jugador.apellido}"></c:out>
+					<c:out value="${jugador.tipoJugadorDescripcion}" />
+					<img alt="image" src="static/images/less.png" title="Vender">
+				</li>
+			</ul>
+		</div>
+		</c:forEach>
+
+		
+		<div>
+			<input type="button" value="Nuevo Jugador" id="nuevoJugadorBtn" />
+		</div>
+	</div>
+
 </form:form>
+		
+<script type="text/javascript"
+	src="/balonpie/static/js/equipo/nuevo.js"></script>		
+	
+		
+<jsp:include page="/jsp/backend/footer.jsp" />

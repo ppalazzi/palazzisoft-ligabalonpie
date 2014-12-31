@@ -41,13 +41,13 @@ public class CompraJugadorView implements Controller {
 				mv.setViewName(PageViews.ERROR_PAGINA);
 			}
 			else {				
-				String mensaje = "Jugador Agregado con �xito";
+				String mensaje = "Jugador Agregado con éxito";
 				
 				if (this.perteneceJugadorAlEquipo(Integer.parseInt(jugadorId), Integer.parseInt(equipoId))) {					
 					mensaje = "EL Jugador ya participa del Equipo";
 				} 
 				else if (!this.permitePresupuesto(presupuesto,Integer.parseInt(equipoId),Integer.parseInt((jugadorId)))) {				
-					mensaje = "Presupuesto inv�lido";					
+					mensaje = "Presupuesto inválido";					
 				}	
 				else {
 					equipoJugadorController.agregarJugadorAlEquipo(Integer.parseInt(jugadorId), Integer.parseInt(equipoId));					

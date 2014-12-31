@@ -1,6 +1,5 @@
 package com.palazzisoft.ligabalonpie.command;
 
-import java.util.Date;
 
 public class JugadorCommand {
 

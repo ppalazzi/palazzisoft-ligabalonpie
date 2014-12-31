@@ -65,8 +65,24 @@ public class JugadorControllerImpl implements JugadorController {
 		return this.jugadorDao.obtenerJugadoresDisponiblesPorEquipo(equipoId);
 	}
 	
+	@Override
+	public List<Jugador> obtenerJugadoresDisponiblesPorTipoJugador(Integer tipoJugadorId) {
+		if (tipoJugadorId == null) {
+			return this.jugadorDao.obtenerJugadoresDisponibles();
+		}
+		
+		return this.jugadorDao.obtenerJugadoresDisponiblesPorTipoJugador(tipoJugadorId);
+	}
+	
+
+	
 	public void saveJugador(Jugador jugador) {
 		this.jugadorDao.save(jugador);	
+	}
+
+	@Override
+	public List<Jugador> obtenerJugadoresDisponiblesParaComprar(Integer equipoId) {
+		return this.jugadorDao.obtenerJugadoresDisponiblesParaComprar(equipoId);
 	}
 	
 }

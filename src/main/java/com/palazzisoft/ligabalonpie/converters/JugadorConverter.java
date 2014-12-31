@@ -1,8 +1,11 @@
 package com.palazzisoft.ligabalonpie.converters;
 
 import static com.palazzisoft.ligabalonpie.converters.ConverterUtil.getFormat;
+import static com.palazzisoft.ligabalonpie.converters.JugadorConverter.convertirACommand;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.palazzisoft.ligabalonpie.command.JugadorCommand;
 import com.palazzisoft.ligabalonpie.entities.Jugador;
@@ -23,8 +26,20 @@ public class JugadorConverter  {
 		command.setValor(jugador.getValor());
 		command.setVelocidad(jugador.getVelocidad());
 		command.setTipoJugadorDescripcion(jugador.getTipoJugador().getDescripcion());
+		command.setTipoJugadorId(jugador.getTipoJugador().getId());
 		
 		return command;
+	}
+	
+	public static List<JugadorCommand> convertirJugadoresAJugadoresCommand(List<Jugador> jugadores) {
+		List<JugadorCommand> jugadoresCommand = new ArrayList<>();
+		
+		for (Jugador jugador : jugadores) {
+			JugadorCommand command = convertirACommand(jugador);
+			jugadoresCommand.add(command);
+		}
+		
+		return jugadoresCommand;
 	}
 	
 	public static Jugador convertirAJugador(JugadorCommand command) throws ParseException {		

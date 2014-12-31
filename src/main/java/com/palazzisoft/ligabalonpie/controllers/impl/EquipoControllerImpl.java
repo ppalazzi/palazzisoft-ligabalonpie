@@ -6,7 +6,6 @@ import static com.palazzisoft.ligabalonpie.enums.EEstado.ACTIVO;
 import static java.util.Calendar.getInstance;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +21,6 @@ import com.palazzisoft.ligabalonpie.entities.Equipo;
 import com.palazzisoft.ligabalonpie.entities.EquipoJugador;
 import com.palazzisoft.ligabalonpie.entities.Jugador;
 import com.palazzisoft.ligabalonpie.entities.Participante;
-import com.palazzisoft.ligabalonpie.enums.EEstado;
 import com.palazzisoft.ligabalonpie.util.PropertiesValues;
 
 @Controller
@@ -113,5 +111,10 @@ public class EquipoControllerImpl implements EquipoController {
 		}
 		
 		this.equipoDao.save(equipo);
+	}
+	
+	@Override
+	public void obtenerJugadoresDisponiblesParaEquipo(Long equipoId) {
+		
 	}
 }
