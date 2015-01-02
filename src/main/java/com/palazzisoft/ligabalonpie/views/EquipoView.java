@@ -119,5 +119,4 @@ public class EquipoView {
 
 		return LISTADO_COMPRAR_JUGADOR;
 	}
-
 }

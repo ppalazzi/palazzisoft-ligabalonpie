@@ -10,43 +10,41 @@
 </br>
 <div width="80%" align="center">
 
-<table cellpadding="0" cellspacing="0" border="1" id="jugadoresTableId" class="display" align="center" width="80%" >
+<table cellpadding="0" cellspacing="0" border="1" id="participanteesTableId" class="display" align="center" width="80%" >
 	<thead>
 		<tr>
 			<th>Nombre</th>
 			<th>Apellido</th>
+			<th>Email</th>
 			<th>Fecha de Nacimiento</th>
-			<th>Velocidad</th>
-			<th>Remate</th>
-			<th>Habilidad</th>
-			<th>Físico</th>
+			<th>Calle</th>
+			<th>N&uacute;mero</th>
 			<th>Estado</th>
-			<th>Valor</th>
-			<th>Posición</th>
+			<th>Ciudad</th>
 			<th>Acción</th>
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach var="jugador" items="${jugadores}">
+		<c:forEach var="participante" items="${participantes}">
 			<tr>
-				<td>${jugador.nombre}</td>
-				<td>${jugador.apellido}</td>
-				<td>${jugador.fechaNacimiento}</td>
+				<td>${participante.nombre}</td>
+				<td>${participante.apellido}</td>
+				<td>${participante.fechaNacimiento}</td>
 				<td>
-					<c:out value="${jugador.velocidad}"/>
+					<c:out value="${participante.fechaNacimiento}"/>
 				</td>
 				<td>
-					<c:out value="${jugador.remate}"/>
+					<c:out value="${participante.calle}"/>
 				</td>		
 				<td>
-					<c:out value="${jugador.habilidad}"/>		
+					<c:out value="${participante.numero}"/>		
 				</td>						
 				<td>
-					<c:out value="${jugador.fisico}"/>				
+					<c:out value="${participante.estado}"/>				
 				</td>	
 				<td>
 					<c:choose>
-						<c:when test="${jugador.estado == 1}">
+						<c:when test="${participante.estado == 1}">
 							<c:out value="Activo" />
 						</c:when>
 						<c:otherwise>
@@ -54,10 +52,9 @@
 						</c:otherwise>
 					</c:choose>
 				</td>		
-				<td><c:out value="${jugador.valor}" /></td>
-				<td><c:out value="${jugador.tipoJugadorDescripcion}" /></td>	
+				<td><c:out value="${participante.ciudad}" /></td>
 				<td>
-					<a href="/balonpie/nuevoJugador.adm?id=${jugador.id}">Modificar</a>
+					<a href="/balonpie/nuevoparticipante.adm?id=${participante.id}">Modificar</a>
 				</td>	
 			</tr>		
 		</c:forEach>

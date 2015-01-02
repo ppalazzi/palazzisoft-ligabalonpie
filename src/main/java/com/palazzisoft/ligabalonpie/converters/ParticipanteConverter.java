@@ -1,11 +1,14 @@
 package com.palazzisoft.ligabalonpie.converters;
 
+import static com.google.common.collect.Lists.newArrayList;
+
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.palazzisoft.ligabalonpie.command.ParticipanteCommand;
 import com.palazzisoft.ligabalonpie.entities.Pais;
 import com.palazzisoft.ligabalonpie.entities.Participante;
-import com.palazzisoft.ligabalonpie.entities.ParticipanteTorneo;
 import com.palazzisoft.ligabalonpie.util.FechaMascara;
 
 public class ParticipanteConverter {
@@ -45,6 +48,7 @@ public class ParticipanteConverter {
 		command.setPassword(participante.getPassword());
 		command.setCiudad(participante.getCiudad());
 		command.setPais(participante.getPais().getId());
+		command.setEstado(participante.getEstado().intValue());
 		
 		if (participante.getFechaNacimiento() != null) {
 			command.setFechaNacimiento(FechaMascara.dateAFechaMesAno(participante.getFechaNacimiento()));
@@ -53,4 +57,13 @@ public class ParticipanteConverter {
 		return command;
 	}
 	
+	public static List<ParticipanteCommand> convertirParticipantesACommand(List<Participante> participantes) throws ParseException {
+		ArrayList<ParticipanteCommand> participantesCommand = newArrayList();
+		
+		for (Participante participante : participantes) {
+			participantesCommand.add(convertirParticipanteACommand(participante));
+		}
+		
+		return participantesCommand;
+	}
 }

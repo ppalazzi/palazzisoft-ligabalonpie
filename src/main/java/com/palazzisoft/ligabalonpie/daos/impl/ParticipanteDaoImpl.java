@@ -46,4 +46,14 @@ public class ParticipanteDaoImpl extends GenericDaoImpl<Participante, Integer> i
 		return participante;
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")		
+	public List<Participante> obtenerParticipantes() {
+		String query = "FROM Participante";
+		
+		List<Participante> participantes = 
+				this.getHibernateTemplate().find(query);
+		
+		return participantes;
+	}
 }

@@ -15,6 +15,7 @@ public class ParticipanteCommand {
 	private String ciudad;
 	private Integer pais;
 	private String password;
+	private Integer estado;
 	private List<TorneoCommand> torneos;
 
 	public ParticipanteCommand() {
@@ -108,4 +109,18 @@ public class ParticipanteCommand {
 	public List<TorneoCommand> getTorneos() {
 		return this.torneos;
 	}
+
+	public Integer getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Integer estado) {
+		this.estado = estado;
+	}
+
+	public void setTorneos(List<TorneoCommand> torneos) {
+		this.torneos = torneos;
+	}
+	
+	
 }

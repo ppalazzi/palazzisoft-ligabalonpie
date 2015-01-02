@@ -1,6 +1,7 @@
 package com.palazzisoft.ligabalonpie.controllers.impl;
 
 import java.text.ParseException;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,11 @@ public class ParticipanteControllerImpl implements ParticipanteController {
 		return this.participanteDao.getById(id);
 	}
 
+	@Override
+	public List<Participante> obtenerParticipantes() {
+		return this.participanteDao.obtenerParticipantes();
+	}
+	
 	private Participante modificarParticipante(ParticipanteCommand participanteCommand)
 			throws ParseException {
 		Participante participante = ParticipanteConverter

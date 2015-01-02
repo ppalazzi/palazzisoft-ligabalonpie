@@ -30,5 +30,7 @@ public final class PageViews {
 	public static final String ALTA_EDICION_JUGADOR = "/backend/jugador/nuevo";
 	public static final String ALTA_EDICION_EQUIPO = "/backend/equipo/nuevo";
 
-	public static final String LISTADO_COMPRAR_JUGADOR = "/backend/equipo/comprarJugadorComp"; 
+	public static final String LISTADO_COMPRAR_JUGADOR = "/backend/equipo/comprarJugadorComp";
+	
+	public static final String LISTADO_PARTICIPANTE = "/backend/participante/listado";
 }
