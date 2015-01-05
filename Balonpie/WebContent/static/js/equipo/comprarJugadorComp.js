@@ -1,7 +1,3 @@
-$(document).ready(function() {
-
-});
-
-function comprarJugador(j) {
-	alert(j);
+function carlitos() {
+	alert("agustino");
 }
