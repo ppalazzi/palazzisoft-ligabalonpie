@@ -33,4 +33,6 @@ public final class PageViews {
 	public static final String LISTADO_COMPRAR_JUGADOR = "/backend/equipo/comprarJugadorComp";
 	
 	public static final String LISTADO_PARTICIPANTE = "/backend/participante/listado";
+	public static final String NUEVO_PARTICIPANTE = "/backend/participante/nuevo";
+
 }

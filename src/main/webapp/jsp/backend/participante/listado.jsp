@@ -7,6 +7,15 @@
 <script type="text/javascript"
 	src="/balonpie/static/js/jquery.dataTables.js"></script>
 
+<script type="text/javascript">
+$(document).ready(function () {
+    $("#participanteesTableId").dataTable({
+        "sPaginationType": "full_numbers",
+        "bJQueryUI": true
+    });
+});
+</script>
+
 </br>
 <div width="80%" align="center">
 
@@ -29,19 +38,14 @@
 			<tr>
 				<td>${participante.nombre}</td>
 				<td>${participante.apellido}</td>
+				<td>${participante.email}</td>
 				<td>${participante.fechaNacimiento}</td>
-				<td>
-					<c:out value="${participante.fechaNacimiento}"/>
-				</td>
 				<td>
 					<c:out value="${participante.calle}"/>
 				</td>		
 				<td>
 					<c:out value="${participante.numero}"/>		
 				</td>						
-				<td>
-					<c:out value="${participante.estado}"/>				
-				</td>	
 				<td>
 					<c:choose>
 						<c:when test="${participante.estado == 1}">
@@ -54,7 +58,7 @@
 				</td>		
 				<td><c:out value="${participante.ciudad}" /></td>
 				<td>
-					<a href="/balonpie/nuevoparticipante.adm?id=${participante.id}">Modificar</a>
+					<a href="/balonpie/nuevoParticipante.adm?participanteId=${participante.id}">Modificar</a>
 				</td>	
 			</tr>		
 		</c:forEach>

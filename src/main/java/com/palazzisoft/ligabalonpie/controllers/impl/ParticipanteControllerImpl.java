@@ -69,6 +69,11 @@ public class ParticipanteControllerImpl implements ParticipanteController {
 	}
 
 	@Override
+	public void guardarParticipante(Participante participante) {
+		this.participanteDao.save(participante);
+	}
+	
+	@Override
 	@Transactional
 	public Participante obtenerParticipantePorId(Integer id) {
 		return this.participanteDao.getById(id);

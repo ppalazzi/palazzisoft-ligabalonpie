@@ -1,6 +1,8 @@
 package com.palazzisoft.ligabalonpie.converters;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static com.palazzisoft.ligabalonpie.util.FechaMascara.dateAFechaMesAno;
+import static java.lang.Byte.valueOf;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -32,6 +34,10 @@ public class ParticipanteConverter {
 		if (command.getFechaNacimiento() != null) {
 			participante.setFechaNacimiento(FechaMascara.stringToDateFormat(command.getFechaNacimiento()));			
 		}
+		
+		if (command.getEstado() != null) {
+			participante.setEstado(valueOf(command.getEstado().byteValue()));
+		}
 				
 		return participante;			
 	}
@@ -51,7 +57,7 @@ public class ParticipanteConverter {
 		command.setEstado(participante.getEstado().intValue());
 		
 		if (participante.getFechaNacimiento() != null) {
-			command.setFechaNacimiento(FechaMascara.dateAFechaMesAno(participante.getFechaNacimiento()));
+			command.setFechaNacimiento(dateAFechaMesAno(participante.getFechaNacimiento()));
 		}
 			
 		return command;

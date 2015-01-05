@@ -1,10 +1,36 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <script type="text/javascript"
-	src="/balonpie/static/js/equipo/comprarJugadorComp.js"></script>
+	src="/balonpie/static/js/equipo/nuevo.js"></script>
 
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript"
+	src="/balonpie/static/js/jquery.dataTables.js"></script>
 
-<div id="comprarJugadorDiv">
+<script type="text/javascript">
+$(document).ready(function () {
+    $("#equiposTableId").dataTable({
+        "sPaginationType": "full_numbers",
+        "bJQueryUI": true
+    });
+});
+
+function refreshPage() {
+	var tipoJugadorId = $('#tipoJugadorSelect').val();
+	
+	if (tipoJugadorId == -1) {
+		tipoJugadorId = "";
+	}
+	
+	traerJugadoresDisponiblesPorEquipos(tipoJugadorId);
+}
+
+function comprarJugador(j) {
+	alert(j);
+}
+</script>
+
+<div id="comprarJugadorDiv" title="Comprar Jugador">
 	<div>
 		<span>Presupuesto :</span>
 		<span><c:out value="${prueba}" /></span>
@@ -14,7 +40,7 @@
 	<div>
 		<div id="listadoFilters" align="left">
 			<label>Posición</label>
-			<select id="tipoJugadorSelect" name="tipoJugadorSelect">
+			<select id="tipoJugadorSelect" name="tipoJugadorSelect" onchange="refreshPage();">
 				<option value="-1" selected>Seleccionar</option>
 				<c:forEach items="${tipoJugador}" var="tipo">
 					<option value="${tipo.id}" <c:if test="${tipo.id eq tipoJugadorId}">selected</c:if> >
@@ -25,66 +51,36 @@
 		</div>		
 		
 		<div>
-			<c:forEach items="${jugadores}" var="jugador">
-				<div class="Table">
-				    <div class="Title">
-				        <p>Jugadores</p>
-				    </div>
-				    <div class="Heading">
-				        <div class="Cell">
-				            <p>Nombre</p>
-				        </div>
-				        <div class="Cell">
-				            <p>Apellido</p>
-				        </div>
-				        <div class="Cell">
-				            <p>Velocidad</p>
-				        </div>
-				        <div class="Cell">
-				        	<p>Remate</p>
-				        </div>
-				        <div class="Cell">
-				        	<p>Habilidad</p>
-				        </div>
-				        <div class="Cell">
-				        	<p>F&iacute;sico</p>
-				        </div>
-				        <div class="Cell">
-				        	<p>Valor</p>
-				        </div>
-				        <div class="Cell">
-				        	<p>Opci&oacute;n</p>
-				        </div>						        				    				        				        				        
-				    </div>
-				    <div class="Row">
-				        <div class="Cell">
-				            <p>${jugador.nombre}</p>
-				        </div>
-				        <div class="Cell">
-				            <p>${jugador.apellido}</p>
-				        </div>
-				        <div class="Cell">
-				            <p>${jugador.velocidad}</p>
-				        </div>
-				        <div class="Cell">
-				            <p>${jugador.remate}</p>
-				        </div>
-				        <div class="Cell">
-				            <p>${jugador.habilidad}</p>
-				        </div>	
-				        <div class="Cell">
-				            <p>${jugador.fisico}</p>
-				        </div>
-				        <div class="Cell">
-				            <p>${jugador.valor}</p>
-				        </div>		
-				        <div class="Cell">
-				        	<a onclick="comprarJugador(<c:out value="${jugador.id}" />);" href="#"><img alt="image" src="static/images/plus.jpg" title="Comprar"></a>
-				        </div>			        					        				        				        
-				    </div>
-
-				</div>	
-			</c:forEach>
+			<table cellpadding="0" cellspacing="0" border="1"
+			 align="center" width="80%" id="equiposTableId" class="display">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>Velocidad</th>
+						<th>Remate</th>
+						<th>Habilidad</th>
+						<th>F&iacute;sico</th>
+						<th>Valor</th>
+						<th>Opci&oacute;n</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${jugadores}" var="jugador">
+						<tr>
+							<td>${jugador.nombre}</td>
+							<td>${jugador.apellido}</td>
+							<td>${jugador.velocidad}</td>
+							<td>${jugador.remate}</td>
+							<td>${jugador.habilidad}</td>
+							<td>${jugador.fisico}</td>
+							<td>${jugador.valor}</td>
+							<td>
+								<a onclick="comprarJugador(<c:out value="${jugador.id}" />);" href="#"><img alt="image" src="static/images/plus.jpg" title="Comprar"></a>
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>		
 		</div>
 	</div>
 </div>		

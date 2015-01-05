@@ -52,8 +52,9 @@
 					value='<c:out value="${equipo.torneoId}" />' maxlength="25">			
 			</spring:bind>		
 		</li>
-		<input type="submit" value="Guardar"> 
-		<a href="#"id="jugadoresDialog">Administrar Jugadores</a>
+		<a href="#"id="jugadoresDialog">Vender Jugadores</a></br>
+		<a href="/balonpie/listadoJugadorDisponibles.adm?equipoId=5&tipoJugadorId=0">Comprar Jugadores</a></br> 
+		<input type="submit" value="Guardar">
 		
 		<div id="error">
 			<font color="red"> <form:errors path="*" />
@@ -61,9 +62,7 @@
 		</div>		
 	</ul>
 
-	<div id="jugadoresComprablesListDiv" class="hide">
-	
-	</div>
+</form:form>
 
 	<div id="jugadoresWindow" class="hide" title="Jugadores de Equipo">
 		<c:forEach items="${equipo.jugadores}" var="jugador">
@@ -80,13 +79,8 @@
 		</div>
 		</c:forEach>
 
-		
-		<div>
-			<input type="button" value="Nuevo Jugador" id="nuevoJugadorBtn" />
-		</div>
 	</div>
 
-</form:form>
 		
 <script type="text/javascript"
 	src="/balonpie/static/js/equipo/nuevo.js"></script>		

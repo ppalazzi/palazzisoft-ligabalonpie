@@ -2,6 +2,7 @@ package com.palazzisoft.ligabalonpie.views;
 
 import static com.palazzisoft.ligabalonpie.converters.EquipoConverter.convertirAEquipo;
 import static com.palazzisoft.ligabalonpie.converters.EquipoConverter.convertirAEquipoCommand;
+import static com.palazzisoft.ligabalonpie.converters.JugadorConverter.convertirJugadoresAJugadoresCommand;
 import static com.palazzisoft.ligabalonpie.util.PageViews.ALTA_EDICION_EQUIPO;
 import static com.palazzisoft.ligabalonpie.util.PageViews.DASHBOARD;
 import static com.palazzisoft.ligabalonpie.util.PageViews.EQUIPO_RESUMEN;
@@ -26,7 +27,6 @@ import com.palazzisoft.ligabalonpie.command.EquipoCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoController;
 import com.palazzisoft.ligabalonpie.controllers.api.JugadorController;
 import com.palazzisoft.ligabalonpie.controllers.api.TipoJugadorController;
-import com.palazzisoft.ligabalonpie.converters.JugadorConverter;
 import com.palazzisoft.ligabalonpie.entities.Equipo;
 import com.palazzisoft.ligabalonpie.entities.Jugador;
 import com.palazzisoft.ligabalonpie.validators.EquipoValidator;
@@ -109,14 +109,17 @@ public class EquipoView {
 	}
 
 	@RequestMapping(value = "/listadoJugadorDisponibles.adm", method = GET)
-	public String obtenerJugadoresDisponiblesPor(@RequestParam Integer equipoId, Model model) {
+	public String obtenerJugadoresDisponiblesPor(@RequestParam Integer equipoId,
+			@RequestParam Integer tipoJugadorId, Model model) {
 		List<Jugador> jugadores = this.jugadorController
 				.obtenerJugadoresDisponiblesParaComprar(equipoId);
 		
-		model.addAttribute("jugadores", JugadorConverter.convertirJugadoresAJugadoresCommand(jugadores));
+		model.addAttribute("jugadores", convertirJugadoresAJugadoresCommand(jugadores));
 		model.addAttribute("tipoJugador", this.tipoJugadorController.obtenerTodosTipoJugador());
 		model.addAttribute("equipoId", equipoId);
+		model.addAttribute("tipoJugadorId", tipoJugadorId);
 
 		return LISTADO_COMPRAR_JUGADOR;
 	}
+
 }

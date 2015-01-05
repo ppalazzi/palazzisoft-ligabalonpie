@@ -15,4 +15,6 @@ public interface ParticipanteController {
 	Participante obtenerParticipantePorId(Integer id);
 
 	List<Participante> obtenerParticipantes();
+
+	void guardarParticipante(Participante participante);
 }
