@@ -11,6 +11,7 @@ import static com.palazzisoft.ligabalonpie.util.PageViews.NUEVO_EQUIPO;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,8 +103,14 @@ public class EquipoView {
 			return ALTA_EDICION_EQUIPO;
 		}
 
-		Equipo equipo = convertirAEquipo(equipoCommand);
-		this.equipoController.guardarEquipo(equipo);
+		try {
+			Equipo equipo = convertirAEquipo(equipoCommand);
+			this.equipoController.guardarEquipo(equipo);
+			model.addAttribute("mensaje", "Se ha guardado exitosamente");
+			model.addAttribute("equipo", equipoCommand);
+		} catch (ParseException e) {
+			model.addAttribute("error", "Hubo un error al cargar los datos");
+		}
 
 		return ALTA_EDICION_EQUIPO;
 	}

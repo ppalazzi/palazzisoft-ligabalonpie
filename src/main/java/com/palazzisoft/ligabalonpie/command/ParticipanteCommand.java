@@ -3,11 +3,20 @@ package com.palazzisoft.ligabalonpie.command;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class ParticipanteCommand {
 
 	private Integer id;
+	
+	@Size(min=2, max=30) 
 	private String nombre;
 	private String apellido;
+	
+	@NotEmpty @Email
 	private String email;
 	private String fechaNacimiento;
 	private String calle;

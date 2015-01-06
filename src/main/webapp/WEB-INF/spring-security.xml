@@ -17,6 +17,10 @@
 		 default-target-url="/jsp/dashboard.jsp"/>		
 	</http>
 
+<!--     <authentication-manager alias="authenticationManager"> -->
+<!--         <authentication-provider ref="customAuthenticationProvider" /> -->
+<!--     </authentication-manager> -->
+
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>

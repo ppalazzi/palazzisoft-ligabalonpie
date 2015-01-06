@@ -71,16 +71,7 @@ public class EquipoControllerImpl implements EquipoController {
 
 	@Override
 	public void nuevoEquipo(EquipoCommand equipoCommand, Integer participanteId) {
-		Participante participante = this.participanteDao.getById(participanteId);
-
-		Equipo equipo = EquipoConverter.convertirAEquipo(equipoCommand);
-		equipo.setFechaCreacion(new Date());
-		equipo.setParticipante(participante);
-		equipo.setEstado(ACTIVO.getEstado());
-		equipo.setPresupuesto(Long.valueOf(PropertiesValues.PRESUPUESTO_INICIAL));
-		equipo.setPuntos(Long.valueOf(PropertiesValues.PUNTOS_INICIAL));
-
-		this.equipoDao.save(equipo);
+		// TODO deberia ser eliminado el código
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package com.palazzisoft.ligabalonpie.converters;
 import static com.palazzisoft.ligabalonpie.converters.ConverterUtil.getFormat;
 import static com.palazzisoft.ligabalonpie.converters.JugadorConverter.convertirACommand;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +16,16 @@ import com.palazzisoft.ligabalonpie.entities.Torneo;
 
 public class EquipoConverter {
 
-	public static Equipo convertirAEquipo(EquipoCommand equipoCommand) {
+	public static Equipo convertirAEquipo(EquipoCommand equipoCommand) throws ParseException {
 		Equipo equipo = new Equipo();
 		equipo.setId(equipoCommand.getId());
 		equipo.setDescripcion(equipoCommand.getDescripcion());
 		equipo.setNombre(equipoCommand.getNombre());
 		equipo.setPresupuesto(equipoCommand.getPresupuesto());
 		equipo.setPuntos(equipoCommand.getPuntos());
-
+		equipo.setFechaCreacion(getFormat().parse(equipoCommand.getFechaCreacion()));
+		equipo.setEstado(equipoCommand.getEstado());
+		
 		Participante participante = new Participante();
 		if (equipoCommand.getParticipanteId() != null) {
 			participante.setId(equipoCommand.getParticipanteId());

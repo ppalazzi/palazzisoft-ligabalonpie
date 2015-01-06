@@ -26,6 +26,7 @@ $(document).ready(function () {
 			<th>Apellido</th>
 			<th>Email</th>
 			<th>Fecha de Nacimiento</th>
+			<th>Pa&iacute;s</th>
 			<th>Calle</th>
 			<th>N&uacute;mero</th>
 			<th>Estado</th>
@@ -40,6 +41,7 @@ $(document).ready(function () {
 				<td>${participante.apellido}</td>
 				<td>${participante.email}</td>
 				<td>${participante.fechaNacimiento}</td>
+				<td>${participante.pais}</td>
 				<td>
 					<c:out value="${participante.calle}"/>
 				</td>		
@@ -58,7 +60,7 @@ $(document).ready(function () {
 				</td>		
 				<td><c:out value="${participante.ciudad}" /></td>
 				<td>
-					<a href="/balonpie/nuevoParticipante.adm?participanteId=${participante.id}">Modificar</a>
+					<a href="/balonpie/nuevoParticipante.adm?id=${participante.id}">Modificar</a>
 				</td>	
 			</tr>		
 		</c:forEach>

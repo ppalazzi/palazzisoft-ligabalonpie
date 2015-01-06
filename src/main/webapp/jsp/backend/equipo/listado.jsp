@@ -54,7 +54,6 @@ $(document).ready(function () {
 					<td>${equipo.puntos}</td>
 					<td>${equipo.torneoId}</td>
 					<td>
-						<a href="/balonpie/listadoJugadorPorEquipo.adm?equipoId=<c:out value="${equipo.id}" />">Ver Jugadores</a>
 						<a href="/balonpie/nuevoEquipo.adm?id=${equipo.id}">Modificar
 					</a>
 					</td>

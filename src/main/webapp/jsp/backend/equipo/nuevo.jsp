@@ -14,6 +14,7 @@
 	<c:if test="${equipo.id != null}">
 		<spring:bind path="id">
 			<input type="hidden" name="id" value="${equipo.id}">
+			<input type="hidden" name="fechaCreacion" value="${equipo.fechaCreacion}">
 		</spring:bind>												
 	</c:if>
 	<ul>
@@ -56,10 +57,6 @@
 		<a href="/balonpie/listadoJugadorDisponibles.adm?equipoId=5&tipoJugadorId=0">Comprar Jugadores</a></br> 
 		<input type="submit" value="Guardar">
 		
-		<div id="error">
-			<font color="red"> <form:errors path="*" />
-			</font>
-		</div>		
 	</ul>
 
 </form:form>
@@ -81,6 +78,23 @@
 
 	</div>
 
+<div id="message">
+	<c:if test="${not empty mensaje}">
+		<font color="green">
+			<c:out value="${mensaje}" />
+		</font>
+	</c:if>	
+</div>
+
+<div id="error">
+	<font color="red"> 
+		<form:errors path="*" />
+		
+		<c:if test="${not empty error}">
+			<c:out value="${error}"></c:out>
+		</c:if>				
+	</font>
+</div>
 		
 <script type="text/javascript"
 	src="/balonpie/static/js/equipo/nuevo.js"></script>		

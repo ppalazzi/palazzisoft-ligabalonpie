@@ -65,22 +65,41 @@
 				path="participante.pais">
 				<select id="pais" name="pais">
 					<c:forEach items="${paises}" var="pais">
-						<option value="<c:out value="${pais.key}" />">
+						<option value="<c:out value="${pais.key}" />" <c:if test="${pais.key == participante.pais}" >selected</c:if> >
 							<c:out value="${pais.value}" />
 						</option>
 					</c:forEach>
 				</select>
 			</spring:bind></li>
+		<li><span>Password</span>
+			<spring:bind path="participante.password">
+				<input type="text" name="password"
+					value='<c:out value="${participante.password}" />' maxlength="50">				
+			</spring:bind>
+		</li>	
 
 		<input type="submit" value="Guardar">
-
-		<div id="error">
-			<font color="red"> <form:errors path="*" />
-			</font>
-		</div>
 	</ul>
 
 </form:form>
+
+<div id="message">
+	<c:if test="${not empty mensaje}">
+		<font color="green">
+			<c:out value="${mensaje}" />
+		</font>
+	</c:if>	
+</div>
+
+<div id="error">
+	<font color="red"> 
+		<form:errors path="*" />
+		
+		<c:if test="${not empty error}">
+			<c:out value="${error}"></c:out>
+		</c:if>				
+	</font>
+</div>
 
 
 <jsp:include page="/jsp/backend/footer.jsp" />
