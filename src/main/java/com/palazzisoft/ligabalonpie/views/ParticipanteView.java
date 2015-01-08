@@ -86,6 +86,7 @@ public class ParticipanteView {
 	public String guardarParticipante(@ModelAttribute @Valid ParticipanteCommand participanteCommand,
 			BindingResult bindingResult, Model model) {
 		this.participanteValidator.validate(participanteCommand, bindingResult);
+		model.addAttribute("paises", mapaPaises);
 		
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("participante", participanteCommand);
@@ -96,7 +97,6 @@ public class ParticipanteView {
 			Participante participante = convertirCommandAParticipante(participanteCommand);
 			this.participanteController.guardarParticipante(participante);
 			model.addAttribute("participante", participanteCommand);
-			model.addAttribute("paises", mapaPaises);
 			model.addAttribute("mensaje", "Se ha guardado exitosamente");
 		} catch (ParseException e) {
 			model.addAttribute("error", "Hubo un error al cargar los datos");

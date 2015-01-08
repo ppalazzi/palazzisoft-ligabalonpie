@@ -74,9 +74,15 @@
 		<li><span>Password</span>
 			<spring:bind path="participante.password">
 				<input type="text" name="password"
-					value='<c:out value="${participante.password}" />' maxlength="50">				
+					value='<c:out value="${participante.password}" />' maxlength="20">				
 			</spring:bind>
 		</li>	
+		<li>
+			<div id="error">
+				<font color="red"> <form:errors path="*" />
+				</font>
+			</div>		
+		</li>
 
 		<input type="submit" value="Guardar">
 	</ul>

@@ -5,18 +5,19 @@ import java.util.List;
 
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.Email;
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Email;
 
 public class ParticipanteCommand {
 
 	private Integer id;
 	
-	@Size(min=2, max=30) 
+	@Size(min=2, max=50) 
 	private String nombre;
+	
+	@Size(min=2, max=50)
 	private String apellido;
 	
-	@NotEmpty @Email
+	@Email
 	private String email;
 	private String fechaNacimiento;
 	private String calle;
