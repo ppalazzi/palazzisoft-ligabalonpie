@@ -3,7 +3,7 @@ package com.palazzisoft.ligabalonpie.converters;
 import java.text.SimpleDateFormat;
 /**
  * 
- * @author pablo
+ * @author ppalazzi
  *
  */
 public class ConverterUtil {

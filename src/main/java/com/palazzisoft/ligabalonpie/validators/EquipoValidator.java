@@ -18,7 +18,7 @@ import com.palazzisoft.ligabalonpie.entities.Torneo;
 
 
 /**
- * @author pablo 
+ * @author ppalazzi
  */
 @Component
 public class EquipoValidator implements Validator {

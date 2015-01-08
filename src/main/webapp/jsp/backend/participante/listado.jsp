@@ -40,7 +40,11 @@ $(document).ready(function () {
 				<td>${participante.nombre}</td>
 				<td>${participante.apellido}</td>
 				<td>${participante.email}</td>
-				<td>${participante.fechaNacimiento}</td>
+				<td>
+					<fmt:parseDate value="${participante.fechaNacimiento}" var="fechaNacimiento" 
+					                              pattern="MM/dd/yyyy" />
+					<fmt:formatDate value="${fechaNacimiento}"/>  								
+				</td>
 				<td>${participante.pais}</td>
 				<td>
 					<c:out value="${participante.calle}"/>
@@ -68,5 +72,24 @@ $(document).ready(function () {
 </table>
 
 </div>
+
+<div id="message">
+	<c:if test="${not empty mensaje}">
+		<font color="green">
+			<c:out value="${mensaje}" />
+		</font>
+	</c:if>	
+</div>
+
+<div id="error">
+	<font color="red"> 
+		<form:errors path="*" />
+		
+		<c:if test="${not empty error}">
+			<c:out value="${error}"></c:out>
+		</c:if>				
+	</font>
+</div>
+
 
 <jsp:include page="/jsp/backend/footer.jsp" />

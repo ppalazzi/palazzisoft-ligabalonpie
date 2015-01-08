@@ -11,7 +11,7 @@
         <link href="static/css/demo_page.css" rel="stylesheet" type="text/css" />
         <link href="static/css/demo_table.css" rel="stylesheet" type="text/css" />
         <link href="static/css/demo_table_jui.css" rel="stylesheet" type="text/css" />
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 </head>

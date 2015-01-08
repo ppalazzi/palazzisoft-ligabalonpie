@@ -2,6 +2,8 @@ package com.palazzisoft.ligabalonpie.converters;
 
 import static com.palazzisoft.ligabalonpie.converters.ConverterUtil.getFormat;
 import static com.palazzisoft.ligabalonpie.converters.JugadorConverter.convertirACommand;
+import static com.palazzisoft.ligabalonpie.util.FechaMascara.dateAFechaMesAno;
+import static com.palazzisoft.ligabalonpie.util.FechaMascara.stringToDateFormat;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ import com.palazzisoft.ligabalonpie.entities.Equipo;
 import com.palazzisoft.ligabalonpie.entities.EquipoJugador;
 import com.palazzisoft.ligabalonpie.entities.Participante;
 import com.palazzisoft.ligabalonpie.entities.Torneo;
+import com.palazzisoft.ligabalonpie.util.FechaMascara;
 
 public class EquipoConverter {
 
@@ -23,7 +26,7 @@ public class EquipoConverter {
 		equipo.setNombre(equipoCommand.getNombre());
 		equipo.setPresupuesto(equipoCommand.getPresupuesto());
 		equipo.setPuntos(equipoCommand.getPuntos());
-		equipo.setFechaCreacion(getFormat().parse(equipoCommand.getFechaCreacion()));
+		equipo.setFechaCreacion(stringToDateFormat(equipoCommand.getFechaCreacion()));
 		equipo.setEstado(equipoCommand.getEstado());
 		
 		Participante participante = new Participante();
@@ -45,7 +48,7 @@ public class EquipoConverter {
 		equipoCommand.setNombre(equipo.getNombre());
 		equipoCommand.setId(equipo.getId());
 		equipoCommand.setEstado(equipo.getEstado());
-		equipoCommand.setFechaCreacion(getFormat().format(equipo.getFechaCreacion()));
+		equipoCommand.setFechaCreacion(dateAFechaMesAno(equipo.getFechaCreacion()));
 		equipoCommand.setParticipanteId(equipo.getParticipante().getId());
 		equipoCommand.setPresupuesto(equipo.getPresupuesto());
 		equipoCommand.setTorneoId(equipo.getTorneo().getId());

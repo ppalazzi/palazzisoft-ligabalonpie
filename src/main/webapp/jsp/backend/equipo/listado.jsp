@@ -40,7 +40,11 @@ $(document).ready(function () {
 				<tr>
 					<td>${equipo.nombre}</td>
 					<td>${equipo.descripcion}</td>
-					<td>${equipo.fechaCreacion}</td>
+					<td>
+						<fmt:parseDate value="${equipo.fechaCreacion}" var="fechaCreacion" 
+						                              pattern="MM/dd/yyyy" />
+						<fmt:formatDate value="${fechaCreacion}"/>  										
+					</td>
 					<td><c:choose>
 							<c:when test="${equipo.estado == 1}">
 								<c:out value="Activo" />

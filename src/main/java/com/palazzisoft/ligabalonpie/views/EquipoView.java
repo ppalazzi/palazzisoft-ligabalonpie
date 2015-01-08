@@ -3,11 +3,11 @@ package com.palazzisoft.ligabalonpie.views;
 import static com.palazzisoft.ligabalonpie.converters.EquipoConverter.convertirAEquipo;
 import static com.palazzisoft.ligabalonpie.converters.EquipoConverter.convertirAEquipoCommand;
 import static com.palazzisoft.ligabalonpie.converters.JugadorConverter.convertirJugadoresAJugadoresCommand;
-import static com.palazzisoft.ligabalonpie.util.PageViews.ALTA_EDICION_EQUIPO;
+import static com.palazzisoft.ligabalonpie.util.PageViews.ALTA_BAJA_EQUIPO;
 import static com.palazzisoft.ligabalonpie.util.PageViews.DASHBOARD;
 import static com.palazzisoft.ligabalonpie.util.PageViews.EQUIPO_RESUMEN;
 import static com.palazzisoft.ligabalonpie.util.PageViews.LISTADO_COMPRAR_JUGADOR;
-import static com.palazzisoft.ligabalonpie.util.PageViews.NUEVO_EQUIPO;
+import static com.palazzisoft.ligabalonpie.util.PageViews.ALTA_BAJA_EQUIPO;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -54,7 +54,7 @@ public class EquipoView {
 	public String nuevoEquipoShowForm(@RequestParam("participanteId") String participanteId,
 			ModelMap model) {
 		model.addAttribute("participanteId", participanteId);
-		return NUEVO_EQUIPO;
+		return ALTA_BAJA_EQUIPO;
 	}
 
 	@RequestMapping(value = "/nuevoEquipo.htm", method = RequestMethod.POST)
@@ -90,7 +90,7 @@ public class EquipoView {
 
 		model.addAttribute("equipo", equipoCommand);
 
-		return ALTA_EDICION_EQUIPO;
+		return ALTA_BAJA_EQUIPO;
 	}
 
 	@RequestMapping(value = "/nuevoEquipo.adm", method = POST)
@@ -100,7 +100,7 @@ public class EquipoView {
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("equipo", equipoCommand);
-			return ALTA_EDICION_EQUIPO;
+			return ALTA_BAJA_EQUIPO;
 		}
 
 		try {
@@ -112,7 +112,7 @@ public class EquipoView {
 			model.addAttribute("error", "Hubo un error al cargar los datos");
 		}
 
-		return ALTA_EDICION_EQUIPO;
+		return ALTA_BAJA_EQUIPO;
 	}
 
 	@RequestMapping(value = "/listadoJugadorDisponibles.adm", method = GET)

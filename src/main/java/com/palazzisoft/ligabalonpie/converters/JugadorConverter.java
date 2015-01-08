@@ -1,7 +1,7 @@
 package com.palazzisoft.ligabalonpie.converters;
 
-import static com.palazzisoft.ligabalonpie.converters.ConverterUtil.getFormat;
-import static com.palazzisoft.ligabalonpie.converters.JugadorConverter.convertirACommand;
+import static com.palazzisoft.ligabalonpie.util.FechaMascara.dateAFechaMesAno;
+import static com.palazzisoft.ligabalonpie.util.FechaMascara.stringToDateFormat;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class JugadorConverter  {
 		JugadorCommand command = new JugadorCommand();
 		command.setApellido(jugador.getApellido());
 		command.setId(jugador.getId());		
-		command.setFechaNacimiento(getFormat().format(jugador.getFechaNacimiento()));
+		command.setFechaNacimiento(dateAFechaMesAno(jugador.getFechaNacimiento()));
 		command.setNombre(jugador.getNombre());
 		command.setEstado(jugador.getEstado());
 		command.setFisico(jugador.getFisico());
@@ -45,7 +45,7 @@ public class JugadorConverter  {
 	public static Jugador convertirAJugador(JugadorCommand command) throws ParseException {		
 		Jugador jugador = new Jugador();
 		jugador.setApellido(command.getApellido());
-		jugador.setFechaNacimiento(getFormat().parse(command.getFechaNacimiento()));
+		jugador.setFechaNacimiento(stringToDateFormat(command.getFechaNacimiento()));
 		jugador.setNombre(command.getNombre());
 		jugador.setId(command.getId());
 		jugador.setEstado(command.getEstado());

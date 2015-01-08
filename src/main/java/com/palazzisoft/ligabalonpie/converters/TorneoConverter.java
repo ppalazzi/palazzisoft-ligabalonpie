@@ -1,5 +1,7 @@
 package com.palazzisoft.ligabalonpie.converters;
 
+import static com.palazzisoft.ligabalonpie.util.FechaMascara.stringToDateFormat;
+
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,20 +16,20 @@ public class TorneoConverter {
 		Torneo torneo = new Torneo();
 		torneo.setDescripcion(torneoCommand.getDescripcion());
 		torneo.setEstado(torneoCommand.getEstado());
+		torneo.setId(torneoCommand.getId());
 		
 		if (torneoCommand.getFechaCreacion() != null) {
-			torneo.setFechaCreacion(FechaMascara.stringToDateFormat(torneoCommand.getFechaCreacion()));
+			torneo.setFechaCreacion(stringToDateFormat(torneoCommand.getFechaCreacion()));
 		}
 		
 		if (torneoCommand.getFechaFin() != null) {
-			torneo.setFechaFin(FechaMascara.stringToDateFormat(torneoCommand.getFechaFin()));	
+			torneo.setFechaFin(stringToDateFormat(torneoCommand.getFechaFin()));	
 		}
 		
 		if (torneoCommand.getFechaInicio() != null) {
-			torneo.setFechaInicio(FechaMascara.stringToDateFormat(torneoCommand.getFechaInicio()));	
+			torneo.setFechaInicio(stringToDateFormat(torneoCommand.getFechaInicio()));	
 		}
-		
-		
+
 		return torneo;
 	}	
 	

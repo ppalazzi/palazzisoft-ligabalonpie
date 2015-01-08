@@ -2,7 +2,7 @@ package com.palazzisoft.ligabalonpie.views;
 
 import static com.palazzisoft.ligabalonpie.converters.JugadorConverter.convertirACommand;
 import static com.palazzisoft.ligabalonpie.converters.JugadorConverter.convertirAJugador;
-import static com.palazzisoft.ligabalonpie.util.PageViews.ALTA_EDICION_JUGADOR;
+import static com.palazzisoft.ligabalonpie.util.PageViews.ALTA_BAJA_JUGADOR;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -53,7 +53,7 @@ public class AltaJugadorView {
 		model.addAttribute("jugador", jugadorCommand);
 		model.addAttribute("tipoJugador", this.tipoJugadorController.obtenerTodosTipoJugador());
 
-		return ALTA_EDICION_JUGADOR;
+		return ALTA_BAJA_JUGADOR;
 	}
 
 	@RequestMapping(value = "/nuevoJugador.adm", method = POST)

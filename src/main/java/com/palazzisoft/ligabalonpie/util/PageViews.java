@@ -12,7 +12,7 @@ public final class PageViews {
 
 		// Torneos
 	public static final String NUEVO_TORNEO         = "frontend/torneo/nuevoTorneo";
-	public static final String LISTADO_TORNEO       = "frontend/torneo/listado";
+	public static final String LISTADO_TORNEO_OLD       = "frontend/torneo/listado";
 	
 		// Jugadores Manager
 	public static final String LISTADO_JUGADORES = "frontend/jugador/listado";
@@ -26,13 +26,13 @@ public final class PageViews {
 		// Backend
 	public static final String LISTADO_JUGADORES_BACK = "backend/jugador/listado";
 	public static final String LISTADO_EQUIPO_BACK = "backend/equipo/listado";
-	
-	public static final String ALTA_EDICION_JUGADOR = "/backend/jugador/nuevo";
-	public static final String ALTA_EDICION_EQUIPO = "/backend/equipo/nuevo";
-
 	public static final String LISTADO_COMPRAR_JUGADOR = "/backend/equipo/comprarJugadorComp";
-	
 	public static final String LISTADO_PARTICIPANTE = "/backend/participante/listado";
-	public static final String NUEVO_PARTICIPANTE = "/backend/participante/nuevo";
+	public static final String LISTADO_TORNEO = "/backend/torneo/listado";
+	
+	public static final String ALTA_BAJA_JUGADOR = "/backend/jugador/nuevo";
+	public static final String ALTA_BAJA_EQUIPO = "/backend/equipo/nuevo";
+	public static final String ALTA_BAJA_PARTICIPANTE = "/backend/participante/nuevo";
+	public static final String ALTA_EDICION_TORNEO = "/backend/torneo/nuevo";
 
 }

@@ -19,6 +19,11 @@
 					<ul>
 						<li><a href="/balonpie/nuevoEquipo.adm">Alta de Equipo</a></li>
 					</ul>					
+				</li>
+				<li><a href="/balonpie/listadoTorneo.adm">Torneos</a>
+					<ul>
+						<li><a href="/balonpie/nuevoTorneo.adm">Alta de Torneo</a></li>
+					</ul>					
 				</li>	
 			</ul>						
 		</div>

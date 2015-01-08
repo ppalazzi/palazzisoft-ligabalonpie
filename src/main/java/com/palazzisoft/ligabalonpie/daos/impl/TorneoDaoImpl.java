@@ -5,7 +5,11 @@ import java.util.List;
 import com.palazzisoft.ligabalonpie.daos.api.TorneoDao;
 import com.palazzisoft.ligabalonpie.entities.ParticipanteTorneo;
 import com.palazzisoft.ligabalonpie.entities.Torneo;
-
+/**
+ * 
+ * @author ppalazzi
+ *
+ */
 public class TorneoDaoImpl extends GenericDaoImpl<Torneo, Integer> implements TorneoDao {
 	
 	@Override
@@ -13,6 +17,13 @@ public class TorneoDaoImpl extends GenericDaoImpl<Torneo, Integer> implements To
 		return Torneo.class;
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Torneo> obtenerTodosLosTorneos() {
+		String sql = "FROM Torneo";
+		return this.getHibernateTemplate().find(sql);
+	}
+	
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<ParticipanteTorneo> obtenerParticipantesEquiposPorParticipanteId(Integer participanteId) {

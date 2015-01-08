@@ -1,19 +1,33 @@
 package com.palazzisoft.ligabalonpie.command;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+/**
+ * 
+ * @author ppalazzi
+ *
+ */
 public class TorneoCommand {
 
 	private Integer id;
+	
+	@Size (min = 2, max = 250)
 	private String descripcion;
+	
 	private String fechaCreacion;
+	
+	@NotNull
 	private Integer estado;
+	
+	@DateTimeFormat(pattern="dd/MM/YY")
 	private String fechaInicio;
+	
+	@DateTimeFormat(pattern="dd/MM/YY")
 	private String fechaFin;
 	
-	public TorneoCommand() {
-		
-	}
-
 	public Integer getId() {
 		return id;
 	}

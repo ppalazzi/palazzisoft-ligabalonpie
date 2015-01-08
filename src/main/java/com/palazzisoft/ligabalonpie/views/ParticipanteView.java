@@ -4,7 +4,7 @@ import static com.palazzisoft.ligabalonpie.converters.ParticipanteConverter.conv
 import static com.palazzisoft.ligabalonpie.converters.ParticipanteConverter.convertirParticipanteACommand;
 import static com.palazzisoft.ligabalonpie.converters.ParticipanteConverter.convertirParticipantesACommand;
 import static com.palazzisoft.ligabalonpie.util.PageViews.LISTADO_PARTICIPANTE;
-import static com.palazzisoft.ligabalonpie.util.PageViews.NUEVO_PARTICIPANTE;
+import static com.palazzisoft.ligabalonpie.util.PageViews.ALTA_BAJA_PARTICIPANTE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -79,7 +79,7 @@ public class ParticipanteView {
 			model.addAttribute("error", "Hubo un error al cargar los datos");
 		}
 
-		return NUEVO_PARTICIPANTE;
+		return ALTA_BAJA_PARTICIPANTE;
 	}
 	
 	@RequestMapping(value = "/nuevoParticipante.adm", method = POST)
@@ -90,7 +90,7 @@ public class ParticipanteView {
 		
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("participante", participanteCommand);
-			return NUEVO_PARTICIPANTE;
+			return ALTA_BAJA_PARTICIPANTE;
 		}
 		
 		try {
@@ -102,6 +102,6 @@ public class ParticipanteView {
 			model.addAttribute("error", "Hubo un error al cargar los datos");
 		}
 		
-		return NUEVO_PARTICIPANTE;
+		return ALTA_BAJA_PARTICIPANTE;
 	}
 }
