@@ -6,7 +6,11 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
+import com.palazzisoft.ligabalonpie.command.EquipoCommand;
 import com.palazzisoft.ligabalonpie.command.TorneoCommand;
+import com.palazzisoft.ligabalonpie.entities.Equipo;
 import com.palazzisoft.ligabalonpie.entities.Torneo;
 import com.palazzisoft.ligabalonpie.util.FechaMascara;
 
@@ -50,8 +54,17 @@ public class TorneoConverter {
 		if (torneo.getFechaInicio() != null) {
 			command.setFechaInicio(FechaMascara.dateAFechaMesAno(torneo.getFechaInicio()));	
 		}
-				
+		
+		convertEquiposDeTorneo(command, torneo);
+		
 		return command;
+	}
+	
+	private static void convertEquiposDeTorneo(TorneoCommand torneoCommand, Torneo torneo) {
+		for (Equipo equipo : torneo.getEquipos()) {
+			EquipoCommand equipoCommand = EquipoConverter.convertirAEquipoCommand(equipo);
+			torneoCommand.getEquipos().add(equipoCommand);
+		}
 	}
 	
 	public static List<TorneoCommand> convertirListadoACommand(List<Torneo> torneos) throws ParseException {

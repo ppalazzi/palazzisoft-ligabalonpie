@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.palazzisoft.ligabalonpie.controllers.api.TorneoController;
 import com.palazzisoft.ligabalonpie.daos.api.TorneoDao;
@@ -24,6 +25,7 @@ public class TorneoControllerImpl implements TorneoController {
 	}
 	
 	@Override
+	@Transactional
 	public List<Torneo> obtenerTodosLosTorneos() {
 		return this.torneoDao.obtenerTodosLosTorneos();
 	}
@@ -34,6 +36,7 @@ public class TorneoControllerImpl implements TorneoController {
 	}	
 	
 	@Override
+	@Transactional
 	public void guardarTorneo(Torneo torneo) {
 		this.torneoDao.save(torneo);
 	}

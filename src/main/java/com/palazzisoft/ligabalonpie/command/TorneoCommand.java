@@ -1,9 +1,17 @@
 package com.palazzisoft.ligabalonpie.command;
 
+import static com.google.common.collect.Sets.newHashSet;
+import static com.palazzisoft.ligabalonpie.util.FechaMascara.DATE_PATTERN;
+
+import java.util.Set;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.google.common.collect.Sets;
+
 
 /**
  * 
@@ -22,11 +30,19 @@ public class TorneoCommand {
 	@NotNull
 	private Integer estado;
 	
+	@NotNull
 	@DateTimeFormat(pattern="dd/MM/YY")
 	private String fechaInicio;
 	
-	@DateTimeFormat(pattern="dd/MM/YY")
+	@NotNull
+	@DateTimeFormat(pattern=DATE_PATTERN)
 	private String fechaFin;
+	
+	private Set<EquipoCommand> equipos;
+	
+	public TorneoCommand() {
+		this.equipos = newHashSet();
+	}
 	
 	public Integer getId() {
 		return id;
@@ -75,5 +91,12 @@ public class TorneoCommand {
 	public void setFechaFin(String fechaFin) {
 		this.fechaFin = fechaFin;
 	}
-	
+
+	public Set<EquipoCommand> getEquipos() {
+		return equipos;
+	}
+
+	public void setEquipos(Set<EquipoCommand> equipos) {
+		this.equipos = equipos;
+	}
 }

@@ -16,10 +16,11 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-
-
-
-
+/**
+ * 
+ * @author ppalazzi
+ *
+ */
 @Entity
 @Table(name = "T_TORNEO")
 public class Torneo implements Serializable {

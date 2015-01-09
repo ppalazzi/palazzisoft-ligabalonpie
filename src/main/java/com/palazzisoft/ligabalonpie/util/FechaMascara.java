@@ -10,7 +10,7 @@ import java.util.Date;
  */
 public class FechaMascara {
 
-	private final static String DATE_PATTERN = "MM/dd/yyyy";
+	public final static String DATE_PATTERN = "MM/dd/yyyy";
 	
 	public static String dateAFechaMesAno(Date date) {
 		SimpleDateFormat format = new SimpleDateFormat(DATE_PATTERN);		
