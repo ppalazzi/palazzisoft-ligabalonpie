@@ -2,6 +2,7 @@ package com.palazzisoft.ligabalonpie.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -11,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -49,10 +52,13 @@ public class Equipo implements Serializable {
 
 	@Column(name = "A_PUNTOS")
 	private Long puntos;
-
-	@ManyToOne
-	@JoinColumn(name = "torneo_F_ID", referencedColumnName = "F_ID", nullable = false)
-	private Torneo torneo;
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "T_EQUIPO_TORNEO", joinColumns = { 
+			@JoinColumn(name = "EQUIPO_F_ID", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "TORNEO_F_ID", 
+					nullable = false, updatable = false) })	
+	private List<Torneo> torneos;
 	
 	public Equipo() {
 
@@ -130,6 +136,14 @@ public class Equipo implements Serializable {
 		this.puntos = puntos;
 	}
 
+	public List<Torneo> getTorneos() {
+		return torneos;
+	}
+
+	public void setTorneos(List<Torneo> torneos) {
+		this.torneos = torneos;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -155,13 +169,4 @@ public class Equipo implements Serializable {
 		return true;
 	}
 
-	public Torneo getTorneo() {
-		return torneo;
-	}
-
-	public void setTorneo(Torneo torneo) {
-		this.torneo = torneo;
-	}
-
-	
 }

@@ -6,8 +6,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import com.palazzisoft.ligabalonpie.command.EquipoCommand;
 import com.palazzisoft.ligabalonpie.command.TorneoCommand;
 import com.palazzisoft.ligabalonpie.entities.Equipo;

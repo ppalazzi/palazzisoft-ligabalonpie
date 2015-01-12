@@ -1,21 +1,19 @@
 package com.palazzisoft.ligabalonpie.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 /**
  * 
  * @author ppalazzi
@@ -49,15 +47,15 @@ public class Torneo implements Serializable {
 	@Column(name = "A_FECHAFIN")
 	private Date fechaFin;
 
-	@OneToMany(mappedBy= "torneo")
-	private List<ParticipanteTorneo> participanteTorneos;
-	
-	@OneToMany(mappedBy = "torneo")
-	@Cascade({CascadeType.SAVE_UPDATE})
-	private Set<Equipo> equipos;
-	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "T_EQUIPO_TORNEO", joinColumns = { 
+			@JoinColumn(name = "TORNEO_F_ID", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "EQUIPO_F_ID", 
+					nullable = false, updatable = false) })
+	private List<Equipo> equipos;
+		
 	public Torneo() {
-		this.participanteTorneos = new ArrayList<ParticipanteTorneo>();
+		
 	}
 
 	public Integer getId() {
@@ -111,20 +109,12 @@ public class Torneo implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-	public List<ParticipanteTorneo> getParticipantes() {
-		return participanteTorneos;
-	}
-
-	public void setParticipantes(List<ParticipanteTorneo> participantes) {
-		this.participanteTorneos = participantes;
-	}
 	
-	public Set<Equipo> getEquipos() {
+	public List<Equipo> getEquipos() {
 		return equipos;
 	}
 
-	public void setEquipos(Set<Equipo> equipos) {
+	public void setEquipos(List<Equipo> equipos) {
 		this.equipos = equipos;
 	}
 

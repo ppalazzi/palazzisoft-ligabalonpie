@@ -7,7 +7,6 @@ import static com.palazzisoft.ligabalonpie.util.PageViews.ALTA_BAJA_EQUIPO;
 import static com.palazzisoft.ligabalonpie.util.PageViews.DASHBOARD;
 import static com.palazzisoft.ligabalonpie.util.PageViews.EQUIPO_RESUMEN;
 import static com.palazzisoft.ligabalonpie.util.PageViews.LISTADO_COMPRAR_JUGADOR;
-import static com.palazzisoft.ligabalonpie.util.PageViews.ALTA_BAJA_EQUIPO;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -64,7 +63,7 @@ public class EquipoView {
 		if (!this.equipoController.verificarExistenciaDeEquipo(equipoCommand.getNombre())) {
 			this.equipoController.nuevoEquipo(equipoCommand, participanteId);
 		} else {
-			model.put("mensajeError", "Ya tenÃ©s un equipo con ese nombre");
+			model.put("mensajeError", "Ya tenés un equipo con ese nombre");
 		}
 
 		return DASHBOARD;

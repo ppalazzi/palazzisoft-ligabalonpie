@@ -11,12 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.palazzisoft.ligabalonpie.command.ParticipanteCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.ParticipanteController;
 import com.palazzisoft.ligabalonpie.converters.ParticipanteConverter;
-import com.palazzisoft.ligabalonpie.converters.TorneoConverter;
 import com.palazzisoft.ligabalonpie.daos.api.ParticipanteDao;
 import com.palazzisoft.ligabalonpie.daos.api.ParticipanteTorneoDao;
 import com.palazzisoft.ligabalonpie.entities.Participante;
-import com.palazzisoft.ligabalonpie.entities.ParticipanteTorneo;
-import com.palazzisoft.ligabalonpie.entities.Torneo;
 import com.palazzisoft.ligabalonpie.enums.EEstadoParticipante;
 
 @Controller
@@ -48,10 +45,10 @@ public class ParticipanteControllerImpl implements ParticipanteController {
 
 	private void agregarTorneosACommand(Participante participante,
 			ParticipanteCommand participanteCommand) throws ParseException {
-		for (ParticipanteTorneo participanteTorneo : participante.getParticipanteTorneos()) {
-			Torneo torneo = participanteTorneo.getTorneo();
-			participanteCommand.getTorneos().add(TorneoConverter.convertirTorneoACommand(torneo));
-		}
+//		for (ParticipanteTorneo participanteTorneo : participante.getParticipanteTorneos()) {
+//			Torneo torneo = participanteTorneo.getTorneo();
+//			participanteCommand.getTorneos().add(TorneoConverter.convertirTorneoACommand(torneo));
+//		}
 	}
 	
 	@Override
@@ -69,12 +66,13 @@ public class ParticipanteControllerImpl implements ParticipanteController {
 	}
 
 	@Override
+	@Transactional
 	public void guardarParticipante(Participante participante) {
 		this.participanteDao.save(participante);
 	}
 	
 	@Override
-	@Transactional
+	@Transactional (readOnly = true)
 	public Participante obtenerParticipantePorId(Integer id) {
 		return this.participanteDao.getById(id);
 	}

@@ -20,7 +20,7 @@ public class JugadorControllerImpl implements JugadorController {
 	private JugadorDao jugadorDao;
 	
 
-	@Transactional
+	@Transactional (readOnly = true)
 	public Jugador getJugadorById(Integer id) {
 		return jugadorDao.getById(id);
 	}
@@ -43,6 +43,7 @@ public class JugadorControllerImpl implements JugadorController {
 		return false;
 	}
 
+	@Transactional
 	public void updateJugador(Jugador jugador) {
 		this.jugadorDao.update(jugador);
 	}
@@ -74,8 +75,7 @@ public class JugadorControllerImpl implements JugadorController {
 		return this.jugadorDao.obtenerJugadoresDisponiblesPorTipoJugador(tipoJugadorId);
 	}
 	
-
-	
+	@Transactional
 	public void saveJugador(Jugador jugador) {
 		this.jugadorDao.save(jugador);	
 	}

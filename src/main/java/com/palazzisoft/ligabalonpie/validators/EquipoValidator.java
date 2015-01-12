@@ -44,7 +44,6 @@ public class EquipoValidator implements Validator {
 		if (!errors.hasErrors()) {
 			rejectIfEmptyOrWhitespace(errors, "presupuesto", "error.equipo.presupuesto.vacio");
 			rejectIfEmptyOrWhitespace(errors, "puntos", "error.equipo.puntos.vacio");
-			rejectIfEmptyOrWhitespace(errors, "torneoId", "error.equipo.torneo.vacio");
 			
 			this.validarValores(equipoCommand, errors);			
 		}
@@ -73,14 +72,6 @@ public class EquipoValidator implements Validator {
 			if (participante == null) {
 				errors.rejectValue("participanteId", "error.equipo.participante.id");
 			}
-		}
-		
-		if (equipoCommand.getTorneoId() != null) {
-			Torneo torneo  = this.torneoController.obtenerTorneoPorId(equipoCommand.getTorneoId());			
-			if (torneo == null) {
-				errors.rejectValue("torneoId", "error.equipo.torneo.id");
-			}
-			
 		}
 	}
 }

@@ -35,8 +35,8 @@
 				<value>com.palazzisoft.ligabalonpie.entities.Equipo</value>
 				<value>com.palazzisoft.ligabalonpie.entities.EquipoJugador</value>
 				<value>com.palazzisoft.ligabalonpie.entities.Torneo</value>
-				<value>com.palazzisoft.ligabalonpie.entities.ParticipanteTorneo</value>
 				<value>com.palazzisoft.ligabalonpie.entities.Pais</value>
+				<value>com.palazzisoft.ligabalonpie.entities.EquipoTorneo</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

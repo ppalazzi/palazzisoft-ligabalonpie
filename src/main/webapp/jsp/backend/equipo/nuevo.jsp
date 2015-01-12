@@ -47,55 +47,34 @@
 					value='<c:out value="${equipo.participanteId}" />' maxlength="25">			
 			</spring:bind>		
 		</li>	
-		<li><span>Torneo</span>
-			<spring:bind path="torneoId">
-				<input type="text" name="torneoId"
-					value='<c:out value="${equipo.torneoId}" />' maxlength="25">			
-			</spring:bind>		
-		</li>
+
 		<a href="#"id="jugadoresDialog">Vender Jugadores</a></br>
 		<a href="/balonpie/listadoJugadorDisponibles.adm?equipoId=5&tipoJugadorId=0">Comprar Jugadores</a></br> 
 		<input type="submit" value="Guardar">
 		
 	</ul>
 
+	<div id="message">
+		<c:if test="${not empty mensaje}">
+			<font color="green">
+				<c:out value="${mensaje}" />
+			</font>
+		</c:if>	
+	</div>
+	
+	<div id="error">
+		<font color="red"> 
+			<form:errors path="*" />
+			
+			<c:if test="${not empty error}">
+				<c:out value="${error}"></c:out>
+			</c:if>				
+		</font>
+	</div>
+			
+
 </form:form>
 
-	<div id="jugadoresWindow" class="hide" title="Jugadores de Equipo">
-		<c:forEach items="${equipo.jugadores}" var="jugador">
-			
-		<div id="jugadoresLista">
-			<ul>
-				<li>
-					<c:out value="${jugador.nombre}"></c:out> 
-					<c:out value="${jugador.apellido}"></c:out>
-					<c:out value="${jugador.tipoJugadorDescripcion}" />
-					<img alt="image" src="static/images/less.png" title="Vender">
-				</li>
-			</ul>
-		</div>
-		</c:forEach>
-
-	</div>
-
-<div id="message">
-	<c:if test="${not empty mensaje}">
-		<font color="green">
-			<c:out value="${mensaje}" />
-		</font>
-	</c:if>	
-</div>
-
-<div id="error">
-	<font color="red"> 
-		<form:errors path="*" />
-		
-		<c:if test="${not empty error}">
-			<c:out value="${error}"></c:out>
-		</c:if>				
-	</font>
-</div>
-		
 <script type="text/javascript"
 	src="/balonpie/static/js/equipo/nuevo.js"></script>		
 	

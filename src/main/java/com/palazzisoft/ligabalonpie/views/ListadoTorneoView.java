@@ -37,21 +37,21 @@ public class ListadoTorneoView {
 	@RequestMapping(value = "/listadoTorneoView.htm", method = RequestMethod.GET)
 	public String misTorneos(HttpServletRequest request, ModelMap model) {
 		
-		try {
-			Participante participanteSession = (Participante)request.getSession().getAttribute("participanteSession");
-			Participante participante = participanteController.obtenerParticipantePorId(participanteSession.getId());
+//		try {
+//			Participante participanteSession = (Participante)request.getSession().getAttribute("participanteSession");
+//			Participante participante = participanteController.obtenerParticipantePorId(participanteSession.getId());
+//			
+//			List<TorneoCommand> torneosCommand = new ArrayList<TorneoCommand>();
+//			for (ParticipanteTorneo participanteTorneo : participante.getParticipanteTorneos()) {
+//				TorneoCommand torneoCommand = convertirTorneoACommand(participanteTorneo.getTorneo());
+//				torneosCommand.add(torneoCommand);
+//			}
 			
-			List<TorneoCommand> torneosCommand = new ArrayList<TorneoCommand>();
-			for (ParticipanteTorneo participanteTorneo : participante.getParticipanteTorneos()) {
-				TorneoCommand torneoCommand = convertirTorneoACommand(participanteTorneo.getTorneo());
-				torneosCommand.add(torneoCommand);
-			}
-			
-			model.put("torneos", torneosCommand);
-		}
-		catch (ParseException e) {
-			return PageViews.ERROR_PAGINA;
-		}							
+//			model.put("torneos", torneosCommand);
+//		}
+//		catch (ParseException e) {
+//			return PageViews.ERROR_PAGINA;
+//		}							
 		
 		return PageViews.LISTADO_TORNEO;
 	}

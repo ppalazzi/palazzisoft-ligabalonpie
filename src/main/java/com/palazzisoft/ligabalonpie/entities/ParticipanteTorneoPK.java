@@ -3,9 +3,7 @@ package com.palazzisoft.ligabalonpie.entities;
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Embeddable
 public class ParticipanteTorneoPK implements Serializable {

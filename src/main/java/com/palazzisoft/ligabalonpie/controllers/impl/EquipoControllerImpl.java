@@ -6,33 +6,27 @@ import static com.palazzisoft.ligabalonpie.enums.EEstado.ACTIVO;
 import static java.util.Calendar.getInstance;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.palazzisoft.ligabalonpie.command.EquipoCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoController;
-import com.palazzisoft.ligabalonpie.converters.EquipoConverter;
 import com.palazzisoft.ligabalonpie.daos.api.EquipoDao;
-import com.palazzisoft.ligabalonpie.daos.api.ParticipanteDao;
 import com.palazzisoft.ligabalonpie.entities.Equipo;
 import com.palazzisoft.ligabalonpie.entities.EquipoJugador;
 import com.palazzisoft.ligabalonpie.entities.Jugador;
-import com.palazzisoft.ligabalonpie.entities.Participante;
-import com.palazzisoft.ligabalonpie.util.PropertiesValues;
 
 @Controller
 public class EquipoControllerImpl implements EquipoController {
 
 	private EquipoDao equipoDao;
-	private ParticipanteDao participanteDao;
 
 	@Autowired
-	public EquipoControllerImpl(EquipoDao equipoDao, ParticipanteDao participanteDao) {
+	public EquipoControllerImpl(EquipoDao equipoDao) {
 		this.equipoDao = equipoDao;
-		this.participanteDao = participanteDao;
 	}
 
 	@Override
@@ -95,6 +89,7 @@ public class EquipoControllerImpl implements EquipoController {
 	}
 	
 	@Override
+	@Transactional
 	public void guardarEquipo(Equipo equipo) {
 		if (equipo.getId() == null) {
 			equipo.setFechaCreacion(getInstance().getTime());
