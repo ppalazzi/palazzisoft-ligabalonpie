@@ -18,11 +18,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.palazzisoft.ligabalonpie.command.TorneoCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.TorneoController;
 import com.palazzisoft.ligabalonpie.converters.TorneoConverter;
 import com.palazzisoft.ligabalonpie.entities.Torneo;
+import com.palazzisoft.ligabalonpie.exception.BalonpieException;
 
 @Controller
 public class TorneoView {
@@ -85,6 +87,29 @@ public class TorneoView {
 		}
 
 		model.addAttribute("torneo", torneoCommand);
+		return ALTA_EDICION_TORNEO;
+	}
+	
+	@RequestMapping (value = "/desligarEquipo.adm", method = GET)
+	public String desligarEquipo(@RequestParam Integer torneoId,
+			@RequestParam Integer equipoId, Model model) {
+		TorneoCommand torneoCommand = new TorneoCommand();
+		torneoCommand.setId(torneoId);
+
+		try {
+			Torneo torneo = this.torneoController.obtenerTorneoPorId(torneoId);
+			torneo.desligarEquipo(equipoId);
+			this.torneoController.guardarTorneo(torneo);
+			model.addAttribute("torneo", convertirTorneoACommand(torneo));
+		} catch (ParseException e) {
+			log.info("Error en el parseo de Fecha", e);
+			model.addAttribute("error", "Hubo un error al cargar los datos");
+		} catch (BalonpieException e) {
+			log.info("Error en los datos", e);
+			model.addAttribute("error", "No se puede eliminar un Equipo de un Torneo Activo");			
+			return this.traerTorneo(torneoCommand, model);
+		}
+		
 		return ALTA_EDICION_TORNEO;
 	}
 }

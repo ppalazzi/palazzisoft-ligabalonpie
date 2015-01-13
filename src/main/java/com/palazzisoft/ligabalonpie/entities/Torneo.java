@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.palazzisoft.ligabalonpie.enums.EEstado;
+import com.palazzisoft.ligabalonpie.exception.BalonpieException;
 /**
  * 
  * @author ppalazzi
@@ -118,6 +121,20 @@ public class Torneo implements Serializable {
 		this.equipos = equipos;
 	}
 
+	public boolean desligarEquipo(Integer equipoId) throws BalonpieException {
+		if (this.getEstado().equals(EEstado.ACTIVO.getEstado())) {
+			throw new BalonpieException("El Torneo se encuentra en estado Activo");
+		}
+		
+		for (Equipo equipo : this.equipos) {
+			if (equipo.getId().equals(equipoId)) {
+				return this.equipos.remove(equipo);
+			}
+		}
+		
+		return false;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

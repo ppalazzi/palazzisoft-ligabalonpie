@@ -3,9 +3,6 @@
 
 <jsp:include page="/jsp/backend/header.jsp" />
 
-<script type="text/javascript"
-	src="/balonpie/static/js/jquery.dataTables.js"></script>
-
 <script type="text/javascript">
 $(document).ready(function () {
     $("#torneoTableId").dataTable({

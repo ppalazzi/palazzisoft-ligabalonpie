@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.palazzisoft.ligabalonpie.controllers.api.TorneoController;
 import com.palazzisoft.ligabalonpie.daos.api.TorneoDao;
+import com.palazzisoft.ligabalonpie.entities.Equipo;
 import com.palazzisoft.ligabalonpie.entities.Torneo;
 /**
  * 
@@ -40,4 +41,5 @@ public class TorneoControllerImpl implements TorneoController {
 	public void guardarTorneo(Torneo torneo) {
 		this.torneoDao.save(torneo);
 	}
+	
 }

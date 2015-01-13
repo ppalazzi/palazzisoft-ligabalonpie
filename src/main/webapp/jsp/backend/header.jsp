@@ -13,7 +13,8 @@
         <link href="static/css/demo_table_jui.css" rel="stylesheet" type="text/css" />
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
+<script type="text/javascript"
+	src="/balonpie/static/js/jquery.dataTables.js"></script>
 </head>
 <body>
 
