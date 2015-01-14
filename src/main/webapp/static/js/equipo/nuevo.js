@@ -9,6 +9,11 @@ $(document).ready(function () {
 	}
 	
 	function openDialog() {
-		$("#comprarJugadorDiv").dialog();
+		var modalConfig = {
+			modal : true,
+			width : 800,
+			height : 600
+		};
+		$("#comprarJugadorDiv").dialog(modalConfig);
 	}
 });
