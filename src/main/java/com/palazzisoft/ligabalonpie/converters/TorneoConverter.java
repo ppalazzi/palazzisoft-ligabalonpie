@@ -1,5 +1,6 @@
 package com.palazzisoft.ligabalonpie.converters;
 
+import static com.palazzisoft.ligabalonpie.util.FechaMascara.dateAFechaMesAno;
 import static com.palazzisoft.ligabalonpie.util.FechaMascara.stringToDateFormat;
 
 import java.text.ParseException;
@@ -10,8 +11,11 @@ import com.palazzisoft.ligabalonpie.command.EquipoCommand;
 import com.palazzisoft.ligabalonpie.command.TorneoCommand;
 import com.palazzisoft.ligabalonpie.entities.Equipo;
 import com.palazzisoft.ligabalonpie.entities.Torneo;
-import com.palazzisoft.ligabalonpie.util.FechaMascara;
-
+/**
+ * 
+ * @author ppalazzi
+ *
+ */
 public class TorneoConverter {
 
 	public static Torneo convertirCommandATorneo(TorneoCommand torneoCommand) throws ParseException {
@@ -42,15 +46,15 @@ public class TorneoConverter {
 		command.setEstado(torneo.getEstado());
 		
 		if (torneo.getFechaCreacion() != null) {
-			command.setFechaCreacion(FechaMascara.dateAFechaMesAno(torneo.getFechaCreacion()));	
+			command.setFechaCreacion(dateAFechaMesAno(torneo.getFechaCreacion()));	
 		}
 		
 		if (torneo.getFechaFin() != null) {
-			command.setFechaFin(FechaMascara.dateAFechaMesAno(torneo.getFechaFin()));	
+			command.setFechaFin(dateAFechaMesAno(torneo.getFechaFin()));	
 		}
 		
 		if (torneo.getFechaInicio() != null) {
-			command.setFechaInicio(FechaMascara.dateAFechaMesAno(torneo.getFechaInicio()));	
+			command.setFechaInicio(dateAFechaMesAno(torneo.getFechaInicio()));	
 		}
 		
 		convertEquiposDeTorneo(command, torneo);

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -47,7 +48,7 @@ public class Equipo implements Serializable {
 	@Column(name = "A_PRESUPUESTO")
 	private Long presupuesto;
 
-	@OneToMany(mappedBy = "equipo", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "equipo", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
 	private Set<EquipoJugador> equipoJugadores;
 
 	@Column(name = "A_PUNTOS")
@@ -144,6 +145,16 @@ public class Equipo implements Serializable {
 		this.torneos = torneos;
 	}
 
+	public EquipoJugador buscarEquipoJugadorPorJugador(Integer jugadorId) {
+		for (EquipoJugador equipoJugador : this.equipoJugadores) {
+			if (equipoJugador.getJugador().getId().equals(jugadorId)) {
+				return equipoJugador;
+			}
+		}
+		
+		return null;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

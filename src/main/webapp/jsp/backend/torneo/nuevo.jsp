@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="/jsp/backend/header.jsp" />
 
@@ -78,47 +79,48 @@
 
 	</br>
 
+	<c:if test="${not empty torneo.equipos}">
 	<div id="equiposContainer">
-	<table cellpadding="0" cellspacing="0" border="1"
-	 align="center" width="80%" id="equiposTableId" class="display">
-		<thead>
-			<tr>
-				<th>Nombre</th>
-				<th>Descripción</th>
-				<th>Fecha de Creaci&oacute;n</th>
-				<th>Estado</th>
-				<th>Id del Usuario</th>
-				<th>Acción</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${torneo.equipos}" var="equipo">
+		<table cellpadding="0" cellspacing="0" border="1"
+		 align="center" width="80%" id="equiposTableId" class="display">
+			<thead>
 				<tr>
-					<td>${equipo.nombre}</td>
-					<td>${equipo.descripcion}</td>
-					<td>
-						<fmt:parseDate value="${equipo.fechaCreacion}" var="fechaCreacion" 
-						                              pattern="MM/dd/yyyy" />
-						<fmt:formatDate value="${fechaCreacion}"/>  										
-					</td>
-					<td><c:choose>
-							<c:when test="${equipo.estado == 1}">
-								<c:out value="Activo" />
-							</c:when>
-							<c:otherwise><td>${equipo.valor}</td>
-								<c:out value="Inactivo" />
-							</c:otherwise>
-						</c:choose></td>
-					<td>${equipo.participanteId}</td>
-					<td>
-						<a href="/balonpie/desligarEquipo.adm?equipoId=${equipo.id}&torneoId=${torneo.id}">Desligar</a>
-					</td>
+					<th>Nombre</th>
+					<th>Descripción</th>
+					<th>Fecha de Creaci&oacute;n</th>
+					<th>Estado</th>
+					<th>Id del Usuario</th>
+					<th>Acción</th>
 				</tr>
-			</c:forEach>			
-		</tbody>
-	</table>	
-	</div>
-
+			</thead>
+			<tbody>
+				<c:forEach items="${torneo.equipos}" var="equipo">
+					<tr>
+						<td>${equipo.nombre}</td>
+						<td>${equipo.descripcion}</td>
+						<td>
+							<fmt:parseDate value="${equipo.fechaCreacion}" var="fechaCreacion" 
+							                              pattern="MM/dd/yyyy" />
+							<fmt:formatDate value="${fechaCreacion}"/>  										
+						</td>
+						<td><c:choose>
+								<c:when test="${equipo.estado == 1}">
+									<c:out value="Activo" />
+								</c:when>
+								<c:otherwise><td>${equipo.valor}</td>
+									<c:out value="Inactivo" />
+								</c:otherwise>
+							</c:choose></td>
+						<td>${equipo.participanteId}</td>
+						<td>
+							<a href="/balonpie/nuevoEquipo.adm?id=${equipo.id}">Modificar</a>
+						</td>
+					</tr>
+				</c:forEach>			
+			</tbody>
+		</table>	
+		</div>
+	</c:if>
 </form:form>
 
 

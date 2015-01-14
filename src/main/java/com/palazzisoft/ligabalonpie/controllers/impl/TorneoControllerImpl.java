@@ -1,5 +1,7 @@
 package com.palazzisoft.ligabalonpie.controllers.impl;
 
+import static java.util.Calendar.getInstance;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.palazzisoft.ligabalonpie.controllers.api.TorneoController;
 import com.palazzisoft.ligabalonpie.daos.api.TorneoDao;
-import com.palazzisoft.ligabalonpie.entities.Equipo;
 import com.palazzisoft.ligabalonpie.entities.Torneo;
 /**
  * 
@@ -39,7 +40,13 @@ public class TorneoControllerImpl implements TorneoController {
 	@Override
 	@Transactional
 	public void guardarTorneo(Torneo torneo) {
-		this.torneoDao.save(torneo);
+		if (torneo.getId() == null) {
+			torneo.setFechaCreacion(getInstance().getTime());
+			this.torneoDao.save(torneo);
+		}
+		else {
+			this.torneoDao.update(torneo);
+		}		
 	}
 	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoJugadorController;
 import com.palazzisoft.ligabalonpie.daos.api.EquipoJugadorDao;
@@ -56,4 +57,9 @@ public class EquipoJugadorControllerImpl implements EquipoJugadorController {
 		return costoEquipo;
 	}
 
+	@Override
+	@Transactional
+	public void eliminarEquipoJugador(EquipoJugador equipoJugador) {
+		this.equipoJugadorDao.delete(equipoJugador);
+	}
 }

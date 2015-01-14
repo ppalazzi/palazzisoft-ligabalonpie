@@ -5,7 +5,11 @@ import java.util.List;
 import com.palazzisoft.ligabalonpie.command.EquipoCommand;
 import com.palazzisoft.ligabalonpie.entities.Equipo;
 import com.palazzisoft.ligabalonpie.entities.Jugador;
-
+/**
+ * 
+ * @author ppalazzi
+ *
+ */
 public interface EquipoController {
 
 	List<EquipoCommand> obtenerEquiposPorParticipante(Integer id);
@@ -26,5 +30,5 @@ public interface EquipoController {
 
 	void guardarEquipo(Equipo equipo);
 
-	void obtenerJugadoresDisponiblesParaEquipo(Long equipoId);
+	Equipo venderJugador(Integer equipoId, Integer jugadorId);
 }

@@ -128,4 +128,16 @@ public class EquipoView {
 		return LISTADO_COMPRAR_JUGADOR;
 	}
 
+	@RequestMapping (value = "/venderJugador.adm", method = GET)
+	public String venderJugador(@RequestParam Integer equipoId, @RequestParam Integer jugadorId, Model model) {		
+		Equipo equipo = this.equipoController.venderJugador(equipoId, jugadorId);
+		model.addAttribute("equipo", convertirAEquipoCommand(equipo));
+		
+		return ALTA_BAJA_EQUIPO;
+	}
+	
+	@RequestMapping (value = "/comprarJugadores.adm", method = POST)
+	public String comprarJugadores(EquipoCommand equipoCommand, Model model) {
+		return LISTADO_COMPRAR_JUGADOR;
+	}
 }

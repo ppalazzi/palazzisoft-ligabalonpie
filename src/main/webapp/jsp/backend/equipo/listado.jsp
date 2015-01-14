@@ -31,7 +31,6 @@ $(document).ready(function () {
 				<th>Id del Usuario</th>
 				<th>Presupuesto</th>
 				<th>Puntos</th>
-				<th>Id del Torneo</th>
 				<th>Acción</th>
 			</tr>
 		</thead>
@@ -56,7 +55,6 @@ $(document).ready(function () {
 					<td>${equipo.participanteId}</td>
 					<td>${equipo.presupuesto}</td>
 					<td>${equipo.puntos}</td>
-					<td>${equipo.torneoId}</td>
 					<td>
 						<a href="/balonpie/nuevoEquipo.adm?id=${equipo.id}">Modificar
 					</a>

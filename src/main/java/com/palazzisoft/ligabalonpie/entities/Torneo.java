@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,7 +51,7 @@ public class Torneo implements Serializable {
 	@Column(name = "A_FECHAFIN")
 	private Date fechaFin;
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "T_EQUIPO_TORNEO", joinColumns = { 
 			@JoinColumn(name = "TORNEO_F_ID", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "EQUIPO_F_ID", 

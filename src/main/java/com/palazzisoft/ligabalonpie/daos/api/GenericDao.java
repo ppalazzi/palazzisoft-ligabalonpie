@@ -1,9 +1,15 @@
 package com.palazzisoft.ligabalonpie.daos.api;
-
-
+/**
+ * 
+ * @author ppalazzi
+ *
+ * @param <T>
+ * @param <S>
+ */
 public interface GenericDao<T,S> {
 
-	public T getById(S object);
-	public void save(T object);
-	public void update(T object);
+	T getById(S object);
+	void save(T object);
+	void update(T object);
+	void delete(T object);
 }

@@ -5,8 +5,13 @@ import java.io.Serializable;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.palazzisoft.ligabalonpie.daos.api.GenericDao;
-
-@SuppressWarnings("unchecked")
+/**
+ * 
+ * @author ppalazzi
+ *
+ * @param <T>
+ * @param <S>
+ */
 public abstract class GenericDaoImpl<T,S extends Serializable> extends HibernateDaoSupport implements GenericDao<T, S> {
 
 	protected static final Integer PRIMER_ELEMENTO = 0;
@@ -26,5 +31,9 @@ public abstract class GenericDaoImpl<T,S extends Serializable> extends Hibernate
 		this.getHibernateTemplate().merge(object);
 	}
 
+	public void delete(T object) {
+		this.getHibernateTemplate().delete(object);
+	}
+	
 	protected abstract Class<T> getPersistenceClass();
 }

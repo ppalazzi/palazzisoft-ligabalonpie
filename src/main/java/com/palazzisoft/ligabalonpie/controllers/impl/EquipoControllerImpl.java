@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.palazzisoft.ligabalonpie.command.EquipoCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoController;
+import com.palazzisoft.ligabalonpie.controllers.api.EquipoJugadorController;
 import com.palazzisoft.ligabalonpie.daos.api.EquipoDao;
 import com.palazzisoft.ligabalonpie.entities.Equipo;
 import com.palazzisoft.ligabalonpie.entities.EquipoJugador;
@@ -22,11 +23,14 @@ import com.palazzisoft.ligabalonpie.entities.Jugador;
 @Controller
 public class EquipoControllerImpl implements EquipoController {
 
-	private EquipoDao equipoDao;
+	private final EquipoDao equipoDao;
+	private final EquipoJugadorController equipoJugadorController;
 
 	@Autowired
-	public EquipoControllerImpl(EquipoDao equipoDao) {
+	public EquipoControllerImpl(final EquipoDao equipoDao,
+			final EquipoJugadorController equipoJugadorController) {
 		this.equipoDao = equipoDao;
+		this.equipoJugadorController = equipoJugadorController;
 	}
 
 	@Override
@@ -48,7 +52,8 @@ public class EquipoControllerImpl implements EquipoController {
 
 	@Override
 	public List<Jugador> obtenerJugadoresDeEquipo(Integer id) {
-		List<EquipoJugador> equiposJugadores = equipoDao.obtenerJugadoresPorEquipo(id);
+		List<EquipoJugador> equiposJugadores = equipoDao
+				.obtenerJugadoresPorEquipo(id);
 		List<Jugador> respuesta = new ArrayList<Jugador>();
 
 		for (EquipoJugador ej : equiposJugadores) {
@@ -78,16 +83,17 @@ public class EquipoControllerImpl implements EquipoController {
 	@Override
 	public EquipoCommand obtenerEquipoPorTorneoYParticipante(Integer torneoId,
 			Integer participanteId) {
-		Equipo equipo = this.equipoDao.obtenerEquipoPorTorneoYParticipante(torneoId, participanteId);
+		Equipo equipo = this.equipoDao.obtenerEquipoPorTorneoYParticipante(
+				torneoId, participanteId);
 
 		return convertirAEquipoCommand(equipo);
 	}
-	
+
 	@Override
 	public List<Equipo> obtenerTodosLosEquipos() {
 		return this.equipoDao.obtenerTodosLosEquipos();
 	}
-	
+
 	@Override
 	@Transactional
 	public void guardarEquipo(Equipo equipo) {
@@ -95,12 +101,19 @@ public class EquipoControllerImpl implements EquipoController {
 			equipo.setFechaCreacion(getInstance().getTime());
 			equipo.setEstado(ACTIVO.getEstado());
 		}
-		
+
 		this.equipoDao.save(equipo);
 	}
-	
+
 	@Override
-	public void obtenerJugadoresDisponiblesParaEquipo(Long equipoId) {
-		
+	@Transactional
+	public Equipo venderJugador(Integer equipoId, Integer jugadorId) {
+		Equipo equipo = this.equipoDao.getById(equipoId);
+		EquipoJugador equipoJugador = equipo
+				.buscarEquipoJugadorPorJugador(jugadorId);
+		equipo.getEquipoJugadores().remove(equipoJugador);
+		this.equipoJugadorController.eliminarEquipoJugador(equipoJugador);
+
+		return equipo;
 	}
 }

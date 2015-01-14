@@ -3,6 +3,15 @@
 
 <jsp:include page="/jsp/backend/header.jsp" />
 
+<script type="text/javascript">
+$(document).ready(function () {
+    $("#jugadoresTableId").dataTable({
+        "sPaginationType": "full_numbers",
+        "bJQueryUI": true
+    });
+});
+</script>
+
 </br>
 <form:form id="nuevoEquipoForm" action="nuevoEquipo.adm" method="POST"
 	commandName="equipoCommand">
@@ -48,8 +57,6 @@
 			</spring:bind>		
 		</li>	
 
-		<a href="#"id="jugadoresDialog">Vender Jugadores</a></br>
-		<a href="/balonpie/listadoJugadorDisponibles.adm?equipoId=5&tipoJugadorId=0">Comprar Jugadores</a></br> 
 		<input type="submit" value="Guardar">
 		
 	</ul>
@@ -71,12 +78,64 @@
 			</c:if>				
 		</font>
 	</div>
+	
+	<c:if test="${not empty equipo.jugadores}">
 			
-
+		<div id="jugadorContainer">
+			<table cellpadding="0" cellspacing="0" border="1" id="jugadoresTableId"
+				class="display" align="center" width="80%">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>Velocidad</th>
+						<th>Remate</th>
+						<th>Habilidad</th>
+						<th>Físico</th>
+						<th>Estado</th>
+						<th>Valor</th>
+						<th>Posición</th>
+						<th>Acción</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="jugador" items="${equipo.jugadores}">
+						<tr>
+							<td>${jugador.nombre}</td>
+							<td>${jugador.apellido}</td>
+							<td><c:out value="${jugador.velocidad}" /></td>
+							<td><c:out value="${jugador.remate}" /></td>
+							<td><c:out value="${jugador.habilidad}" /></td>
+							<td><c:out value="${jugador.fisico}" /></td>
+							<td><c:choose>
+									<c:when test="${jugador.estado == 1}">
+										<c:out value="Activo" />
+									</c:when>
+									<c:otherwise>
+										<c:out value="Inactivo" />
+									</c:otherwise>
+								</c:choose></td>
+							<td><c:out value="${jugador.valor}" /></td>
+							<td><c:out value="${jugador.tipoJugadorDescripcion}" /></td>
+							<td><a href="/balonpie/venderJugador.adm?equipoId=${equipo.id}&jugadorId=${jugador.id}">Vender</a>
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		
+		</div>
+	</c:if>
+	
 </form:form>
 
+	<input type="submit" value="Comprar Jugadores" id="comprarJugadoresButtonId">
+
+	<div id="comprarJugadoresContainer" class="hide">
+		<jsp:include page="/jsp/backend/equipo/comprarJugadorComp.jsp" />
+	</div>
+
 <script type="text/javascript"
-	src="/balonpie/static/js/equipo/nuevo.js"></script>		
-	
+	src="/balonpie/static/js/equipo/nuevo.js"></script>
 		
 <jsp:include page="/jsp/backend/footer.jsp" />

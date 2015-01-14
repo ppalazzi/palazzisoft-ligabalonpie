@@ -1,33 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<script type="text/javascript"
-	src="/balonpie/static/js/equipo/nuevo.js"></script>
-
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script type="text/javascript"
-	src="/balonpie/static/js/jquery.dataTables.js"></script>
-
 <script type="text/javascript">
 $(document).ready(function () {
-    $("#equiposTableId").dataTable({
+    $("#jugadoresCompraTableId").dataTable({
         "sPaginationType": "full_numbers",
         "bJQueryUI": true
     });
 });
-
-function refreshPage() {
-	var tipoJugadorId = $('#tipoJugadorSelect').val();
-	
-	if (tipoJugadorId == -1) {
-		tipoJugadorId = "";
-	}
-	
-	traerJugadoresDisponiblesPorEquipos(tipoJugadorId);
-}
-
-function comprarJugador(j) {
-	alert(j);
-}
 </script>
 
 <div id="comprarJugadorDiv" title="Comprar Jugador">
@@ -52,7 +31,7 @@ function comprarJugador(j) {
 		
 		<div>
 			<table cellpadding="0" cellspacing="0" border="1"
-			 align="center" width="80%" id="equiposTableId" class="display">
+			 align="center" width="80%" id="jugadoresCompraTableId" class="display">
 				<thead>
 					<tr>
 						<th>Nombre</th>
