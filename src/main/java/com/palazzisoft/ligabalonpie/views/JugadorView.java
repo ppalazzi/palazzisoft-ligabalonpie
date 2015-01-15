@@ -1,15 +1,21 @@
 package com.palazzisoft.ligabalonpie.views;
 
 import static com.palazzisoft.ligabalonpie.converters.JugadorConverter.convertirACommand;
+import static com.palazzisoft.ligabalonpie.converters.JugadorConverter.convertirAJugador;
+import static com.palazzisoft.ligabalonpie.util.PageViews.ALTA_BAJA_JUGADOR;
 import static com.palazzisoft.ligabalonpie.util.PageViews.LISTADO_JUGADORES_BACK;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,20 +27,27 @@ import com.palazzisoft.ligabalonpie.entities.Equipo;
 import com.palazzisoft.ligabalonpie.entities.EquipoJugador;
 import com.palazzisoft.ligabalonpie.entities.Jugador;
 import com.palazzisoft.ligabalonpie.util.PageViews;
-
+import com.palazzisoft.ligabalonpie.validators.JugadorValidator;
+/**
+ * 
+ * @author ppalazzi
+ *
+ */
 @Controller
 public class JugadorView {
 
-	private JugadorController jugadorController;
-	private EquipoController equipoController;
-	private TipoJugadorController tipoJugadorController;
+	private final JugadorController jugadorController;
+	private final EquipoController equipoController;
+	private final TipoJugadorController tipoJugadorController;
+	private final JugadorValidator jugadorValidator;
 
 	@Autowired
-	public JugadorView(JugadorController jugadorController, EquipoController equipoController,
-			TipoJugadorController tipoJugadorController) {
+	public JugadorView(final JugadorController jugadorController, final EquipoController equipoController,
+			final TipoJugadorController tipoJugadorController, final JugadorValidator jugadorValidator) {
 		this.jugadorController = jugadorController;
 		this.equipoController = equipoController;
 		this.tipoJugadorController = tipoJugadorController;
+		this.jugadorValidator = jugadorValidator;
 	}
 
 	@RequestMapping(value = "/listadoJugador.adm", method = GET)
@@ -70,4 +83,33 @@ public class JugadorView {
 		return LISTADO_JUGADORES_BACK;
 	}
 
+	@RequestMapping(value = "/nuevoJugador.adm", method = GET)
+	public String showForm(@ModelAttribute("jugadorCommand") JugadorCommand jugadorCommand,
+			Model model) {
+		if (jugadorCommand.getId() != null) {
+			Jugador jugador = this.jugadorController.getJugadorById(jugadorCommand.getId());
+			jugadorCommand = convertirACommand(jugador);
+		}
+
+		model.addAttribute("jugador", jugadorCommand);
+		model.addAttribute("tipoJugador", this.tipoJugadorController.obtenerTodosTipoJugador());
+
+		return ALTA_BAJA_JUGADOR;
+	}
+
+	@RequestMapping(value = "/nuevoJugador.adm", method = POST)
+	public String onSubmit(@ModelAttribute("jugadorCommand") JugadorCommand jugadorCommand,
+			BindingResult bindingResult, Model model) throws ParseException {
+		this.jugadorValidator.validate(jugadorCommand, bindingResult);
+
+		if (bindingResult.hasErrors()) {
+			return this.showForm(jugadorCommand, model);
+		}
+		
+		Jugador jugador = convertirAJugador(jugadorCommand);
+		this.jugadorController.saveJugador(jugador);
+		model.addAttribute("mensaje", "Se ha guardado exitosamente");
+
+		return this.showForm(jugadorCommand, model);
+	}	
 }

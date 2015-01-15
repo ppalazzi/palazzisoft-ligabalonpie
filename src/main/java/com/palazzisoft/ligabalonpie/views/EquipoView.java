@@ -114,7 +114,7 @@ public class EquipoView {
 		return ALTA_BAJA_EQUIPO;
 	}
 
-	@RequestMapping(value = "/listadoJugadorDisponibles.adm", method = GET)
+	@RequestMapping(value = "/listadoJugadorDisponibles.adm", method = POST)
 	public String obtenerJugadoresDisponiblesPor(@RequestParam Integer equipoId,
 			@RequestParam Integer tipoJugadorId, Model model) {
 		List<Jugador> jugadores = this.jugadorController
@@ -135,9 +135,5 @@ public class EquipoView {
 		
 		return ALTA_BAJA_EQUIPO;
 	}
-	
-	@RequestMapping (value = "/comprarJugadores.adm", method = POST)
-	public String comprarJugadores(EquipoCommand equipoCommand, Model model) {
-		return LISTADO_COMPRAR_JUGADOR;
-	}
+
 }

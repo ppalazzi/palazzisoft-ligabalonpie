@@ -129,10 +129,10 @@ $(document).ready(function () {
 	
 </form:form>
 
-	<input type="submit" value="Comprar Jugadores" id="comprarJugadoresButtonId">
+	<input type="button" value="Comprar Jugadores" id="comprarJugadoresButtonId">
 
-	<div id="comprarJugadoresContainer" class="hide">
-		<jsp:include page="/jsp/backend/equipo/comprarJugadorComp.jsp" />
+	<div id="comprarJugadoresContainer" title="Comprar Jugadores">
+		
 	</div>
 
 <script type="text/javascript"

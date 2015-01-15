@@ -6,6 +6,7 @@ $(document).ready(function () {
         "sPaginationType": "full_numbers",
         "bJQueryUI": true
     });
+      
 });
 </script>
 
@@ -18,8 +19,8 @@ $(document).ready(function () {
 	
 	<div>
 		<div id="listadoFilters" align="left">
-			<label>Posición</label>
-			<select id="tipoJugadorSelect" name="tipoJugadorSelect" onchange="refreshPage();">
+			<label>Posici&oacute;n</label>
+			<select id="tipoJugadorSelect" name="tipoJugadorSelect" onchange="CompraJugador.traerPorTipoJugador($('#tipoJugadorSelect').val());">
 				<option value="-1" selected>Seleccionar</option>
 				<c:forEach items="${tipoJugador}" var="tipo">
 					<option value="${tipo.id}" <c:if test="${tipo.id eq tipoJugadorId}">selected</c:if> >
@@ -63,4 +64,6 @@ $(document).ready(function () {
 		</div>
 	</div>
 </div>		
-	
+
+<script type="text/javascript"
+	src="/balonpie/static/js/equipo/nuevo.js"></script>	

@@ -42,32 +42,4 @@ public class AltaJugadorView {
 		this.jugadorValidator = jugadorValidator;
 	}
 
-	@RequestMapping(value = "/nuevoJugador.adm", method = GET)
-	public String showForm(@ModelAttribute("jugadorCommand") JugadorCommand jugadorCommand,
-			Model model) {
-		if (jugadorCommand.getId() != null) {
-			Jugador jugador = this.jugadorController.getJugadorById(jugadorCommand.getId());
-			jugadorCommand = convertirACommand(jugador);
-		}
-
-		model.addAttribute("jugador", jugadorCommand);
-		model.addAttribute("tipoJugador", this.tipoJugadorController.obtenerTodosTipoJugador());
-
-		return ALTA_BAJA_JUGADOR;
-	}
-
-	@RequestMapping(value = "/nuevoJugador.adm", method = POST)
-	public String onSubmit(@ModelAttribute("jugadorCommand") JugadorCommand jugadorCommand,
-			BindingResult bindingResult, Model model) throws ParseException {
-		this.jugadorValidator.validate(jugadorCommand, bindingResult);
-
-		if (bindingResult.hasErrors()) {
-			return this.showForm(jugadorCommand, model);
-		}
-		
-		Jugador jugador = convertirAJugador(jugadorCommand);
-		this.jugadorController.saveJugador(jugador);
-
-		return this.showForm(jugadorCommand, model);
-	}
 }

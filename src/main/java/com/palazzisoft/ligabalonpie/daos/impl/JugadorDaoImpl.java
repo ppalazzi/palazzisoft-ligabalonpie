@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.palazzisoft.ligabalonpie.daos.api.JugadorDao;
 import com.palazzisoft.ligabalonpie.entities.Jugador;
-import com.palazzisoft.ligabalonpie.enums.EEstado;
 
 public class JugadorDaoImpl extends GenericDaoImpl<Jugador,Integer> implements JugadorDao {
 
@@ -43,9 +42,8 @@ public class JugadorDaoImpl extends GenericDaoImpl<Jugador,Integer> implements J
 	@Override
 	@SuppressWarnings("unchecked")
     public List<Jugador> obtenerJugadoresDisponiblesParaComprar(Integer equipoId) {
-    	String sql = "SELECT e.jugador FROM EquipoJugador e WHERE " +
-    			" e.equipo.id  != ? AND e.jugador.estado = ?";
-    	Integer[] values = new Integer[] {equipoId, ACTIVO.getEstado()};
+    	String sql = "From Jugador j LEFT JOIN com.palazzisoft.ligabalonpie.entities.EquipoJugador e WITH j = e.jugador WHERE e.jugador IS NULL and e.equipo.id = ? AND j.estado = ?";
+    	Object[] values = new Integer[] {equipoId, ACTIVO.getEstado()};
     	return this.getHibernateTemplate().find(sql, values);
     }
 }
