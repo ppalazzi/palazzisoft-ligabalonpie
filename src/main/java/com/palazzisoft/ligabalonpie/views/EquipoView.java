@@ -115,14 +115,12 @@ public class EquipoView {
 	}
 
 	@RequestMapping(value = "/listadoJugadorDisponibles.adm", method = POST)
-	public String obtenerJugadoresDisponiblesPor(@RequestParam Integer equipoId,
-			@RequestParam Integer tipoJugadorId, Model model) {
+	public String obtenerJugadoresDisponiblesPor(@RequestParam Integer tipoJugadorId, Model model) {
 		List<Jugador> jugadores = this.jugadorController
-				.obtenerJugadoresDisponiblesParaComprar(equipoId);
+				.obtenerJugadoresDisponiblesParaComprarPorTipoDeJugador(tipoJugadorId);
 		
 		model.addAttribute("jugadores", convertirJugadoresAJugadoresCommand(jugadores));
 		model.addAttribute("tipoJugador", this.tipoJugadorController.obtenerTodosTipoJugador());
-		model.addAttribute("equipoId", equipoId);
 		model.addAttribute("tipoJugadorId", tipoJugadorId);
 
 		return LISTADO_COMPRAR_JUGADOR;

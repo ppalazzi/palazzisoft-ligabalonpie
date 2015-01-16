@@ -2,6 +2,7 @@ package com.palazzisoft.ligabalonpie.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -52,6 +54,9 @@ public class Jugador implements Serializable {
 	
 	@ManyToOne (fetch=FetchType.EAGER)
 	private TipoJugador tipoJugador;
+	
+	@OneToMany (fetch = FetchType.LAZY, mappedBy = "jugador")
+	private List<EquipoJugador> equipoJugadores;
 	
 	public Jugador() {
 		
@@ -145,6 +150,14 @@ public class Jugador implements Serializable {
 		this.valor = valor;
 	}	
 	
+	public List<EquipoJugador> getEquipoJugadores() {
+		return equipoJugadores;
+	}
+
+	public void setEquipoJugadores(List<EquipoJugador> equipoJugadores) {
+		this.equipoJugadores = equipoJugadores;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

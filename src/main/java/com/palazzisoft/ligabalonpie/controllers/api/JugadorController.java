@@ -21,5 +21,5 @@ public interface JugadorController {
 
 	List<Jugador> obtenerJugadoresDisponiblesPorTipoJugador(Integer tipoJugadorId);
 
-	List<Jugador> obtenerJugadoresDisponiblesParaComprar(Integer equipoId);
+	List<Jugador> obtenerJugadoresDisponiblesParaComprarPorTipoDeJugador(Integer equipoId);
 }

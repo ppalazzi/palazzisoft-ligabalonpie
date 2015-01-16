@@ -41,9 +41,9 @@ public class JugadorDaoImpl extends GenericDaoImpl<Jugador,Integer> implements J
 	
 	@Override
 	@SuppressWarnings("unchecked")
-    public List<Jugador> obtenerJugadoresDisponiblesParaComprar(Integer equipoId) {
-    	String sql = "From Jugador j LEFT JOIN com.palazzisoft.ligabalonpie.entities.EquipoJugador e WITH j = e.jugador WHERE e.jugador IS NULL and e.equipo.id = ? AND j.estado = ?";
-    	Object[] values = new Integer[] {equipoId, ACTIVO.getEstado()};
+    public List<Jugador> obtenerJugadoresDisponiblesParaComprarPorTipoJugador(Integer tipoJugadorId) {
+    	String sql = "Select j From Jugador j LEFT JOIN FETCH j.equipoJugadores  e WHERE e.jugador IS NULL AND j.tipoJugador.id = ? and j.estado = ? ";
+    	Object[] values = new Integer[] {tipoJugadorId, ACTIVO.getEstado()};
     	return this.getHibernateTemplate().find(sql, values);
     }
 }
