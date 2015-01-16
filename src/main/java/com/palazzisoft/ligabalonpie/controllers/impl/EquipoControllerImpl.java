@@ -34,6 +34,7 @@ public class EquipoControllerImpl implements EquipoController {
 	}
 
 	@Override
+	@Transactional
 	public Equipo getById(Integer id) {
 		return equipoDao.getById(id);
 	}

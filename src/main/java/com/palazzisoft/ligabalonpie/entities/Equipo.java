@@ -1,5 +1,7 @@
 package com.palazzisoft.ligabalonpie.entities;
 
+import static com.google.common.collect.Sets.newHashSet;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -62,7 +64,7 @@ public class Equipo implements Serializable {
 	private List<Torneo> torneos;
 	
 	public Equipo() {
-
+		this.equipoJugadores = newHashSet();
 	}
 
 	public Integer getId() {

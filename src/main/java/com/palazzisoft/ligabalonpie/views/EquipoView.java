@@ -105,8 +105,8 @@ public class EquipoView {
 		try {
 			Equipo equipo = convertirAEquipo(equipoCommand);
 			this.equipoController.guardarEquipo(equipo);
-			model.addAttribute("mensaje", "Se ha guardado exitosamente");
-			model.addAttribute("equipo", equipoCommand);
+			model.addAttribute("mensaje", "Se ha guardado exitosamente");			
+			return this.showBack(equipoCommand, model);
 		} catch (ParseException e) {
 			model.addAttribute("error", "Hubo un error al cargar los datos");
 		}
