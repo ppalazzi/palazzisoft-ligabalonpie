@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.palazzisoft.ligabalonpie.command.EquipoCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoController;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoJugadorController;
+import com.palazzisoft.ligabalonpie.controllers.api.JugadorController;
 import com.palazzisoft.ligabalonpie.daos.api.EquipoDao;
 import com.palazzisoft.ligabalonpie.entities.Equipo;
 import com.palazzisoft.ligabalonpie.entities.EquipoJugador;
@@ -25,12 +26,14 @@ public class EquipoControllerImpl implements EquipoController {
 
 	private final EquipoDao equipoDao;
 	private final EquipoJugadorController equipoJugadorController;
+	private final JugadorController jugadorController;
 
 	@Autowired
 	public EquipoControllerImpl(final EquipoDao equipoDao,
-			final EquipoJugadorController equipoJugadorController) {
+			final EquipoJugadorController equipoJugadorController, final JugadorController jugadorController) {
 		this.equipoDao = equipoDao;
 		this.equipoJugadorController = equipoJugadorController;
+		this.jugadorController = jugadorController;
 	}
 
 	@Override
@@ -71,7 +74,7 @@ public class EquipoControllerImpl implements EquipoController {
 
 	@Override
 	public void nuevoEquipo(EquipoCommand equipoCommand, Integer participanteId) {
-		// TODO deberia ser eliminado el código
+		// TODO deberia ser eliminado el cï¿½digo
 	}
 
 	@Override
@@ -112,9 +115,26 @@ public class EquipoControllerImpl implements EquipoController {
 		Equipo equipo = this.equipoDao.getById(equipoId);
 		EquipoJugador equipoJugador = equipo
 				.buscarEquipoJugadorPorJugador(jugadorId);
+		equipo.sumarPresupuesto(Long.valueOf(equipoJugador.getJugador().getValor()));
 		equipo.getEquipoJugadores().remove(equipoJugador);
-		this.equipoJugadorController.eliminarEquipoJugador(equipoJugador);
+		this.equipoJugadorController.eliminarEquipoJugador(equipoJugador);	
+		this.equipoDao.save(equipo);
 
 		return equipo;
+	}
+	
+	@Override
+	@Transactional
+	public boolean comprarJugador(Integer equipoId, Integer jugadorId) {
+		Jugador jugador = this.jugadorController.getJugadorById(jugadorId);
+		Equipo equipo = this.equipoDao.getById(equipoId);
+		
+		if (jugador != null && equipo != null && equipo.agregarNuevoJugador(jugador)) {
+			equipo.restarPresupuesto(Long.valueOf(jugador.getValor()));
+			this.guardarEquipo(equipo);
+			return true;
+		}
+		
+		return false;
 	}
 }

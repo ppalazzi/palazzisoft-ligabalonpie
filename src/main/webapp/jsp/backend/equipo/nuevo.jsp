@@ -82,6 +82,9 @@ $(document).ready(function () {
 	<c:if test="${not empty equipo.jugadores}">
 			
 		<div id="jugadorContainer">
+
+	<div><a href="/balonpie/nuevoEquipo.adm?id=5" id="refrescarPagina" /><a></a></div>		
+		
 			<table cellpadding="0" cellspacing="0" border="1" id="jugadoresTableId"
 				class="display" align="center" width="80%">
 				<thead>

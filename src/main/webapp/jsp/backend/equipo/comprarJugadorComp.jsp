@@ -56,7 +56,7 @@ $(document).ready(function () {
 							<td>${jugador.fisico}</td>
 							<td>${jugador.valor}</td>
 							<td>
-								<a onclick="comprarJugador(<c:out value="${jugador.id}" />);" href="#"><img alt="image" src="static/images/plus.jpg" title="Comprar"></a>
+								<a onclick="CompraJugador.comprarJugador(<c:out value="${jugador.id}" />,<c:out value="${equipoId}" />);" href="#"><img alt="image" src="static/images/plus.jpg" title="Comprar"></a>
 							</td>
 						</tr>
 					</c:forEach>

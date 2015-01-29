@@ -31,4 +31,6 @@ public interface EquipoController {
 	void guardarEquipo(Equipo equipo);
 
 	Equipo venderJugador(Integer equipoId, Integer jugadorId);
+
+	boolean comprarJugador(Integer equipoId, Integer jugadorId);
 }

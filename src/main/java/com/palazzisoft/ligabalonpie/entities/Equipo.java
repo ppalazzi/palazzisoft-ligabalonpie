@@ -1,6 +1,7 @@
 package com.palazzisoft.ligabalonpie.entities;
 
 import static com.google.common.collect.Sets.newHashSet;
+import static com.palazzisoft.ligabalonpie.enums.EEstado.ACTIVO;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -155,6 +156,29 @@ public class Equipo implements Serializable {
 		}
 		
 		return null;
+	}
+	
+	public boolean agregarNuevoJugador(Jugador jugador) {
+		EquipoJugador equipoJugador = buscarEquipoJugadorPorJugador(jugador.getId());
+		if (equipoJugador == null && jugador.getEstado().equals(this.getEstado()) &&
+				this.getEstado().equals(ACTIVO.getEstado()) && this.presupuesto > jugador.getValor()) {
+			EquipoJugador equipoJugadorNuevo = new EquipoJugador();
+			equipoJugadorNuevo.setEquipo(this);
+			equipoJugadorNuevo.setJugador(jugador);
+			return this.equipoJugadores.add(equipoJugadorNuevo);
+		}
+		
+		return false;
+	}
+	
+	public void restarPresupuesto(Long valor) {
+		if (this.presupuesto > valor) {
+			this.presupuesto = this.presupuesto - valor;
+		}
+	}
+	
+	public void sumarPresupuesto(Long valor) {
+		this.presupuesto = this.presupuesto + valor;
 	}
 	
 	@Override

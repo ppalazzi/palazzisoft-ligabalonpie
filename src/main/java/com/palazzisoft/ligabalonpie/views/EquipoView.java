@@ -63,7 +63,7 @@ public class EquipoView {
 		if (!this.equipoController.verificarExistenciaDeEquipo(equipoCommand.getNombre())) {
 			this.equipoController.nuevoEquipo(equipoCommand, participanteId);
 		} else {
-			model.put("mensajeError", "Ya tenés un equipo con ese nombre");
+			model.put("mensajeError", "Ya tenÃ©s un equipo con ese nombre");
 		}
 
 		return DASHBOARD;
@@ -115,13 +115,15 @@ public class EquipoView {
 	}
 
 	@RequestMapping(value = "/listadoJugadorDisponibles.adm", method = POST)
-	public String obtenerJugadoresDisponiblesPor(@RequestParam Integer tipoJugadorId, Model model) {
+	public String obtenerJugadoresDisponiblesPor(@RequestParam Integer tipoJugadorId,
+			@RequestParam Integer equipoId, Model model) {
 		List<Jugador> jugadores = this.jugadorController
 				.obtenerJugadoresDisponiblesParaComprarPorTipoDeJugador(tipoJugadorId);
 		
 		model.addAttribute("jugadores", convertirJugadoresAJugadoresCommand(jugadores));
 		model.addAttribute("tipoJugador", this.tipoJugadorController.obtenerTodosTipoJugador());
 		model.addAttribute("tipoJugadorId", tipoJugadorId);
+		model.addAttribute("equipoId", equipoId);
 
 		return LISTADO_COMPRAR_JUGADOR;
 	}
@@ -134,4 +136,9 @@ public class EquipoView {
 		return ALTA_BAJA_EQUIPO;
 	}
 
+	@RequestMapping (value = "/comprarJugador.adm", method = POST)
+	public String comprarJugador(@RequestParam Integer equipoId, @RequestParam Integer jugadorId, Model model) {
+		this.equipoController.comprarJugador(equipoId, jugadorId);
+		return this.obtenerJugadoresDisponiblesPor(0, equipoId, model);
+	}
 }

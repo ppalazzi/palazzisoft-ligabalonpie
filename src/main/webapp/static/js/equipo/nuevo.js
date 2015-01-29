@@ -14,9 +14,10 @@ var CompraJugador = {
 				modal : true,
 				width : 800,
 				height : 500,
-		        close: function(event, ui) {
-		        	$(this).dialog('close');
-		        }			
+		        close: function(event, ui) {	
+		        	window.location.href = '/balonpie/nuevoEquipo.adm?id=5';
+		        	$(this).dialog('close');		      
+				}
 			};
 			
 			$("#comprarJugadoresContainer").empty().append(data);
@@ -24,6 +25,17 @@ var CompraJugador = {
 	},
 	traerPorTipoJugador : function (tipoJugadorID) {
 		CompraJugador.abrirVentadaComprarJugadores(tipoJugadorID);
+	},
+	comprarJugador : function (jugadorId, equipoId) {
+		
+		var data = {equipoId : equipoId , jugadorId : jugadorId};
+		$.ajax({type : "POST",
+				url : "/balonpie/comprarJugador.adm",
+				data : data,
+				success : function(data) {
+					CompraJugador.abrirVentadaComprarJugadores(0);
+				}
+		});	
 	}
 };
 
