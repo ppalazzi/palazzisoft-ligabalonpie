@@ -1,7 +1,10 @@
 package com.palazzisoft.ligabalonpie.entities;
 
+import static com.google.common.collect.Lists.newArrayList;
+
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +14,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.google.common.collect.Lists;
 
 @Entity
 @Table (name="T_PARTICIPANTE")
@@ -50,14 +56,14 @@ public class Participante implements Serializable {
 	@Column (name = "A_CIUDAD")
 	private String ciudad;
 	
-//	@OneToMany(mappedBy = "participante")
-//	private List<ParticipanteTorneo> participanteTorneos;
+	@Transient
+	private List<Torneo> torneos;
 	
 	@ManyToOne (fetch = FetchType.EAGER)
 	private Pais pais;
 	
 	public Participante() {
-		//this.participanteTorneos = new ArrayList<ParticipanteTorneo>();
+		this.torneos = newArrayList();
 	}	
 	
 	public Integer getId() {
@@ -132,14 +138,6 @@ public class Participante implements Serializable {
 		this.password = password;
 	}
 		
-//	public List<ParticipanteTorneo> getParticipanteTorneos() {
-//		return participanteTorneos;
-//	}
-//
-//	public void setParticipanteTorneos(List<ParticipanteTorneo> participanteTorneos) {
-//		this.participanteTorneos = participanteTorneos;
-//	}
-
 	public Pais getPais() {
 		return pais;
 	}
@@ -154,6 +152,14 @@ public class Participante implements Serializable {
 
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
+	}
+
+	public List<Torneo> getTorneos() {
+		return torneos;
+	}
+	
+	public void setTorneos(List<Torneo> torneos) {
+		this.torneos = torneos;
 	}
 
 	@Override
@@ -180,6 +186,7 @@ public class Participante implements Serializable {
 			return false;
 		return true;
 	}
+
 	
 	
 }

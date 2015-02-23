@@ -12,8 +12,9 @@ import com.palazzisoft.ligabalonpie.command.ParticipanteCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.ParticipanteController;
 import com.palazzisoft.ligabalonpie.converters.ParticipanteConverter;
 import com.palazzisoft.ligabalonpie.daos.api.ParticipanteDao;
-import com.palazzisoft.ligabalonpie.daos.api.ParticipanteTorneoDao;
+import com.palazzisoft.ligabalonpie.daos.api.TorneoDao;
 import com.palazzisoft.ligabalonpie.entities.Participante;
+import com.palazzisoft.ligabalonpie.entities.Torneo;
 import com.palazzisoft.ligabalonpie.enums.EEstadoParticipante;
 
 @Controller
@@ -21,14 +22,13 @@ public class ParticipanteControllerImpl implements ParticipanteController {
 
 	private Logger log = Logger.getLogger(ParticipanteControllerImpl.class);
 
-	@Autowired
-	private ParticipanteDao participanteDao;
+	private final ParticipanteDao participanteDao;
+	private final TorneoDao torneoDao;
 
 	@Autowired
-	private ParticipanteTorneoDao participanteTorneoDao;
-
-	public ParticipanteControllerImpl() {
-
+	public ParticipanteControllerImpl(final ParticipanteDao participanteDao, final TorneoDao torneoDao) {
+		this.participanteDao = participanteDao;
+		this.torneoDao = torneoDao;
 	}
 
 	@Transactional
@@ -37,18 +37,8 @@ public class ParticipanteControllerImpl implements ParticipanteController {
 
 		ParticipanteCommand participanteCommand = ParticipanteConverter
 				.convertirParticipanteACommand(participante);
-
-		this.agregarTorneosACommand(participante, participanteCommand);
 		
 		return participanteCommand;
-	}
-
-	private void agregarTorneosACommand(Participante participante,
-			ParticipanteCommand participanteCommand) throws ParseException {
-//		for (ParticipanteTorneo participanteTorneo : participante.getParticipanteTorneos()) {
-//			Torneo torneo = participanteTorneo.getTorneo();
-//			participanteCommand.getTorneos().add(TorneoConverter.convertirTorneoACommand(torneo));
-//		}
 	}
 	
 	@Override
@@ -78,8 +68,14 @@ public class ParticipanteControllerImpl implements ParticipanteController {
 	}
 
 	@Override
+	@Transactional (readOnly = true)
 	public List<Participante> obtenerParticipantes() {
 		return this.participanteDao.obtenerParticipantes();
+	}
+	
+	@Override
+	public List<Torneo> torneosDeParticipante(Integer participanteId) {
+		return this.torneoDao.obtenerTorneosDeParticipante(participanteId);
 	}
 	
 	private Participante modificarParticipante(ParticipanteCommand participanteCommand)

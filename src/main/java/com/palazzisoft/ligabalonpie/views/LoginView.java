@@ -1,14 +1,17 @@
 package com.palazzisoft.ligabalonpie.views;
 
+import static com.palazzisoft.ligabalonpie.util.PageViews.ERROR_PAGINA;
+import static com.palazzisoft.ligabalonpie.util.PageViews.LOGIN_INVALIDO;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.palazzisoft.ligabalonpie.command.ParticipanteCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.AdministradorController;
@@ -20,25 +23,28 @@ import com.palazzisoft.ligabalonpie.util.PageViews;
 @RequestMapping("/login.htm")
 public class LoginView {
 
+	public static final String PARTICIPANTE_SESSION = "participanteSession";
+	private static final String TIPO_LOGUEO = "tipoLogueo";
+	
 	Logger log = Logger.getLogger(LoginView.class);
 
-	private ParticipanteController participanteController;
-
-	private AdministradorController administradorController;
+	private final ParticipanteController participanteController;
+	private final AdministradorController administradorController;
 
 	@Autowired	
-	public LoginView(ParticipanteController participanteController, AdministradorController adminostradorController) {
+	public LoginView(final ParticipanteController participanteController, final AdministradorController adminostradorController) {
 		this.participanteController = participanteController;
 		this.administradorController = adminostradorController;
 	}
 
-	public static final String PARTICIPANTE_SESSION = "participanteSession";
-	private static final String TIPO_LOGUEO = "tipoLogueo";
+	@RequestMapping(method = GET)
+	public String loginPantalla(HttpServletRequest req, Model model) {
+		return this.showForm(req, model);
+	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView showForm(HttpServletRequest req, HttpServletResponse response) {
-		ModelAndView model = new ModelAndView();
-		String viewPage = PageViews.ERROR_PAGINA;
+	public String showForm(HttpServletRequest req, Model model) {
+		String viewPage = ERROR_PAGINA;
 
 		try {
 			String user = req.getParameter("user");
@@ -54,9 +60,9 @@ public class LoginView {
 					req.setAttribute("participanteId", participanteCommand.getId());
 					viewPage = PageViews.DASHBOARD;
 					
-					model.addObject("participante", participanteCommand);
+					model.addAttribute("participante", participanteCommand);
 				} else {
-					viewPage = PageViews.LOGIN_INVALIDO;
+					viewPage = LOGIN_INVALIDO;
 				}
 			} else {
 				Administrador administrador = administradorController.login(user, password);
@@ -66,15 +72,13 @@ public class LoginView {
 					req.setAttribute(TIPO_LOGUEO, "administrador");
 					viewPage = PageViews.DASHBOARD;
 				} else {
-					viewPage = PageViews.LOGIN_INVALIDO;
+					viewPage = LOGIN_INVALIDO;
 				}
 			}
 		} catch (Exception e) {
-			viewPage = PageViews.ERROR_PAGINA;
+			viewPage = ERROR_PAGINA;
 		}
-
-		model.setViewName(viewPage);
 		
-		return model;
+		return viewPage;
 	}
 }

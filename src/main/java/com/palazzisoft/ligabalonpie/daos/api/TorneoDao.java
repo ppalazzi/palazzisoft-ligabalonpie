@@ -16,4 +16,6 @@ public interface TorneoDao extends GenericDao<Torneo,Integer> {
 	Torneo obtenerTorneoPorDescripcion(String descripcion);
 
 	List<Torneo> obtenerTodosLosTorneos();
+
+	List<Torneo> obtenerTorneosDeParticipante(Integer participanteId);
 }

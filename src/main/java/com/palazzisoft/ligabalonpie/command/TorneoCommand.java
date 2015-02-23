@@ -10,8 +10,6 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.google.common.collect.Sets;
-
 
 /**
  * 
@@ -39,6 +37,8 @@ public class TorneoCommand {
 	private String fechaFin;
 	
 	private Set<EquipoCommand> equipos;
+	
+	private Integer participanteId;
 	
 	public TorneoCommand() {
 		this.equipos = newHashSet();
@@ -99,4 +99,13 @@ public class TorneoCommand {
 	public void setEquipos(Set<EquipoCommand> equipos) {
 		this.equipos = equipos;
 	}
+
+	public Integer getParticipanteId() {
+		return participanteId;
+	}
+
+	public void setParticipanteId(Integer participanteId) {
+		this.participanteId = participanteId;
+	}
+	
 }

@@ -45,8 +45,4 @@
 		
 		</bean>
 		
-		<bean id="participanteTorneoDao" class="com.palazzisoft.ligabalonpie.daos.impl.ParticipanteTorneoDaoImpl" parent="genericDao">
-		
-		</bean>
-		
 </beans>

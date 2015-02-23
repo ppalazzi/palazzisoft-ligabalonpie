@@ -15,8 +15,12 @@ import com.palazzisoft.ligabalonpie.controllers.api.ParticipanteController;
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
+	private final ParticipanteController participanteController;
+	
 	@Autowired
-	private ParticipanteController participanteController;
+	public CustomAuthenticationProvider(final ParticipanteController participanteController) {
+		this.participanteController = participanteController;
+	}
 	
 	@Override
 	public Authentication authenticate(Authentication authentication)

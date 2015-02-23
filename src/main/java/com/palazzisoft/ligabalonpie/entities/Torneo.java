@@ -1,10 +1,11 @@
 package com.palazzisoft.ligabalonpie.entities;
 
+import static javax.persistence.FetchType.LAZY;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,7 +15,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import com.palazzisoft.ligabalonpie.enums.EEstado;
 import com.palazzisoft.ligabalonpie.exception.BalonpieException;
@@ -51,13 +56,17 @@ public class Torneo implements Serializable {
 	@Column(name = "A_FECHAFIN")
 	private Date fechaFin;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = LAZY)
+	@Cascade(value = {CascadeType.DELETE_ORPHAN})
 	@JoinTable(name = "T_EQUIPO_TORNEO", joinColumns = { 
-			@JoinColumn(name = "TORNEO_F_ID", nullable = false, updatable = false) }, 
+			@JoinColumn(name = "TORNEO_F_ID", nullable = true, updatable = true) }, 
 			inverseJoinColumns = { @JoinColumn(name = "EQUIPO_F_ID", 
-					nullable = false, updatable = false) })
+					nullable = true, updatable = true) })
 	private List<Equipo> equipos;
 		
+	@ManyToOne (fetch=FetchType.EAGER)
+	private Participante participante;
+	
 	public Torneo() {
 		
 	}
@@ -122,6 +131,7 @@ public class Torneo implements Serializable {
 		this.equipos = equipos;
 	}
 
+	
 	public boolean desligarEquipo(Integer equipoId) throws BalonpieException {
 		if (this.getEstado().equals(EEstado.ACTIVO.getEstado())) {
 			throw new BalonpieException("El Torneo se encuentra en estado Activo");
@@ -134,6 +144,14 @@ public class Torneo implements Serializable {
 		}
 		
 		return false;
+	}
+	
+	public Participante getParticipante() {
+		return participante;
+	}
+	
+	public void setParticipante(Participante participante) {
+		this.participante = participante;
 	}
 	
 	@Override
@@ -160,5 +178,6 @@ public class Torneo implements Serializable {
 			return false;
 		return true;
 	}
+
 	
 }

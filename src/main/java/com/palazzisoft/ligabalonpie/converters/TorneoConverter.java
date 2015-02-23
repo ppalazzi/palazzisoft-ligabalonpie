@@ -10,6 +10,7 @@ import java.util.List;
 import com.palazzisoft.ligabalonpie.command.EquipoCommand;
 import com.palazzisoft.ligabalonpie.command.TorneoCommand;
 import com.palazzisoft.ligabalonpie.entities.Equipo;
+import com.palazzisoft.ligabalonpie.entities.Participante;
 import com.palazzisoft.ligabalonpie.entities.Torneo;
 /**
  * 
@@ -35,6 +36,12 @@ public class TorneoConverter {
 		if (torneoCommand.getFechaInicio() != null) {
 			torneo.setFechaInicio(stringToDateFormat(torneoCommand.getFechaInicio()));	
 		}
+		
+		if (torneoCommand.getParticipanteId() != null) {
+			Participante participante = new Participante();
+			participante.setId(torneoCommand.getParticipanteId());
+			torneo.setParticipante(participante);
+		}
 
 		return torneo;
 	}	
@@ -55,6 +62,10 @@ public class TorneoConverter {
 		
 		if (torneo.getFechaInicio() != null) {
 			command.setFechaInicio(dateAFechaMesAno(torneo.getFechaInicio()));	
+		}
+		
+		if (torneo.getParticipante() != null) {
+			command.setParticipanteId(torneo.getParticipante().getId());
 		}
 		
 		convertEquiposDeTorneo(command, torneo);

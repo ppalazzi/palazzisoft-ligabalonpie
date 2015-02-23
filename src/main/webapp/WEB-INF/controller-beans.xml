@@ -27,10 +27,6 @@
 
 	</bean>
 
-	<bean id="administradorController"
-		class="com.palazzisoft.ligabalonpie.controllers.impl.AdministradorControllerImpl">
-
-	</bean>
 
 	<bean id="equipoJugadorController"
 		class="com.palazzisoft.ligabalonpie.controllers.impl.EquipoJugadorControllerImpl">

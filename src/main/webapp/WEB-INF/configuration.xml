@@ -13,45 +13,9 @@
            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
            ">
 
-	<import resource="spring-security.xml" />
 
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost/balonpie" />
-		<property name="username" value="root" />
-		<property name="password" value="root" />
-	</bean>
-
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="annotatedClasses">
-			<list>
-				<value>com.palazzisoft.ligabalonpie.entities.Participante</value>
-				<value>com.palazzisoft.ligabalonpie.entities.Jugador</value>
-				<value>com.palazzisoft.ligabalonpie.entities.Administrador</value>
-				<value>com.palazzisoft.ligabalonpie.entities.TipoJugador</value>
-				<value>com.palazzisoft.ligabalonpie.entities.Equipo</value>
-				<value>com.palazzisoft.ligabalonpie.entities.EquipoJugador</value>
-				<value>com.palazzisoft.ligabalonpie.entities.Torneo</value>
-				<value>com.palazzisoft.ligabalonpie.entities.Pais</value>
-				<value>com.palazzisoft.ligabalonpie.entities.EquipoTorneo</value>
-			</list>
-		</property>
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
-			</props>
-		</property>
-	</bean>
-
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
+ 	<import resource="spring-security.xml" />
+	<import resource="dao-configuration.xml"/>
+	
 </beans>
 

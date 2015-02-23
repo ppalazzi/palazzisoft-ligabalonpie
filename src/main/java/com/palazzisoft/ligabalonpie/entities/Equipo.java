@@ -2,6 +2,7 @@ package com.palazzisoft.ligabalonpie.entities;
 
 import static com.google.common.collect.Sets.newHashSet;
 import static com.palazzisoft.ligabalonpie.enums.EEstado.ACTIVO;
+import static com.palazzisoft.ligabalonpie.util.PropertiesValues.MAXIMOS_JUGADORES_POR_EQUIPO;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -25,7 +26,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "T_EQUIPO")
 public class Equipo implements Serializable {
-
+	
 	private static final long serialVersionUID = 6358813478617236529L;
 
 	@Id
@@ -63,7 +64,7 @@ public class Equipo implements Serializable {
 			inverseJoinColumns = { @JoinColumn(name = "TORNEO_F_ID", 
 					nullable = false, updatable = false) })	
 	private List<Torneo> torneos;
-	
+		
 	public Equipo() {
 		this.equipoJugadores = newHashSet();
 	}
@@ -161,7 +162,8 @@ public class Equipo implements Serializable {
 	public boolean agregarNuevoJugador(Jugador jugador) {
 		EquipoJugador equipoJugador = buscarEquipoJugadorPorJugador(jugador.getId());
 		if (equipoJugador == null && jugador.getEstado().equals(this.getEstado()) &&
-				this.getEstado().equals(ACTIVO.getEstado()) && this.presupuesto > jugador.getValor()) {
+				this.getEstado().equals(ACTIVO.getEstado()) && this.presupuesto > jugador.getValor()
+				&& this.equipoJugadores.size() <= MAXIMOS_JUGADORES_POR_EQUIPO) {
 			EquipoJugador equipoJugadorNuevo = new EquipoJugador();
 			equipoJugadorNuevo.setEquipo(this);
 			equipoJugadorNuevo.setJugador(jugador);

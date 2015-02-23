@@ -3,7 +3,9 @@ package com.palazzisoft.ligabalonpie.util;
 public final class PageViews {
 
 
-	public static final String DASHBOARD            = "dashboard";	
+	public static final String DASHBOARD            = "dashboard";
+	public static final String MIS_TORNEOS          = "frontend/torneo/listado";
+	public static final String PERFIL               = "frontend/home/miPerfil";
 	
 	public static final String LOGIN_INVALIDO       = "errores/loginError";
 	public static final String ERROR_PAGINA         = "error";
@@ -12,7 +14,6 @@ public final class PageViews {
 
 		// Torneos
 	public static final String NUEVO_TORNEO         = "frontend/torneo/nuevoTorneo";
-	public static final String LISTADO_TORNEO_OLD       = "frontend/torneo/listado";
 	
 		// Jugadores Manager
 	public static final String LISTADO_JUGADORES = "frontend/jugador/listado";

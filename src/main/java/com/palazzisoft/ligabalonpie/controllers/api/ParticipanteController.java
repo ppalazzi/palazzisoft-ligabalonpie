@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.palazzisoft.ligabalonpie.command.ParticipanteCommand;
 import com.palazzisoft.ligabalonpie.entities.Participante;
+import com.palazzisoft.ligabalonpie.entities.Torneo;
 
 public interface ParticipanteController {
 
@@ -17,4 +18,6 @@ public interface ParticipanteController {
 	List<Participante> obtenerParticipantes();
 
 	void guardarParticipante(Participante participante);
+
+	List<Torneo> torneosDeParticipante(Integer participanteId);
 }

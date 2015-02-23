@@ -50,6 +50,10 @@
 				<input type="text" name="fechaFin" id="finPicker"
 					value='<c:out value="${torneo.fechaFin}" />' maxlength="25">
 			</spring:bind></li>
+		<li><label>Id del Participante</label><spring:bind path="torneo.participanteId">
+			<input type="text" name="participanteId" value="${torneo.participanteId}" maxlength="" >
+		</spring:bind>
+		</li>
 		<li>
 			<div id="error">
 				<font color="red"> <form:errors path="*" />
