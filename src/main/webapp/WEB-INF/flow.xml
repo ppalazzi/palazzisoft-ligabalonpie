@@ -2,15 +2,48 @@
 <flow xmlns="http://www.springframework.org/schema/webflow"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/webflow
-        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd" start-state="inicio">
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
     
-    <view-state id="inicio" view="/frontend/torneo/nuevoTorneo">
-        <transition on="ok1" to="intermedio"></transition>
-    </view-state>
+	<var name="torneo" class="com.palazzisoft.ligabalonpie.command.TorneoCommand"/>
+	<var name="equipo" class="com.palazzisoft.ligabalonpie.command.EquipoCommand"/>                
+
+	<view-state id="inicio" view="/frontend/torneo/nuevoTorneo" model="torneo">		
+		<transition on="guardarTorneo" to="guardarTorneo"/>
+	</view-state>
     
-    <view-state id="intermedio" view="medio">
-        <transition on="ok2" to="fin"></transition>
-    </view-state>
-    <end-state id="fin" view="final">
+    <action-state id="guardarTorneo">
+    	<evaluate expression="flowForward.guardarTorneo(torneo)" />
+    	<transition to="nuevoEquipo"/>
+    </action-state>
+    
+    <view-state id="nuevoEquipo" view="/frontend/equipo/nuevoEquipo" model="equipo">        
+        <transition on="guardarEquipo" to="guardarEquipo2" />
+    </view-state>    
+    
+    <action-state id="guardarEquipo2">
+    	<evaluate expression="flowForward.guardarEquipo(equipo)" />
+    	<transition to="fin"/>
+    </action-state>
+    
+    
+<!--     <action-state id="guardarTorneo" view="/frontend/equipo/nuevoEquipo" model="torneo"> -->
+<!-- 		<on-entry> -->
+<!-- 			<evaluate expression="flowForward.guardarTorneo(torneo)" /> -->
+<!-- 		</on-entry>		 -->
+<!-- 		<transition on="submit" to="nuevoEquipo"/> -->
+<!--     </action-state> -->
+    
+<!--     <view-state id="nuevoEquipo" view="/frontend/torneo/nuevoEquipo" model="equipo">         -->
+<!--         <transition on="submit" to="guardarEquipo"></transition> -->
+<!--     </view-state> -->
+
+<!-- 	<view-state id="guardarEquipo" view="header" model="equipo"> -->
+<!-- 		<on-entry> -->
+<!-- 			<evaluate expression="flowForward.guardarEquipo(equipo)" /> -->
+<!-- 		</on-entry> -->
+<!-- 		<transition on="fin" to="fin" /> -->
+<!-- 	</view-state> -->
+
+    <end-state id="fin" view="exito">
     </end-state>
 </flow>

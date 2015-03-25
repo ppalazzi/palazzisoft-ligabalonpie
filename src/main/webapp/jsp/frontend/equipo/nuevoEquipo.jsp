@@ -1,36 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+<jsp:include page="/jsp/header.jsp" />
 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Liga Balonpie</title>
-</head>
-<body>
+<script type="text/javascript"
+	src="/balonpie/static/js/dashboard.js"></script>
 
-	<jsp:include page="/jsp/header.jsp" />
+	<input type="hidden" id="participanteId" value="<c:out value='${participanteId}' />" >
+	
+	<div>
+		<ul>
+			<li><a href="nuevoTorneo.htm?participanteId=<c:out value="${participanteId}" />">Nuevo Torneo</a></li>
 
-	<form:form method="post" action="/balonpie/nuevoEquipo.htm" commandName="equipoCommand">
-		<input type="hidden" name="participanteId" value="<c:out value='${participanteId}' />" />
-		<table border="1">
-			<tr>
-				<td><label>* Nombre  :  </label></td>
-				<td><input type="text" name="nombre" value="<c:out value="${equipo.nombre}" />"></td>
-			</tr>		
-			<tr>
-				<td><label>* DescripciÃ³n  :  </label></td>
-				<td><input type="text" name="descripcion" value="<c:out value="${equipo.descripcion}" />"></td>
-			</tr>
-		</table>
-		</br><label style="color ; ##FF0000;"><c:out value="${mensajeError}" /></label>
-		<input type="submit" src="Guardar">		
-	</form:form>	
-
-</body>
-</html>
+			<li id="misTorneos"><label>Mis Torneos</label>
+				<div id="listadoTorneoDiv"></div>
+			</li>			
+			<li id="miPerfil">
+				<label>Mi Perfil</label>
+			</li>
+		</ul>
+	</div>
+	
+	<div id="container" style="position: relative; top: 10px; left: 290px;" >
+		<form:form modelAttribute="equipo" action="${flowExecutionUrl}&_eventId=guardarEquipo2">
+			<ul>
+				<li><label>Nombre</label> 
+					<form:input path="nombre" maxlength="50" />
+				</li>
+				<li>
+					<label>Descripción</label> 
+					<form:input path="descripcion" maxlength="50" />
+				</li>		
+			</ul>
+	
+			<input type="submit" value="Continuar">		
+		</form:form>
+	</div>
+<jsp:include page="/jsp/footer.jsp" />	

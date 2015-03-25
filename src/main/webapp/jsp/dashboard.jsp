@@ -9,7 +9,7 @@
 	
 	<div>
 		<ul>
-			<li><a href="nuevoTorneo.htm?participanteId=<c:out value="${participanteId}" />">Nuevo Torneo</a></li>
+			<li><a href="inicio.htm">Nuevo Torneo</a></li>
 
 			<li id="misTorneos"><label>Mis Torneos</label>
 				<div id="listadoTorneoDiv"></div>

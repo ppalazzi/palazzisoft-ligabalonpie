@@ -3,6 +3,7 @@ package com.palazzisoft.ligabalonpie.command;
 import static com.google.common.collect.Sets.newHashSet;
 import static com.palazzisoft.ligabalonpie.util.FechaMascara.DATE_PATTERN;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.validation.constraints.NotNull;
@@ -16,7 +17,9 @@ import org.springframework.format.annotation.DateTimeFormat;
  * @author ppalazzi
  *
  */
-public class TorneoCommand {
+public class TorneoCommand implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 	
