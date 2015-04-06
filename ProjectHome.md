@@ -1,0 +1,1 @@
+Juego Web Online en el cuál equipos creados por los Usuarios compiten en la liga para ver quién obtiene la mayor cantidad de puntos.
