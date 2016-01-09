@@ -1,3 +1,0 @@
-function carlitos() {
-	alert("agustino");
-}

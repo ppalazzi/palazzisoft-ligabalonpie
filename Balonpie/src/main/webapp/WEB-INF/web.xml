@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="3.0"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	>
+	<display-name>Liga Balonpie</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- Open in View Session -->
+	<filter>
+		<filter-name>Spring OpenSessionInViewFilter</filter-name>
+		<filter-class>
+			org.springframework.orm.hibernate3.support.OpenSessionInViewFilter
+		</filter-class>
+- 	</filter> 
+
+	<filter-mapping>
+		<filter-name>Spring OpenSessionInViewFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>		
+	</listener>
+
+	<servlet>
+		<servlet-name>balonpie</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+        <init-param>
+                <param-name>contextConfigLocation</param-name>
+                <param-value>/WEB-INF/balonpie-servlet.xml</param-value>
+        </init-param>		
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>balonpie</servlet-name>
+		<url-pattern>*.htm</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>balonpie</servlet-name>
+		<url-pattern>*.adm</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- Loads Spring Security config file -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/configuration.xml
+		</param-value>
+	</context-param>
+
+	<!-- Spring Security -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy
+		</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/car</url-pattern>
+	</filter-mapping>
+
+</web-app>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+    
+	<var name="torneo" class="com.palazzisoft.ligabalonpie.command.TorneoCommand"/>
+	<var name="equipo" class="com.palazzisoft.ligabalonpie.command.EquipoCommand"/>                
+
+	<view-state id="inicio" view="/jsp/frontend/torneo/nuevoTorneo.jsp" model="torneo">		
+		<transition on="guardarTorneo" to="guardarTorneo"/>
+	</view-state>
+    
+    <view-state id="guardarTorneo" view="/jsp/frontend/equipo/nuevoEquipo.jsp" model="equipo">
+    	<on-render>
+    		<evaluate expression="flowForward.guardarTorneo(torneo)" />
+    	</on-render>
+    	<transition on="guardarEquipo" to="guardarEquipo"/>
+    </view-state>
+    
+<!--     <action-state id="guardarTorneo"> -->
+<!--     	<evaluate expression="flowForward.guardarTorneo(torneo)" /> -->
+<!--     	<transition to="nuevoEquipo"/> -->
+<!--     </action-state> -->
+    
+    <view-state id="guardarEquipo" view="/jsp/menu.jsp" model="equipo">        
+    	<on-render>
+    		<evaluate expression="flowForward.guardarEquipo(equipo)" />
+    	</on-render>        
+        <transition on="finalizar" to="fin" />
+    </view-state>    
+    
+    
+<!--     <action-state id="guardarEquipo"> -->
+<!--     	<evaluate expression="flowForward.guardarEquipo(equipo)" /> -->
+<!--     	<transition to="fin"/> -->
+<!--     </action-state> -->
+    
+  
+    <end-state id="fin" view="/jsp/exito.jsp">
+    </end-state>
+</flow>
