@@ -23,7 +23,7 @@
 		<li id="miPerfil"><label>Mi Perfil</label></li>
 	</ul>
 </div>
-principal mostro
+
 <div id="container"
 	style="position: relative; top: 0px; left: 221px;">
 	<div id="listadoDiv">
@@ -33,7 +33,7 @@ principal mostro
 			</c:forEach>
 		</ul>
 	</div>
-	
+
 	<div id="misEquiposDiv">
 	
 	</div>

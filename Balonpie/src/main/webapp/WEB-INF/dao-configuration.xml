@@ -35,6 +35,9 @@
 				<value>com.palazzisoft.ligabalonpie.entities.Torneo</value>
 				<value>com.palazzisoft.ligabalonpie.entities.Pais</value>
 				<value>com.palazzisoft.ligabalonpie.entities.EquipoTorneo</value>
+				<value>com.palazzisoft.ligabalonpie.entities.Partido</value>
+				<value>com.palazzisoft.ligabalonpie.entities.Fecha</value>
+				<value>com.palazzisoft.ligabalonpie.entities.Fixture</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

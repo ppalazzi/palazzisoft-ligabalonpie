@@ -13,4 +13,6 @@ public interface JugadorDao extends GenericDao<Jugador,Integer> {
 	List<Jugador> obtenerJugadoresDisponiblesPorTipoJugador(Integer tipoJugadorId);
 
 	List<Jugador> obtenerJugadoresDisponiblesParaComprarPorTipoJugador(Integer equipoId);
+
+	List<Jugador> obtenerJugadoresRestantes(Integer[] ids);
 }

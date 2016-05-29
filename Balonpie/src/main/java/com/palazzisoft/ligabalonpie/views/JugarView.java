@@ -16,6 +16,7 @@ import com.palazzisoft.ligabalonpie.controllers.api.TorneoController;
 import com.palazzisoft.ligabalonpie.entities.Equipo;
 import com.palazzisoft.ligabalonpie.entities.Participante;
 import com.palazzisoft.ligabalonpie.entities.Torneo;
+import com.palazzisoft.ligabalonpie.util.FixtureFactory;
 
 @Controller
 @RequestMapping("/jugarTorneo.htm")
@@ -26,13 +27,15 @@ public class JugarView {
 	private final ParticipanteController participanteController;
 	private final TorneoController torneoController;
 	private final EquipoController equipoController;
+	private final FixtureFactory fixtureFactory;
 	
 	@Autowired
 	public JugarView(final ParticipanteController participanteController, final TorneoController torneoController,
-			final EquipoController equipoController) {
+			final EquipoController equipoController, FixtureFactory fixtureFactory) {
 		this.participanteController = participanteController;
 		this.torneoController = torneoController;
 		this.equipoController = equipoController;
+		this.fixtureFactory = fixtureFactory;
 	}
 	
 	
@@ -46,7 +49,7 @@ public class JugarView {
 		model.addAttribute("participante" , participante);
 		model.addAttribute("torneo", torneo);
 		model.addAttribute("equipo", equipo);
-		
+				
 		return JUGAR_PRINCIPAL;
-	}
+	}	
 }

@@ -4,6 +4,9 @@ import static com.palazzisoft.ligabalonpie.enums.EEstado.ACTIVO;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
+
 import com.palazzisoft.ligabalonpie.daos.api.JugadorDao;
 import com.palazzisoft.ligabalonpie.entities.Jugador;
 
@@ -42,8 +45,19 @@ public class JugadorDaoImpl extends GenericDaoImpl<Jugador,Integer> implements J
 	@Override
 	@SuppressWarnings("unchecked")
     public List<Jugador> obtenerJugadoresDisponiblesParaComprarPorTipoJugador(Integer tipoJugadorId) {
-    	String sql = "Select j From Jugador j LEFT JOIN FETCH j.equipoJugadores  e WHERE e.jugador IS NULL AND j.tipoJugador.id = ? and j.estado = ? ";
+    	String sql = "Select j From Jugador j LEFT JOIN "
+    			+ "FETCH j.equipoJugadores  e WHERE e.jugador IS NULL "
+    			+ "AND j.tipoJugador.id = ? and j.estado = ? ";
     	Object[] values = new Integer[] {tipoJugadorId, ACTIVO.getEstado()};
     	return this.getHibernateTemplate().find(sql, values);
     }
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Jugador> obtenerJugadoresRestantes(Integer ids[]) {
+		Criteria criteria = this.getSession().createCriteria(Jugador.class);
+		criteria.add(Restrictions.not(Restrictions.in("id", ids)));
+		
+		return criteria.list();
+	}
 }

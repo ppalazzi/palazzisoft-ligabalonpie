@@ -24,7 +24,7 @@
 		</ul>	
 	</div>
 				
-	<form:form id="jugarTorneo" action="jugarTorneo.htm" method="POST">
+	<form:form id="jugarTorneo" action="jugarTorneo.htm" method="GET">
 		<input type="hidden" value="<c:out value='${participanteId}' />" name="participanteId">
 		<input type="hidden" value="<c:out value='${torneo.id}' />" name="torneoId">
 		<input type="hidden" value="<c:out value='${equipo.id}' />" name="equipoId">

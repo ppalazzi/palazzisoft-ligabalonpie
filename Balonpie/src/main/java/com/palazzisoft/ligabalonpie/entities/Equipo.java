@@ -6,6 +6,7 @@ import static com.palazzisoft.ligabalonpie.util.PropertiesValues.MAXIMOS_JUGADOR
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -190,6 +191,18 @@ public class Equipo implements Serializable {
 			equipoJugador.setJugador(jugador);
 			this.equipoJugadores.add(equipoJugador);
 		}
+	}
+	
+	public Integer[] jugadoresId() {
+		Integer[] jugadoresId = new Integer[this.getEquipoJugadores().size()];
+		
+		Iterator<EquipoJugador> iterator = this.getEquipoJugadores().iterator();		
+		int i = 0;
+		while (iterator.hasNext()) {
+			jugadoresId[i] = iterator.next().getJugador().getId();
+		}
+		
+		return jugadoresId;
 	}
 	
 	private boolean tieneJugador(Jugador jugador) {

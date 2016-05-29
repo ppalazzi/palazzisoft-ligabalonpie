@@ -69,6 +69,9 @@ public class Torneo implements Serializable {
 	@ManyToOne (fetch=FetchType.EAGER)
 	private Participante participante;
 	
+	@ManyToOne (fetch=FetchType.EAGER)
+	private Fixture fixture;
+	
 	public Torneo() {
 		this.equipos = newArrayList();
 	}

@@ -31,7 +31,6 @@ import com.palazzisoft.ligabalonpie.converters.TorneoConverter;
 import com.palazzisoft.ligabalonpie.entities.Equipo;
 import com.palazzisoft.ligabalonpie.entities.Torneo;
 import com.palazzisoft.ligabalonpie.exception.BalonpieException;
-import com.palazzisoft.ligabalonpie.util.PageViews;
 
 @Controller
 public class TorneoView {
@@ -72,6 +71,7 @@ public class TorneoView {
 			
 			model.addAttribute("torneo", convertirTorneoACommand(torneo));
 			model.addAttribute("equipo", convertirAEquipoCommand(equipo));
+			model.addAttribute("participanteId" , equipo.getParticipante().getId());
 		}
 		catch (Exception e) {
 			log.error("Error al traer el torneo y su equipo de Mis Torneos", e);
