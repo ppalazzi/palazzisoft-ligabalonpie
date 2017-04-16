@@ -2,8 +2,8 @@ package com.palazzisoft.ligabalonpie.daos.impl;
 
 import java.util.List;
 
+import com.palazzisoft.balonpie.service.model.TipoJugador;
 import com.palazzisoft.ligabalonpie.daos.api.TipoJugadorDao;
-import com.palazzisoft.ligabalonpie.entities.TipoJugador;
 
 
 public class TipoJugadorDaoImpl extends GenericDaoImpl<TipoJugador,Integer> implements TipoJugadorDao {

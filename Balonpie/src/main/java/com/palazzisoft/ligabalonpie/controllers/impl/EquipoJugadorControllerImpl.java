@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.palazzisoft.balonpie.service.model.Equipo;
+import com.palazzisoft.balonpie.service.model.EquipoJugador;
+import com.palazzisoft.balonpie.service.model.Jugador;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoJugadorController;
 import com.palazzisoft.ligabalonpie.daos.api.EquipoJugadorDao;
-import com.palazzisoft.ligabalonpie.entities.Equipo;
-import com.palazzisoft.ligabalonpie.entities.EquipoJugador;
-import com.palazzisoft.ligabalonpie.entities.Jugador;
 @Controller
 public class EquipoJugadorControllerImpl implements EquipoJugadorController {
 

@@ -7,10 +7,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.palazzisoft.ligabalonpie.entities.Equipo;
-import com.palazzisoft.ligabalonpie.entities.Fecha;
-import com.palazzisoft.ligabalonpie.entities.Fixture;
-import com.palazzisoft.ligabalonpie.entities.Partido;
+import com.palazzisoft.balonpie.service.model.Equipo;
+import com.palazzisoft.balonpie.service.model.Fecha;
+import com.palazzisoft.balonpie.service.model.Fixture;
+import com.palazzisoft.balonpie.service.model.Partido;
 /**
  * Al pasarle una lista de Equipos, genera un Fixture con los
  * pa

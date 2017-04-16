@@ -24,12 +24,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.palazzisoft.balonpie.service.model.Equipo;
+import com.palazzisoft.balonpie.service.model.Torneo;
 import com.palazzisoft.ligabalonpie.command.TorneoCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoController;
 import com.palazzisoft.ligabalonpie.controllers.api.TorneoController;
 import com.palazzisoft.ligabalonpie.converters.TorneoConverter;
-import com.palazzisoft.ligabalonpie.entities.Equipo;
-import com.palazzisoft.ligabalonpie.entities.Torneo;
 import com.palazzisoft.ligabalonpie.exception.BalonpieException;
 
 @Controller

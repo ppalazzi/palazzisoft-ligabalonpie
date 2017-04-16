@@ -2,8 +2,8 @@ package com.palazzisoft.ligabalonpie.daos.api;
 
 import java.util.List;
 
-import com.palazzisoft.ligabalonpie.entities.ParticipanteTorneo;
-import com.palazzisoft.ligabalonpie.entities.Torneo;
+import com.palazzisoft.balonpie.service.model.ParticipanteTorneo;
+import com.palazzisoft.balonpie.service.model.Torneo;
 /**
  * 
  * @author ppalazzi

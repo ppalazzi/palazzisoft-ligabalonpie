@@ -1,7 +1,7 @@
 package com.palazzisoft.ligabalonpie.controllers.impl;
 
-import static com.palazzisoft.ligabalonpie.entities.Torneo.TORNEO_DURACION;
-import static com.palazzisoft.ligabalonpie.enums.EEstado.ACTIVO;
+import static com.palazzisoft.balonpie.service.model.Torneo.TORNEO_DURACION;
+import static com.palazzisoft.balonpie.service.model.enumeration.EEstado.ACTIVO;
 import static com.palazzisoft.ligabalonpie.util.PropertiesValues.PRESUPUESTO_INICIAL;
 import static java.util.Calendar.getInstance;
 
@@ -14,17 +14,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.palazzisoft.balonpie.service.model.Equipo;
+import com.palazzisoft.balonpie.service.model.Jugador;
+import com.palazzisoft.balonpie.service.model.Participante;
+import com.palazzisoft.balonpie.service.model.Torneo;
+import com.palazzisoft.balonpie.service.model.enumeration.EEstado;
 import com.palazzisoft.ligabalonpie.command.NuevoTorneoCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoController;
 import com.palazzisoft.ligabalonpie.controllers.api.JugadorController;
 import com.palazzisoft.ligabalonpie.controllers.api.ParticipanteController;
 import com.palazzisoft.ligabalonpie.controllers.api.TorneoController;
 import com.palazzisoft.ligabalonpie.daos.api.TorneoDao;
-import com.palazzisoft.ligabalonpie.entities.Equipo;
-import com.palazzisoft.ligabalonpie.entities.Jugador;
-import com.palazzisoft.ligabalonpie.entities.Participante;
-import com.palazzisoft.ligabalonpie.entities.Torneo;
-import com.palazzisoft.ligabalonpie.enums.EEstado;
 import com.palazzisoft.ligabalonpie.exception.BalonpieException;
 
 /**

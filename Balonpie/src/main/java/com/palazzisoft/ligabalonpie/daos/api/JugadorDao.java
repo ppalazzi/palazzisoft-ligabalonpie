@@ -2,7 +2,7 @@ package com.palazzisoft.ligabalonpie.daos.api;
 
 import java.util.List;
 
-import com.palazzisoft.ligabalonpie.entities.Jugador;
+import com.palazzisoft.balonpie.service.model.Jugador;
 
 public interface JugadorDao extends GenericDao<Jugador,Integer> {
 

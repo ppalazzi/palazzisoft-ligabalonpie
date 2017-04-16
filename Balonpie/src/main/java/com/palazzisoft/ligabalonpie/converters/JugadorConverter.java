@@ -7,9 +7,9 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.palazzisoft.balonpie.service.model.Jugador;
+import com.palazzisoft.balonpie.service.model.TipoJugador;
 import com.palazzisoft.ligabalonpie.command.JugadorCommand;
-import com.palazzisoft.ligabalonpie.entities.Jugador;
-import com.palazzisoft.ligabalonpie.entities.TipoJugador;
 
 public class JugadorConverter  {
 

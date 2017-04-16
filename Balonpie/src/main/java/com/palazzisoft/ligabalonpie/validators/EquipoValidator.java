@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import com.palazzisoft.balonpie.service.model.Participante;
+import com.palazzisoft.balonpie.service.model.Torneo;
 import com.palazzisoft.ligabalonpie.command.EquipoCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.ParticipanteController;
 import com.palazzisoft.ligabalonpie.controllers.api.TorneoController;
-import com.palazzisoft.ligabalonpie.entities.Participante;
-import com.palazzisoft.ligabalonpie.entities.Torneo;
 
 
 /**

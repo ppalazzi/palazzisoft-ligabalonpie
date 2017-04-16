@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import com.palazzisoft.balonpie.service.model.Jugador;
 import com.palazzisoft.ligabalonpie.command.JugadorCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoController;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoJugadorController;
 import com.palazzisoft.ligabalonpie.controllers.api.JugadorController;
-import com.palazzisoft.ligabalonpie.entities.Jugador;
 import com.palazzisoft.ligabalonpie.util.PageViews;
 
 public class CompraJugadorView implements Controller {

@@ -13,9 +13,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.palazzisoft.balonpie.service.model.Equipo;
 import com.palazzisoft.ligabalonpie.command.EquipoCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoController;
-import com.palazzisoft.ligabalonpie.entities.Equipo;
 
 @Controller
 public class ListadoEquipoView {

@@ -1,6 +1,6 @@
 package com.palazzisoft.ligabalonpie.controllers.api;
 
-import com.palazzisoft.ligabalonpie.entities.Administrador;
+import com.palazzisoft.balonpie.service.model.Administrador;
 
 public interface AdministradorController {
 

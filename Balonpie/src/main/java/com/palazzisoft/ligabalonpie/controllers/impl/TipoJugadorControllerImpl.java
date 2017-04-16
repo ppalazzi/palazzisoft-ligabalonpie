@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.palazzisoft.balonpie.service.model.TipoJugador;
 import com.palazzisoft.ligabalonpie.controllers.api.TipoJugadorController;
 import com.palazzisoft.ligabalonpie.daos.api.TipoJugadorDao;
-import com.palazzisoft.ligabalonpie.entities.TipoJugador;
 
 public class TipoJugadorControllerImpl implements TipoJugadorController {
 

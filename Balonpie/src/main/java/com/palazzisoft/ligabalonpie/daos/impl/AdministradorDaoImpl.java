@@ -2,9 +2,9 @@ package com.palazzisoft.ligabalonpie.daos.impl;
 
 import java.util.List;
 
+import com.palazzisoft.balonpie.service.model.Administrador;
+import com.palazzisoft.balonpie.service.model.Participante;
 import com.palazzisoft.ligabalonpie.daos.api.AdministradorDao;
-import com.palazzisoft.ligabalonpie.entities.Administrador;
-import com.palazzisoft.ligabalonpie.entities.Participante;
 
 public class AdministradorDaoImpl extends GenericDaoImpl<Administrador,Integer> implements AdministradorDao {
 

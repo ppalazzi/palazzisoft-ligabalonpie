@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.palazzisoft.balonpie.service.model.Participante;
 import com.palazzisoft.ligabalonpie.daos.api.ParticipanteDao;
-import com.palazzisoft.ligabalonpie.entities.Participante;
 
 @Component
 public class ParticipanteDaoImpl extends GenericDaoImpl<Participante, Integer> implements

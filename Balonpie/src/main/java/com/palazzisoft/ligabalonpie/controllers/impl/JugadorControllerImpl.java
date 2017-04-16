@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.palazzisoft.balonpie.service.model.Jugador;
+import com.palazzisoft.balonpie.service.model.enumeration.EEstado;
 import com.palazzisoft.ligabalonpie.command.JugadorCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.JugadorController;
 import com.palazzisoft.ligabalonpie.converters.JugadorConverter;
 import com.palazzisoft.ligabalonpie.daos.api.JugadorDao;
-import com.palazzisoft.ligabalonpie.entities.Jugador;
-import com.palazzisoft.ligabalonpie.enums.EEstado;
 @Controller
 public class JugadorControllerImpl implements JugadorController {
 

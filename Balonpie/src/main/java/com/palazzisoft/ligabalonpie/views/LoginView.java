@@ -13,10 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.palazzisoft.balonpie.service.model.Administrador;
 import com.palazzisoft.ligabalonpie.command.ParticipanteCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.AdministradorController;
 import com.palazzisoft.ligabalonpie.controllers.api.ParticipanteController;
-import com.palazzisoft.ligabalonpie.entities.Administrador;
 import com.palazzisoft.ligabalonpie.util.PageViews;
 
 @Controller

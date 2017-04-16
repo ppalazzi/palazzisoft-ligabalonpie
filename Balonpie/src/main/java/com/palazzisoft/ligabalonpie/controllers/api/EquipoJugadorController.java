@@ -1,6 +1,6 @@
 package com.palazzisoft.ligabalonpie.controllers.api;
 
-import com.palazzisoft.ligabalonpie.entities.EquipoJugador;
+import com.palazzisoft.balonpie.service.model.EquipoJugador;
 
 /**
  * 

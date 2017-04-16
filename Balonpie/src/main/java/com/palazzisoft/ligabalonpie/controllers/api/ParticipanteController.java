@@ -3,9 +3,9 @@ package com.palazzisoft.ligabalonpie.controllers.api;
 import java.text.ParseException;
 import java.util.List;
 
+import com.palazzisoft.balonpie.service.model.Participante;
+import com.palazzisoft.balonpie.service.model.Torneo;
 import com.palazzisoft.ligabalonpie.command.ParticipanteCommand;
-import com.palazzisoft.ligabalonpie.entities.Participante;
-import com.palazzisoft.ligabalonpie.entities.Torneo;
 
 public interface ParticipanteController {
 

@@ -3,9 +3,9 @@ package com.palazzisoft.ligabalonpie.controllers.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.palazzisoft.balonpie.service.model.Administrador;
 import com.palazzisoft.ligabalonpie.controllers.api.AdministradorController;
 import com.palazzisoft.ligabalonpie.daos.api.AdministradorDao;
-import com.palazzisoft.ligabalonpie.entities.Administrador;
 @Component
 public class AdministradorControllerImpl implements AdministradorController {
 	

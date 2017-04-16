@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.palazzisoft.balonpie.service.model.Participante;
 import com.palazzisoft.ligabalonpie.command.ParticipanteCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.ParticipanteController;
 import com.palazzisoft.ligabalonpie.converters.ParticipanteConverter;
-import com.palazzisoft.ligabalonpie.entities.Participante;
 import com.palazzisoft.ligabalonpie.util.PageViews;
 import com.palazzisoft.ligabalonpie.validators.ParticipanteValidator;
 

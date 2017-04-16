@@ -1,16 +1,16 @@
 package com.palazzisoft.ligabalonpie.util;
 
 
-import static com.palazzisoft.ligabalonpie.enums.EEstado.ACTIVO;
+import static com.palazzisoft.balonpie.service.model.enumeration.EEstado.ACTIVO;
 
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.palazzisoft.balonpie.service.model.Equipo;
+import com.palazzisoft.balonpie.service.model.Torneo;
+import com.palazzisoft.balonpie.service.model.enumeration.EEstado;
 import com.palazzisoft.ligabalonpie.controllers.api.JugadorController;
-import com.palazzisoft.ligabalonpie.entities.Equipo;
-import com.palazzisoft.ligabalonpie.entities.Torneo;
-import com.palazzisoft.ligabalonpie.enums.EEstado;
 
 @Component
 public class CrearEquipos {

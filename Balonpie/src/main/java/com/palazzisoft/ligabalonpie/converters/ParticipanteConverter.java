@@ -8,9 +8,9 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.palazzisoft.balonpie.service.model.Pais;
+import com.palazzisoft.balonpie.service.model.Participante;
 import com.palazzisoft.ligabalonpie.command.ParticipanteCommand;
-import com.palazzisoft.ligabalonpie.entities.Pais;
-import com.palazzisoft.ligabalonpie.entities.Participante;
 import com.palazzisoft.ligabalonpie.util.FechaMascara;
 
 public class ParticipanteConverter {

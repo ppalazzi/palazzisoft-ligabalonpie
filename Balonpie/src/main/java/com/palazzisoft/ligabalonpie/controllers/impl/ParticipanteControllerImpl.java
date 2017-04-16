@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.palazzisoft.balonpie.service.model.Participante;
+import com.palazzisoft.balonpie.service.model.Torneo;
+import com.palazzisoft.balonpie.service.model.enumeration.EEstadoParticipante;
 import com.palazzisoft.ligabalonpie.command.ParticipanteCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.ParticipanteController;
 import com.palazzisoft.ligabalonpie.converters.ParticipanteConverter;
 import com.palazzisoft.ligabalonpie.daos.api.ParticipanteDao;
 import com.palazzisoft.ligabalonpie.daos.api.TorneoDao;
-import com.palazzisoft.ligabalonpie.entities.Participante;
-import com.palazzisoft.ligabalonpie.entities.Torneo;
-import com.palazzisoft.ligabalonpie.enums.EEstadoParticipante;
 
 @Controller
 public class ParticipanteControllerImpl implements ParticipanteController {

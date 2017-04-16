@@ -1,14 +1,14 @@
 package com.palazzisoft.ligabalonpie.daos.impl;
 
-import static com.palazzisoft.ligabalonpie.enums.EEstado.ACTIVO;
+import static com.palazzisoft.balonpie.service.model.enumeration.EEstado.ACTIVO;
 
 import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
+import com.palazzisoft.balonpie.service.model.Jugador;
 import com.palazzisoft.ligabalonpie.daos.api.JugadorDao;
-import com.palazzisoft.ligabalonpie.entities.Jugador;
 
 public class JugadorDaoImpl extends GenericDaoImpl<Jugador,Integer> implements JugadorDao {
 

@@ -4,10 +4,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import com.palazzisoft.balonpie.service.model.ParticipanteTorneo;
+import com.palazzisoft.balonpie.service.model.Torneo;
+import com.palazzisoft.balonpie.service.model.enumeration.EEstado;
 import com.palazzisoft.ligabalonpie.daos.api.TorneoDao;
-import com.palazzisoft.ligabalonpie.entities.ParticipanteTorneo;
-import com.palazzisoft.ligabalonpie.entities.Torneo;
-import com.palazzisoft.ligabalonpie.enums.EEstado;
 /**
  * 
  * @author ppalazzi

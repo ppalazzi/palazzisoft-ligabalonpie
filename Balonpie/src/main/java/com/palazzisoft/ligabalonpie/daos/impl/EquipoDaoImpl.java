@@ -3,9 +3,9 @@ package com.palazzisoft.ligabalonpie.daos.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.palazzisoft.balonpie.service.model.Equipo;
+import com.palazzisoft.balonpie.service.model.EquipoJugador;
 import com.palazzisoft.ligabalonpie.daos.api.EquipoDao;
-import com.palazzisoft.ligabalonpie.entities.Equipo;
-import com.palazzisoft.ligabalonpie.entities.EquipoJugador;
 
 public class EquipoDaoImpl extends GenericDaoImpl<Equipo, Integer> implements EquipoDao {
 

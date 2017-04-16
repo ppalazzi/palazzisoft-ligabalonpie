@@ -1,7 +1,7 @@
 package com.palazzisoft.ligabalonpie.daos.impl;
 
+import com.palazzisoft.balonpie.service.model.Partido;
 import com.palazzisoft.ligabalonpie.daos.api.PartidoDao;
-import com.palazzisoft.ligabalonpie.entities.Partido;
 
 
 public class PartidoDaoImpl extends GenericDaoImpl<Partido, Integer> implements PartidoDao {

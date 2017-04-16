@@ -2,7 +2,7 @@ package com.palazzisoft.ligabalonpie.controllers.api;
 
 import java.util.List;
 
-import com.palazzisoft.ligabalonpie.entities.TipoJugador;
+import com.palazzisoft.balonpie.service.model.TipoJugador;
 
 public interface TipoJugadorController {
 

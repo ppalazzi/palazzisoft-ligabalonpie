@@ -8,11 +8,11 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.palazzisoft.balonpie.service.model.Equipo;
+import com.palazzisoft.balonpie.service.model.EquipoJugador;
+import com.palazzisoft.balonpie.service.model.Participante;
 import com.palazzisoft.ligabalonpie.command.EquipoCommand;
 import com.palazzisoft.ligabalonpie.command.JugadorCommand;
-import com.palazzisoft.ligabalonpie.entities.Equipo;
-import com.palazzisoft.ligabalonpie.entities.EquipoJugador;
-import com.palazzisoft.ligabalonpie.entities.Participante;
 
 public class EquipoConverter {
 

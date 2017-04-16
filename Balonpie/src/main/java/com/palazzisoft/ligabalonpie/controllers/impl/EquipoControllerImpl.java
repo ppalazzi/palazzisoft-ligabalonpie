@@ -1,8 +1,8 @@
 package com.palazzisoft.ligabalonpie.controllers.impl;
 
+import static com.palazzisoft.balonpie.service.model.enumeration.EEstado.ACTIVO;
 import static com.palazzisoft.ligabalonpie.converters.EquipoConverter.convertirAEquipoCommand;
 import static com.palazzisoft.ligabalonpie.converters.EquipoConverter.convertirEquipoACommand;
-import static com.palazzisoft.ligabalonpie.enums.EEstado.ACTIVO;
 import static java.util.Calendar.getInstance;
 
 import java.util.ArrayList;
@@ -12,14 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.palazzisoft.balonpie.service.model.Equipo;
+import com.palazzisoft.balonpie.service.model.EquipoJugador;
+import com.palazzisoft.balonpie.service.model.Jugador;
 import com.palazzisoft.ligabalonpie.command.EquipoCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoController;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoJugadorController;
 import com.palazzisoft.ligabalonpie.controllers.api.JugadorController;
 import com.palazzisoft.ligabalonpie.daos.api.EquipoDao;
-import com.palazzisoft.ligabalonpie.entities.Equipo;
-import com.palazzisoft.ligabalonpie.entities.EquipoJugador;
-import com.palazzisoft.ligabalonpie.entities.Jugador;
 
 @Controller
 public class EquipoControllerImpl implements EquipoController {

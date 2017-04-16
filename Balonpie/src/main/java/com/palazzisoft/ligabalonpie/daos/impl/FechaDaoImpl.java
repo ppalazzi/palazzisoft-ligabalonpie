@@ -1,7 +1,7 @@
 package com.palazzisoft.ligabalonpie.daos.impl;
 
+import com.palazzisoft.balonpie.service.model.Fecha;
 import com.palazzisoft.ligabalonpie.daos.api.FechaDao;
-import com.palazzisoft.ligabalonpie.entities.Fecha;
 
 public class FechaDaoImpl extends GenericDaoImpl<Fecha, Integer> implements FechaDao {
 

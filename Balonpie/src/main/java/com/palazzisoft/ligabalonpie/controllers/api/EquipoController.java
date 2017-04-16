@@ -2,9 +2,9 @@ package com.palazzisoft.ligabalonpie.controllers.api;
 
 import java.util.List;
 
+import com.palazzisoft.balonpie.service.model.Equipo;
+import com.palazzisoft.balonpie.service.model.Jugador;
 import com.palazzisoft.ligabalonpie.command.EquipoCommand;
-import com.palazzisoft.ligabalonpie.entities.Equipo;
-import com.palazzisoft.ligabalonpie.entities.Jugador;
 /**
  * 
  * @author ppalazzi

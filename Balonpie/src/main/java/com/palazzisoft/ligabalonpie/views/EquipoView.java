@@ -23,12 +23,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.palazzisoft.balonpie.service.model.Equipo;
+import com.palazzisoft.balonpie.service.model.Jugador;
 import com.palazzisoft.ligabalonpie.command.EquipoCommand;
 import com.palazzisoft.ligabalonpie.controllers.api.EquipoController;
 import com.palazzisoft.ligabalonpie.controllers.api.JugadorController;
 import com.palazzisoft.ligabalonpie.controllers.api.TipoJugadorController;
-import com.palazzisoft.ligabalonpie.entities.Equipo;
-import com.palazzisoft.ligabalonpie.entities.Jugador;
 import com.palazzisoft.ligabalonpie.validators.EquipoValidator;
 
 @Controller
@@ -63,7 +63,7 @@ public class EquipoView {
 		if (!this.equipoController.verificarExistenciaDeEquipo(equipoCommand.getNombre())) {
 			this.equipoController.nuevoEquipo(equipoCommand, participanteId);
 		} else {
-			model.put("mensajeError", "Ya tenés un equipo con ese nombre");
+			model.put("mensajeError", "Ya tenï¿½s un equipo con ese nombre");
 		}
 
 		return DASHBOARD;

@@ -1,6 +1,6 @@
 package com.palazzisoft.ligabalonpie.daos.api;
 
-import com.palazzisoft.ligabalonpie.entities.Administrador;
+import com.palazzisoft.balonpie.service.model.Administrador;
 
 public interface AdministradorDao extends GenericDao<Administrador,Integer> {
 

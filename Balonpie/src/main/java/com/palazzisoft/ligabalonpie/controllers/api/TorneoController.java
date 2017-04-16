@@ -2,8 +2,8 @@ package com.palazzisoft.ligabalonpie.controllers.api;
 
 import java.util.List;
 
+import com.palazzisoft.balonpie.service.model.Torneo;
 import com.palazzisoft.ligabalonpie.command.NuevoTorneoCommand;
-import com.palazzisoft.ligabalonpie.entities.Torneo;
 import com.palazzisoft.ligabalonpie.exception.BalonpieException;
 /**
  * 
